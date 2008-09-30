@@ -1,18 +1,16 @@
 #!/usr/bin/perl
-# $Id: index.pl, v0.0.2 06/23/2007 12:05:00 dan stephenson ( ispyhumanfly ) Exp$
-#
-#   revision info: see the changelog for additional info...
+# index.pl - TVS auto-syndicated news portal...
 
 use CGI::Carp qw/ warningsToBrowser fatalsToBrowser /;
 use warnings;
 use strict;
 
-# required nuport modules...
+# required TVS modules...
 use lib 'library/';
 use controller;
 
-# subroutine to initialize nuport...
-sub start_nuport {
+# subroutine to initialize TVS...
+sub start_tvs {
 
     # initiate the Controller class and begin instance handling...
     my $ctrl = new Controller;
@@ -24,4 +22,4 @@ sub start_nuport {
 }
 
 # set program start point...
-start_nuport();
+start_tvs();

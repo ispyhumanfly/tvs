@@ -1,6 +1,4 @@
-# $Id: model.pm, v0.0.2 06/23/2007 12:05:00 dan stephenson ( ispyhumanfly ) Exp$
-#
-#   revision info: see the changelog for additional info...
+# model.pm - TVS auto-syndicated news portal...
 
 package Model;
 
@@ -368,9 +366,9 @@ sub do_clean {
 
 }
 
-# method to update 'vote' values for articles. nuport
+# method to update 'vote' values for articles. tvs
 # currently relies on client-side scripting from view.js, the
-# nuport front-end class as well as cookies...
+# tvs front-end class as well as cookies...
 sub do_vote {
 
     # preamble...
@@ -382,7 +380,7 @@ sub do_vote {
 
 }
 
-# method to shutdown the nuport engine...
+# method to shutdown the tvs engine...
 sub do_shutdown {
 
     # preamble...

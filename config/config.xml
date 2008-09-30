@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
-<!-- $Id: config.xml, v0.0.1 02/26/2007 09:49:00 Exp$ -->
+<!-- config.xml - TVS auto-syndicated news portal -->
 
 <!-- parent configuration property -->
 <config root='/srv/http/tvs' domain='spydev.ath.cx' default_page='home'>
@@ -17,7 +17,7 @@
     <prune days='7' votes='all' />
     
     <!-- RSS Subscription configuration -->
-    <rss title='television suicide' link='http://tvsuicide.net' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2007 tvsuicide.net' webmaster='ispyhumanfly' />
+    <rss title='television suicide' link='http://spydev.ath.cx/tvs/' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2007 tvsuicide.net' webmaster='ispyhumanfly' />
 
 </config>
 

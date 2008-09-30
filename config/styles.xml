@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
-<!-- $Id: styles.xml, v0.0.1 03/01/2007 14:20:00 Exp -->
+<!-- styles.xml - TVS auto-syndicated news portal -->
 
 <!-- parent configuration property -->
 <styles dir='styles/' current_style='default' >

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+ xmlns:blogChannel="http://backend.userland.com/blogChannelModule"
+>
+
+<channel>
+<title>television suicide</title>
+<link>http://tvsuicide.net</link>
+<description>a pretty cool news portal</description>
+<language>en</language>
+<copyright>2007 tvsuicide.net</copyright>
+<webMaster>ispyhumanfly</webMaster>
+
+<item>
+<title>[Featured Article] Photos: Top 10 reviews of the week</title>
+<description>Here are CNET Reviews&#x26;#39; 10 favorite items from the past week, including the Sling Media Slingbox Pro-HD, Apple&#x26;#39;s iTunes 8, and the 250GB Archos 5.</description>
+<guid isPermaLink="true">http://news.cnet.com/2300-1041_3-6246719-1.html?part=rss&#x26;amp;tag=6246719&#x26;amp;subj=news</guid>
+<enclosure url="http://news.cnet.com/2300-1041_3-6246719-1.html?part=rss&#x26;amp;tag=6246719&#x26;amp;subj=news" type="text/plain" />
+</item>
+<item>
+<title>[Featured Article] Microsoft&#x26;#39;s Mundie Sees a Future In Spatial Computing</title>
+<description>An anonymous reader writes &#x26;quot;Speaking at the MIT Emerging Technology Conference, Microsoft Chief Research and Strategy Officer Craig Mundie explained that he sees the industry evolving into &#x26;#39;spatial computing,&#x26;#39; and he envisions a 3-D virtual world populated by virtual presences, using a combination of client and cloud services. &#x26;#39;In a few months, the compay plans to test a new virtual reception assistant in some of its campus buildings. The assistant, which takes the form of an avatar, helps schedule shuttle reservations to get people to various locations across the 10-million-square-foot Redmond, Wash., campus. The system includes array microphones and natural language processing by which the avatar listens to the subjects and then interacts with them in real time. The system has been programmed to differentiate people by their clothing. Someone in a suit, for instance, would more likely be a visitor and not a potential shuttle rider.&#x26;#39;&#x26;quot; Read more of this story at Slashdot.
+</description>
+<guid isPermaLink="true">http://rss.slashdot.org/~r/Slashdot/slashdot/~3/5aZ_G68OCy0/article.pl</guid>
+<enclosure url="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/5aZ_G68OCy0/article.pl" type="text/plain" />
+</item>
+<item>
+<title>[Featured Article] Microsoft Documentation Declared Unfit For US Consumption</title>
+<description>anomalous cohort writes &#x26;quot;Washington DC judge Colleen Kollar-Kotelly announced during the ongoing Microsoft antitrust hearings that their documentation is unfit for US Consumption. This is relevant in an antitrust hearing as poor documentation on how to inter-operate with Microsoft&#x26;#39;s products is seen as an unfair barrier to entry for companies who compete with Microsoft. Others see this as yet another example of their crumbling hegemony or indolence as their empire burns.&#x26;quot; Read more of this story at Slashdot.
+</description>
+<guid isPermaLink="true">http://rss.slashdot.org/~r/Slashdot/slashdot/~3/Kv1FPVQm7C0/article.pl</guid>
+<enclosure url="http://rss.slashdot.org/~r/Slashdot/slashdot/~3/Kv1FPVQm7C0/article.pl" type="text/plain" />
+</item>
+</channel>
+</rss>

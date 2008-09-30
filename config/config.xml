@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- $Id: config.xml, v0.0.1 02/26/2007 09:49:00 Exp$ -->
+
+<!-- parent configuration property -->
+<config root='/srv/http/tvs' domain='spydev.ath.cx' default_page='home'>
+
+    <!-- Perl DBI ( database ) configuration -->
+    <dbase driver='DBI:mysql' host='localhost' database='tvsuicide' user='ispyhumanfly' password='smacme' />
+
+    <!-- Article Interval configuration -->
+    <interval name='featured' days='7' votes='3' />
+    <interval name='watch_list' days='3' votes='1' />
+    <interval name='inbox' days='1' votes='0' />
+
+    <!-- Article Pruning configuration -->
+    <prune days='7' votes='all' />
+    
+    <!-- RSS Subscription configuration -->
+    <rss title='television suicide' link='http://tvsuicide.net' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2007 tvsuicide.net' webmaster='ispyhumanfly' />
+
+</config>
+
+<!-- end of xml document -->

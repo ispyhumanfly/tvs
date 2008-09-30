@@ -1,0 +1,168 @@
+--------------------------------------
+C H A N G E _ L O G
+--------------------------------------
+
+    October, 1st, 2008
+
+    Alot changed... and I've killed this project. :(
+    Don't worry, I have a gui in mind for the future.
+
+	- ispyhumanfly
+
+
+
+--------------------------------------
+
+
+
+# OLD ( for historical purposes ) ...
+
+
+
+######################################
+
+The Kunjango News Portal ( pre-alpha ) 
+
+######################################
+
+--------------------------------------
+C  H  A  N  G  E  _  L  O  G
+--------------------------------------
+
+######################################
+
+News Portal Application
+Revision: 0.0.8
+Date: 6-23-2007
+
+TO-DO List...
+
+    1] Comments system / Discussion.
+    2] PostGres / SQLite support.
+       
+######################################
+
+--------------------------------------
+
+Revision 0.0.1:
+
+    Initial Concept...
+    
+--------------------------------------
+
+Revision 0.0.2:
+
+    nemesis.pl:
+        * Integration of Suicide.pm ( system classes ) with tvs...
+        
+--------------------------------------
+
+Revision 0.0.3:
+
+    nemesis.pl:
+        * Switched to DBI from DBM::Deep...
+        
+--------------------------------------
+
+Revision 0.0.4:
+
+    nemesis.pl:
+        * Integration of spidey.pl ( news aggrigator script by ispy ) with tvs...
+        
+--------------------------------------
+
+Revision 0.0.5:
+
+    nemesis.pl:
+        * Added 'article pruning' and various code refinements...
+        
+--------------------------------------
+
+Revision 0.0.6:
+
+    nemesis.pl:
+        * Created 'clean_xhtml' method for stripping / encoding html strings...
+        * Finished RSS/XML subscription method ( site_feed.rss generation ) ...
+        
+--------------------------------------
+
+Revision 0.0.7:
+
+    nemesis.pl:
+        * Newly inserted 'feeds.xml' entry detection.  Before, any time you added a new
+          news feed you had to re-build the entire dbase from scratch.  An OBVIOUS addition...
+        * Cleaned up SQL syntax, but learned current syntax won't work with anything
+          other than MySQL server 4 and 5. ( AUTO_INCREMENT not good I suppose )
+        
+--------------------------------------
+
+Revision 0.0.8:
+
+    nemesis.pl:
+        * Re-named all TVSuicide::Engine methods to comply with 'set, get, do' pragma... ( better OO naming scheme )
+        * Re-defined and developed a more extensible and less memory intensive Object-Oriented class structure.
+        * NO MORE GLOBAL VARIABLES! TVS now uses local lexical variables and references only now.  This was
+          the true goal of this revision.
+        
+######################################
+
+Default Theme for TVS
+Revision: 0.0.5
+Date: 6-11-2007
+
+######################################
+
+--------------------------------------
+
+Revision 0.0.1:
+
+    Initial Concept...
+
+
+--------------------------------------
+
+Revision 0.0.2:
+
+    default.css:
+        * Added "Article" div
+        * Cleaned up Navigation bar (smaller, and added a divider on the left end)
+        * made main article column wider and subnav column narrower
+        * various color and style corrections
+    *.xthml:
+        * added "article div"
+        * various code corrections
+
+--------------------------------------
+
+Revision 0.0.3:
+
+    default.css:
+        * aligned header logo and navbar
+        * added "title" divs
+        * added color to link hovers
+    *.xthml:
+        * linked article title to article
+        * added "title" divs
+        * corrected code to be more valid xhtml
+
+--------------------------------------
+
+Revision 0.0.4:
+
+    default.js:
+        * added external links function
+    default.css:
+        * various color, style, and alignment corrections
+    *.xhtml, templates/*.xthml:
+        * changed all target attributes to rel attributes
+        * finished correcting xthml validation errors (all pages are valid xthml)
+
+--------------------------------------
+
+Revision 0.0.5:
+
+    default.css:
+        * added comments and organized stylesheet
+        * corrected link decoration issue
+
+#END#

@@ -1,0 +1,36 @@
+<!-- TMPL_INCLUDE NAME='common/header.xhtml' -->
+
+	<div class='main'>
+
+		<div class='left'> 
+
+			<div class='content'>
+
+                            <br /><div class='location'><b>/</b> viewing <b>/</b> <strong>inbox</strong> articles...</div><br /><br /><br /><br />
+
+                                <!-- some feed shit goes here -->
+				<div id='article-<!-- TMPL_VAR NAME='id' -->' style='padding-bottom: 15px;'>
+                                
+                                <div class="article">
+                                                
+                                        <div class='feed'>
+                                        
+                                        <!-- TMPL_LOOP NAME='inbox' -->
+                                        
+                                        <div class='inbox'>
+
+						<div id='article-<!-- TMPL_VAR NAME='id' -->'>           
+						    <img src='<!-- TMPL_VAR NAME='icon' -->' height='16' width='16' alt='' /><id='article-<!-- TMPL_VAR NAME='id' -->'  <span class="title"><p><a href="<!-- TMPL_VAR NAME='url' -->" rel="external"><!-- TMPL_VAR NAME='title' --></a></p></span>
+						</div>
+                                        </div>
+                                        
+                                        <!-- /TMPL_LOOP -->
+                                        
+                                        </div></div></div>
+
+			</div>
+
+		</div>
+
+<!-- TMPL_INCLUDE NAME='common/blocks.xhtml' -->
+<!-- TMPL_INCLUDE NAME='common/footer.xhtml' -->

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<!-- some links and stuff -->
+<link rel='stylesheet' type='text/css' href='styles/default/default.css' media='screen' />
+<link rel="alternate" type="application/rss+xml" title="Front-page" href="site_feed.rss" />
+<link rel="shortcut icon" type="image/ico" href="styles/default/images/favicon.ico" />
+    
+<title>t.v. [ <!-- TMPL_VAR NAME='page_title' --> ] suicide</title>
+
+<!-- included javascript libraries -->
+<script src='library/prototype.js' type='text/javascript'></script>
+<script src='library/scriptaculous.js?load=effects' type='text/javascript'></script>
+<script src='library/tooltip.js' type='text/javascript'></script>
+<script src='library/view.js' type='text/javascript'></script></head>
+
+<!-- load the View class, the style system back-end... -->
+<script type="text/javascript">//<![CDATA[
+
+        // instantiate the class...
+        view = new View();
+
+// ]]></script>
+
+<!-- zero margin = wide layout -->
+<body style="margin: 0px 10px 10px 10px;">
+
+<div id='top'></div>
+
+<div class="container">
+
+	<div class="header" style="height: 112px;">
+                
+		<img src='styles/default/images/logo_big.gif' style='padding: 5px;' alt='TVS' />
+        </div>
+
+	<div class="stripes"><span></span></div>
+
+	<div class='nav_norm'>
+                
+                <a href='index.pl?view=home' style="border-left: 1px solid #161616; text-decoration: none;">Home</a>
+                <a href='index.pl?view=featured' style="text-decoration: none;">Featured</a>
+		<a href='index.pl?view=watch_list' style="text-decoration: none;">Watch List</a>
+		<a href='index.pl?view=inbox' style="text-decoration: none;">Inbox</a>
+
+		<div class="clearer"><span></span></div>
+	</div>
+
+	<div class="stripes"><span></span></div>

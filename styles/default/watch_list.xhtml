@@ -1,0 +1,42 @@
+<!-- TMPL_INCLUDE NAME='common/header.xhtml' -->
+
+	<div class='main'>
+
+		<div class='left'>
+
+			<div class='content'>
+
+                            <br /><div class='location'><b>/</b> viewing <b>/</b> <strong>watch_list</strong> articles...</div><br /><br /><br /><br />
+
+                            <!-- TMPL_LOOP NAME='watch_list' -->
+
+                                <!-- some feed shit goes here -->
+				<div id='article-<!-- TMPL_VAR NAME='id' -->' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='<!-- TMPL_VAR NAME='url' -->' rel="external"><!-- TMPL_VAR NAME='title' --></a></span><span class='toggle'><a href="javascript:toggle_view( '<!-- TMPL_VAR NAME='id' -->' );">Toggle View</a></span></h1>
+				<div class='descr'><img src='<!-- TMPL_VAR NAME='icon' -->' height='16' width='16' alt=''/> from <a href='<!-- TMPL_VAR NAME='url' -->' rel="external"><!-- TMPL_VAR NAME='name' --></a> on <!-- TMPL_VAR NAME='date' -->. <strong><!-- TMPL_VAR NAME='votes' --></strong> visitors voted on this article.</div><div id='toggle-<!-- TMPL_VAR NAME='id' -->'><br />
+
+
+
+                                        <!-- article body -->
+					<div class='feed'><!-- TMPL_VAR NAME='info' --></div>
+					<br /><p class='options'>
+
+                                        <!-- voting module -->
+                                        <script type="text/javascript">//<![CDATA[
+
+                                            // initiate voting options...
+                                            view.articles.set_voting( '<!-- TMPL_VAR NAME='name' -->', '<!-- TMPL_VAR NAME='tbl_id' -->', 'watch_list', '<!-- TMPL_VAR NAME='id' -->', <!-- TMPL_VAR NAME='votes' --> );
+
+                                        // ]]></script>
+
+                                        <!-- full article -->
+                                        <a href='<!-- TMPL_VAR NAME='url' -->' rel="external">Read Article</a></p><div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+
+                                <br /><br /></div></div></div>
+                                <!-- /TMPL_LOOP -->
+
+			</div>
+
+		</div>
+
+<!-- TMPL_INCLUDE NAME='common/blocks.xhtml' -->
+<!-- TMPL_INCLUDE NAME='common/footer.xhtml' -->

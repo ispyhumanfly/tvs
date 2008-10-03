@@ -9,7 +9,7 @@
                             <br /><div class='location'><b>/</b> viewing <b>/</b> <strong>inbox</strong> articles...</div><br /><br /><br /><br />
 
                                 <!-- some feed shit goes here -->
-				<div id='article-<!-- TMPL_VAR NAME='id' -->' style='padding-bottom: 15px;'>
+				<div style='padding-bottom: 15px;'>
                                 
                                 <div class="article">
                                                 
@@ -20,13 +20,14 @@
                                         <div class='inbox'>
 
 						<div id='article-<!-- TMPL_VAR NAME='id' -->'>           
-						    <img src='<!-- TMPL_VAR NAME='icon' -->' height='16' width='16' alt='' /><id='article-<!-- TMPL_VAR NAME='id' -->'  <span class="title"><p><a href="<!-- TMPL_VAR NAME='url' -->" rel="external"><!-- TMPL_VAR NAME='title' --></a></p></span>
+						    <img src='<!-- TMPL_VAR NAME='icon' -->' height='16' width='16' alt='' />
+                                                    <p><a href="javascript:view.articles.do_vote( '<!-- TMPL_VAR NAME='name' -->:<!-- TMPL_VAR NAME='id' -->', 'inbox', '<!-- TMPL_VAR NAME='tbl_id' -->', '0' );" rel="external"><!-- TMPL_VAR NAME='title' --></a></p>
 						</div>
                                         </div>
                                         
                                         <!-- /TMPL_LOOP -->
                                         
-                                        </div></div></div>
+                                </div></div></div>
 
 			</div>
 

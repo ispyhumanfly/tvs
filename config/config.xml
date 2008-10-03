@@ -6,7 +6,7 @@
 <config root='/srv/http/tvs' domain='spydev.ath.cx' default_page='home'>
 
     <!-- Perl DBI ( database ) configuration -->
-    <dbase driver='DBI:mysql' host='localhost' database='tvsuicide' user='ispyhumanfly' password='smacme' />
+    <dbase driver='DBI:mysql' host='localhost' database='tvs' user='ispyhumanfly' password='smacme' />
 
     <!-- Article Interval configuration -->
     <interval name='featured' days='7' votes='3' />

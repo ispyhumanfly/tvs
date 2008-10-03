@@ -76,9 +76,6 @@ this.articles.do_vote = function ( params, page, id, votes ) {
     // inbox articles...
     if ( page == 'inbox' ) { var div = 'article-' + id; Effect.Puff( div ); }
 
-    // lost and found articles...
-    if ( page == 'lost_and_found' ) { var div = 'article-' + id; Effect.Puff( div ); }
-
     // and return...
     return;
 

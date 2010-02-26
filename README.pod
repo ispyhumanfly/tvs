@@ -1,3 +1,64 @@
-=head2 Introduction
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+TVS News Portal
+
+=head1 SYNOPSIS
+
+	perl tvsd.pl
+
+=head1 DESCRIPTION
+
+A simple web based auto-syndicated news portal. Visitor votes power the movement of articles from the inbox and continue to push them through to the watch list and finally the featured page where all of the top voted on articles are listed. Visitors can add comments along the way, essentially building community discussion on article topics.
+
+TVS is written in Object-Oriented Perl and is built upon the CGI::Builder framework. It uses XML for configuration files and the Perl DBI module for use with a SQLite database. The template system is built upon the Perl HTML::Template module and the script.aculo.us Web 2.0 JavaScript framework for a fully customizable and MVC aspired style system.
+
+=head2 DEPENDENCIES
+
+=over 4
+
+=item * 
+CGI::Builder
+
+=item *
+CGI::Builder::HTMLtmpl
+
+=item *
+CGI::Builder::LogDispatch
+
+=item *
+DBI 
+
+=item *
+DBD::SQLite
+
+=item * 
+XML::Simple
+
+=item * 
+XML::RSS::Feed
+
+=item * 
+HTML::Strip
+
+=item * 
+LWP::Simple
+
+=back
+
+=head1 BUGS
+
+	http://github.com/ispyhumanfly/tvs/issues
+
+=head1 SEE ALSO
+
+	http://wiki.github.com/ispyhumanfly/tvs/
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 
 =cut

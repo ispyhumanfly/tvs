@@ -1,4 +1,4 @@
-# controller.pm - TVS auto-syndicated news portal...
+# Controller.pm - TVS auto-syndicated news portal...
 
 package Controller;
 
@@ -10,7 +10,7 @@ use CGI::Builder qw/ CGI::Builder::LogDispatch CGI::Builder::HTMLtmpl /;
 
 # required tvs modules...
 use lib 'library';
-use model;
+use Model;
 
 # b e g i n ::: 'initialization' phase...
 
@@ -27,8 +27,7 @@ sub OH_init {
     $self->cgi_page_param = 'view';
     $self->page_name      = $self->{model}->{config}->{default_page};
 
-    # assign initial CGI::Builder::LogDispatch arguments.
-    # this value is currently set to 'debug' for development purposes...
+    # assign initial CGI::Builder::LogDispatch arguments...
     $self->logger_config( 'min_level' => 'debug' );
 
     # assign initial CGI::Builder::HTMLtmpl arguments...
@@ -82,7 +81,8 @@ sub PH_home {
         'inbox-count'      => int @{ $self->{model}->get_articles( list => 'inbox' ) },
 
         # random articles...
-        'random_articles' => $self->{model}->get_articles( list => 'watch_list', random_articles => 5 ),
+        'random_articles' =>
+            $self->{model}->get_articles( list => 'watch_list', random_articles => 5 ),
 
         # page articles...
         'home' => $self->{model}->get_articles( list => 'home' ),
@@ -111,7 +111,8 @@ sub PH_featured {
         'inbox-count'      => int @{ $self->{model}->get_articles( list => 'inbox' ) },
 
         # random articles...
-        'random_articles' => $self->{model}->get_articles( list => 'watch_list', random_articles => 5 ),
+        'random_articles' =>
+            $self->{model}->get_articles( list => 'watch_list', random_articles => 5 ),
 
         # page articles...
         'featured' => $self->{model}->get_articles( list => 'featured' ),
@@ -140,7 +141,8 @@ sub PH_watch_list {
         'inbox-count'      => int @{ $self->{model}->get_articles( list => 'inbox' ) },
 
         # random articles...
-        'random_articles' => $self->{model}->get_articles( list => 'watch_list', random_articles => 5 ),
+        'random_articles' =>
+            $self->{model}->get_articles( list => 'watch_list', random_articles => 5 ),
 
         # page articles...
         'watch_list' => $self->{model}->get_articles( list => 'watch_list' ),
@@ -169,7 +171,8 @@ sub PH_inbox {
         'inbox-count'      => int @{ $self->{model}->get_articles( list => 'inbox' ) },
 
         # random articles...
-        'random_articles' => $self->{model}->get_articles( list => 'watch_list', random_articles => 5 ),
+        'random_articles' =>
+            $self->{model}->get_articles( list => 'watch_list', random_articles => 5 ),
 
         # page articles...
         'inbox' => $self->{model}->get_articles( list => 'inbox' ),
@@ -194,9 +197,9 @@ sub OH_cleanup {
     # here is the magic of tvs.  the following methods will
     # essentially automate the news portal...
 
-    $self->{model}->get_feeds(); # update feeds/articles...
-    $self->{model}->do_prune();  # remove old and un-interesting articles and comments...
-    $self->{model}->do_rss();    # update tvs RSS subscription file...
+    $self->{model}->get_feeds();    # update feeds/articles...
+    $self->{model}->do_prune();     # remove old and un-interesting articles and comments...
+    $self->{model}->do_rss();       # update tvs RSS subscription file...
 
     # shutdown the instance...
     $self->{model}->do_shutdown();

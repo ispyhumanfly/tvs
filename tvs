@@ -5,6 +5,16 @@ use Mojolicious::Lite;
 use lib 'library';
 use Model;
 
+sub startup {
+
+    # preamble...
+    my $self = shift;
+
+    # initiate the Model class...
+    $self->{'model'} = new Model;
+
+}
+
 get '/' => sub {
 
     my $self = shift;

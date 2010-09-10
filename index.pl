@@ -7,7 +7,7 @@ use strict;
 
 # required TVS modules...
 use lib 'library/';
-use controller;
+use Controller;
 
 # subroutine to initialize TVS...
 sub start_tvs {
@@ -23,3 +23,4 @@ sub start_tvs {
 
 # set program start point...
 start_tvs();
+

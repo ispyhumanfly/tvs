@@ -2,23 +2,64 @@
 
 use Mojolicious::Lite;
 
-use lib 'library';
+use lib 'lib';
 use Model;
 
-sub startup {
+my $model = Model->new;
 
-    # preamble...
-    my $self = shift;
-
-    # initiate the Model class...
-    $self->{'model'} = new Model;
-
-}
+#### Pages...
 
 get '/' => sub {
 
     my $self = shift;
+    $self->render( 'index', layout => 'default' );
     
 } => 'index';
 
+get '/featured' => sub {
+
+    my $self = shift;
+    $self->render( 'featured', layout => 'default' );
+    
+} => 'featured';
+
+get '/watch_list' => sub {
+
+    my $self = shift;
+    $self->render( 'watch_list', layout => 'default' );
+    
+} => 'watch_list';
+
+get '/inbox' => sub {
+
+    my $self = shift;
+    $self->render( 'inbox', layout => 'default' );
+    
+} => 'inbox';
+
+### Functions...
+
+post '/vote' => sub {
+    
+    my $self = shift;
+    
+    if ( ( $self->param('name') ) and ( $self->param('tbl_id') ) ) {
+        
+        $model->do_vote( name => $self->param('name'), tbl_id => $self->param('tbl_id') );
+    }
+    
+} => 'vote';
+
+### Functions...
+
+post '/cleanup' => sub {
+
+    my $self = shift;
+    
+    $model->get_feeds();    # Update feeds/articles...
+    $model->do_prune();     # Remove old and un-interesting articles and comments...
+    $model->do_rss();       # Update TVS RSS subscription file...
+};
+
+app->secret('TVS Rocks!');
 app->start;

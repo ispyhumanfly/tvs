@@ -9,7 +9,7 @@ use strict;
 use CGI::Builder qw/ CGI::Builder::LogDispatch CGI::Builder::HTMLtmpl /;
 
 # required tvs modules...
-use lib 'library';
+use lib 'lib';
 use Model;
 
 # b e g i n ::: 'initialization' phase...

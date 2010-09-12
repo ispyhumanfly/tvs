@@ -6,16 +6,16 @@
 <feeds>
 
 	<!-- list of available feeds... -->
-
-        <!-- general -->
-        <feed title='Yahoo' url='http://rss.news.yahoo.com/rss/topstories' icon='config/icons/yahoo.ico' />
-        <feed title='Gizmodo' url='http://feeds.gawker.com/gizmodo/excerpts.xml' icon='config/icons/gizmodo.ico' />
-        <feed title='Slashdot' url='http://rss.slashdot.org/Slashdot/slashdot' icon='config/icons/slashdot.ico' />
-        <feed title='CNET' url='http://news.com.com/2547-1_3-0-20.xml' icon='config/icons/cnet.ico' />
-	<feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='config/icons/ect.ico' />
-
+	
+	<!-- general -->
+	<feed title='Yahoo' url='http://rss.news.yahoo.com/rss/topstories' icon='/icons/yahoo.ico' />
+	<feed title='Gizmodo' url='http://feeds.gawker.com/gizmodo/excerpts.xml' icon='/icons/gizmodo.ico' />
+	<feed title='Slashdot' url='http://rss.slashdot.org/Slashdot/slashdot' icon='/icons/slashdot.ico' />
+	<feed title='CNET' url='http://news.com.com/2547-1_3-0-20.xml' icon='/icons/cnet.ico' />
+	<feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='/icons/ect.ico' />
+	
 	<!-- temporary bug fix ( for some reason, model.pm -> 'get_articles' doesn't recognize the final entry ) -->         
-	<feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='config/icons/ect.ico' /> 
+	<feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='/icons/ect.ico' /> 
 	
 </feeds>
 

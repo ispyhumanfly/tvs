@@ -1,10 +1,13 @@
+<% my $model = Model->new; %>
+
 <div class="right">
 
 	<div class="subnav">
 
-		<img src='styles/default/images/whats_this.gif' alt='Whats This?' />
+		<img src='/images/whats_this.gif' alt='Whats This?' />
 		
 		<br />
+                
 		<p>A <strong>simple</strong> and <strong>elegant</strong>, yet <strong>feature rich</strong> news portal. But unlike other news portals; <strong>TVS</strong> is driven by your
                 <strong>'anonymous'</strong> votes. <strong>No accounts</strong> and <strong>no hassles</strong>. Just some great <strong>RSS</strong> feeds selected by me, <strong>ispyhumanfly</strong>.
                 And <strong>unfiltered</strong>, <strong>unbias</strong> news voted on by <strong>you</strong>.
@@ -19,20 +22,20 @@
                 
                 <br />
 		
-		<img src='styles/default/images/watch_this.gif' alt='Watch This?' />
+		<img src='/images/watch_this.gif' alt='Watch This?' />
 		<ul>
 
-			<!-- TMPL_LOOP NAME='random_articles' -->
+			<% for ( @{ $model->get_articles( list => 'watch_list', random_articles => 5 ) } ) { %>
 
-			<li><a href='#' id='watch-this-<!-- TMPL_VAR NAME='id' -->'><!-- TMPL_VAR NAME='title' -->...</a>
-			<div class='tooltip for_watch-this-<!-- TMPL_VAR NAME='id' -->' style='display: none; background-color: #111; padding: 2px 4px 1px 4px; margin: 0 12px 0 0; border: 1px groove #fff; ' > <!-- TMPL_VAR NAME='info' --> </div></li>
+			<li><a href='#' id='watch-this-<%= $_->{id} %>'><%= $_->{title} %>...</a>
+			<div class='tooltip for_watch-this-<%= $_->{id} %>' style='display: none; background-color: #111; padding: 2px 4px 1px 4px; margin: 0 12px 0 0; border: 1px groove #fff; ' > <%= $_->{info} %> </div></li>
 
-			<!-- /TMPL_LOOP -->
+			<% } %>
 
 		</ul>
 		<br />
                 
-		<img src='styles/default/images/whats_inside.gif' alt='Whats Inside.' />
+		<img src='/images/whats_inside.gif' alt='Whats Inside.' />
 		<ul>
 			<li><a href='index.pl?view=featured'>Featured</a> <i>(<!-- TMPL_VAR NAME='featured-count' -->) Articles</i></li>
 			<li><a href='index.pl?view=watch_list'>Watch List</a> <i>(<!-- TMPL_VAR NAME='watch_list-count' -->) Articles</i></li>
@@ -42,7 +45,7 @@
 		<br />
                 
                 <!-- CENTER ME PLEASE -->
-                <a href='site_feed.rss' rel='external'><img src='styles/default/images/rss.gif' title='Subscribe to RSS 2.0 feed' alt='Subscribe to RSS 2.0 feed.' /></a>
+                <a href='site_feed.rss' rel='external'><img src='/images/rss.gif' title='Subscribe to RSS 2.0 feed' alt='Subscribe to RSS 2.0 feed.' /></a>
 
 	</div>
 </div>

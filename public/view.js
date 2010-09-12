@@ -50,13 +50,10 @@ this.articles.do_vote = function ( params, page, id, votes ) {
     
     // first check to see if the correct number of arguments has been passed...
     if ( this.do_vote.arguments.length !=4 ) { return }
-      
-    // define parameters...
-    params = 'view=vote:' + params;
         
     // send http request to tvs for voting...
-    new Ajax.Request( 'index.pl', { parameters: params } );
-
+    new Ajax.Request( '/vote', { parameters: params } );
+    
     // create a cookie to store voted on article information...
     set_cookie( id );
 

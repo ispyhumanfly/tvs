@@ -26,14 +26,9 @@ sub new {
     $arguments{feeds}  = new XML::Simple->XMLin('config/feeds.xml');
 
     # initiate DBI connection...
-    $arguments{dbase} = DBI->connect(
-        "dbi:SQLite:articles.db", "", "",
-
-        {   'PrintError'     => 0,
-            'RaiseError'     => 1,
-            'sqlite_unicode' => 1,
-        }
-    );
+    $arguments{dbase} = DBI->connect( "$arguments{config}->{dbase}->{driver}:database=$arguments{config}->{dbase}->{database}:host=$arguments{config}->{dbase}->{host}",
+                                       $arguments{config}->{dbase}->{user}, $arguments{config}->{dbase}->{password},
+                                       { 'PrintError' => 0, 'RaiseError' => 1 } );
 
     # and bless the OO goodness :)
     return bless \%arguments, $class;
@@ -55,24 +50,14 @@ sub get_articles {
 
             # first step is to check and see if the feed table associated
             # with this feeds.xml entry even exists within the database...
-            if (do_tables(
-                    $self,
-                    table_exists => $self->{feeds}->{feed}->[$i]->{title},
-                    type         => 'articles'
-                )
-                )
-            {
+            if ( do_tables( $self, table_exists => $self->{feeds}->{feed}->[$i]->{title}, type => 'articles' ) ) {
 
                 # do nothing, the feed already exists in the database...
             }
             else {
 
                 # create the table, and prepare for later use...
-                do_tables(
-                    $self,
-                    create_table => $self->{feeds}->{feed}->[$i]->{title},
-                    type         => 'articles'
-                );
+                do_tables( $self, create_table => $self->{feeds}->{feed}->[$i]->{title}, type => 'articles' );
             }
 
             # retrieve articles for the featured & home section ( ie. articles
@@ -80,10 +65,7 @@ sub get_articles {
             if ( ( $arguments{'list'} eq 'featured' ) or ( $arguments{list} eq 'home' ) ) {
 
                 # retrieve table data...
-                $sth
-                    = $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes >= $self->{config}->{interval}->{featured}->{votes} AND DATE('date') < DATE('now', 'localtime', '-$self->{config}->{interval}->{featured}->{days} days')"
-                    );
+                $sth = $self->{dbase}->prepare("SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes >= $self->{config}->{interval}->{featured}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date");
                 $sth->execute();
             }
 
@@ -92,10 +74,7 @@ sub get_articles {
             if ( $arguments{'list'} eq 'watch_list' ) {
 
                 # retrieve table data...
-                $sth
-                    = $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes BETWEEN $self->{config}->{interval}->{watch_list}->{votes} AND $self->{config}->{interval}->{featured}->{votes}-1 AND DATE('date') < DATE('now', 'localtime', '-$self->{config}->{interval}->{watch_list}->{days} days')"
-                    );
+                $sth = $self->{dbase}->prepare("SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes BETWEEN $self->{config}->{interval}->{watch_list}->{votes} AND $self->{config}->{interval}->{featured}->{votes}-1 AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date");
                 $sth->execute();
             }
 
@@ -104,10 +83,7 @@ sub get_articles {
             if ( $arguments{'list'} eq 'inbox' ) {
 
                 # retrieve table data...
-                $sth
-                    = $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE('date') < DATE('now', 'localtime', '-$self->{config}->{interval}->{inbox}->{days} days')"
-                    );
+                $sth = $self->{dbase}->prepare("SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date");
                 $sth->execute();
             }
 
@@ -124,9 +100,7 @@ sub get_articles {
 
                         # if 'random_article' argument passed, compress title down to
                         # 36 characters for more compact viewing/usage...
-                        if ( $arguments{random_articles} ) {
-                            return substr( $ref->{title}, 0, 36 );
-                        }
+                        if ( $arguments{random_articles} ) { return substr( $ref->{title}, 0, 36 ); }
                         else { return $ref->{title}; }
                     },
 
@@ -148,7 +122,7 @@ sub get_articles {
 
     # if this is a 'home' page article request, we handle
     # things differantly than for the other pages...
-    if ( $arguments{list} eq 'home' ) { @articles = $articles[ int rand $#articles ]; }
+    if ( $arguments{list} eq 'home' ) { @articles = $articles[int rand $#articles]; }
 
     # if the 'random_articles' argument is passed, shorten the length
     # of the articles listed for better viewing/usage...
@@ -202,8 +176,8 @@ sub get_feeds {
         my $icon  = do_clean( $self, string => $info{$name} );
         my $md5   = md5_hex($url);
 
-   # first i use Digest::MD5 to check the incoming url against any pre-existing ones.
-   # this was the most effecient way i could find to make sure the article wouldn't be duplicated...
+        # first i use Digest::MD5 to check the incoming url against any pre-existing ones.
+        # this was the most effecient way i could find to make sure the article wouldn't be duplicated...
         my $sth = $self->{dbase}->prepare("SELECT * FROM articles_$name");
         $sth->execute();
 
@@ -225,14 +199,9 @@ sub get_feeds {
         unless ($md5_exists) {
 
             # insert article values into database...
-            $self->{dbase}->do(
-                "INSERT INTO articles_$name ( title, url, info, icon, md5, votes, date ) VALUES ( "
-                    . $self->{dbase}->quote($title) . ", "
-                    . $self->{dbase}->quote($url) . ", "
-                    . $self->{dbase}->quote($info) . ", "
-                    . $self->{dbase}->quote($icon) . ",
-                               " . $self->{dbase}->quote($md5) . ", 0, DATE('now','localtime')) "
-            );
+            $self->{dbase}->do( "INSERT INTO articles_$name ( title, url, info, icon, md5, votes, date ) VALUES ( " . $self->{dbase}->quote($title) . ",
+                               " . $self->{dbase}->quote($url) . ", " . $self->{dbase}->quote($info) . ", " . $self->{dbase}->quote($icon) . ",
+                               " . $self->{dbase}->quote($md5) . ", 0, CURDATE()) " );
         }
     }
     return;
@@ -247,33 +216,30 @@ sub do_rss {
     my $self = shift;
 
     # initiate XML::RSS instance and append channel data...
-    my $rss = new XML::RSS( version => '2.0' );
-    $rss->channel(
-        title       => $self->{config}->{rss}->{title},
-        link        => $self->{config}->{rss}->{link},
-        language    => $self->{config}->{rss}->{language},
-        description => $self->{config}->{rss}->{description},
-        rating      => $self->{config}->{rss}->{rating},
-        copyright   => $self->{config}->{rss}->{copyright},
-        webMaster   => $self->{config}->{rss}->{webmaster},
-    );
+    my $rss = new XML::RSS ( version => '2.0');
+    $rss->channel( title       => $self->{config}->{rss}->{title},
+                   link        => $self->{config}->{rss}->{link},
+                   language    => $self->{config}->{rss}->{language},
+                   description => $self->{config}->{rss}->{description},
+                   rating      => $self->{config}->{rss}->{rating},
+                   copyright   => $self->{config}->{rss}->{copyright},
+                   webMaster   => $self->{config}->{rss}->{webmaster},
+                );
 
     # next we load all of the current 'featured' articles into an
     # array ref, and append them to the RSS file...
     my $articles = get_articles( $self, list => 'featured' );
-    for my $article ( @{$articles} ) {
-        $rss->add_item(
-            title       => '[Featured Article] ' . &{ $article->{title} },
-            permaLink   => $article->{url},
-            enclosure   => { url => $article->{url}, type => 'text/plain' },
-            description => $article->{info},
-        );
+    for my $article ( @ { $articles } ) {
+        $rss->add_item( title       => '[Featured Article] ' . &{ $article->{title} },
+                        permaLink   => $article->{url},
+                        enclosure   => { url => $article->{url}, type => 'text/plain' },
+                        description => $article->{info},
+                    );
     }
 
     # now save the freshly generated rss feed...
-    eval { $rss->save('newsfeed.rss') };
-    if   ($@) { return 0 }
-    else      { return 1 }
+    eval { $rss->save( 'site_feed.rss' ) };
+    if ( $@ ) { return 0 } else { return 1 }
 
 }
 
@@ -302,21 +268,13 @@ sub do_prune {
     # if the voting option in config.xml is a number,
     # only prune articles with X ammount of votes...
     if ( $self->{config}->{prune}->{votes} =~ /[0-9]/x ) {
-        $sth = $self->{dbase}->prepare(
-            "DELETE FROM articles_$feed WHERE votes = $self->{config}->{prune}->{votes}
-            AND DATE('date') > DATE('now', 'localtime', '-$self->{config}->{prune}->{days} days')"
-        );
+        $sth = $self->{dbase}->prepare("DELETE FROM articles_$feed WHERE votes = $self->{config}->{prune}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{prune}->{days} day) >= date");
     }
 
     # if no voting value given in config.xml, assume that all old
     # articles are to be pruned...
-    if (   ( $self->{config}->{prune}->{votes} eq 'all' )
-        or ( $self->{config}->{prune}->{votes} eq '' ) )
-    {
-        $sth = $self->{dbase}->prepare(
-            "DELETE FROM articles_$feed WHERE
-            DATE('date') > DATE('now', 'localtime', '-$self->{config}->{prune}->{days} days')"
-        );
+    if ( ( $self->{config}->{prune}->{votes} eq 'all' ) or ( $self->{config}->{prune}->{votes} eq '' ) ) {
+        $sth = $self->{dbase}->prepare("DELETE FROM articles_$feed WHERE DATE_SUB(CURDATE(),INTERVAL $self->{config}->{prune}->{days} day) >= date");
     }
 
     # execute the SQL statement, and return...
@@ -365,13 +323,10 @@ sub do_tables {
         if ( $arguments{type} eq 'articles' ) {
 
             # evaluate if the feed already exists as a table...
-            eval {
-                $self->{dbase}->do("SELECT * FROM articles_$arguments{table_exists} WHERE 1 = 0");
-            };
-            if   ($@) { return 0; }
-            else      { return 1; }
+            eval { $self->{dbase}->do("SELECT * FROM articles_$arguments{table_exists} WHERE 1 = 0") };
+            if ( $@ ) { return 0; } else { return 1; }
         }
-    }
+   }
 
     # if the 'create_table' argument is passed...
     if ( $arguments{create_table} ) {
@@ -380,15 +335,11 @@ sub do_tables {
         if ( $arguments{type} eq 'articles' ) {
 
             # insert the new article into the database...
-            eval {
-                $self->{dbase}->do(
+            eval { $self->{dbase}->do(
                     "CREATE TABLE articles_$arguments{create_table}
-                    (id INTEGER PRIMARY KEY, title VARCHAR(1000) NOT NULL, url VARCHAR(5000),
-                        info VARCHAR(5000), icon VARCHAR(50), md5 VARCHAR(32), votes INT, date DATE)"
-                );
-            };
-            if   ($@) { return 0; }
-            else      { return 1; }
+                    (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), title VARCHAR(1000) NOT NULL, url VARCHAR(5000), info VARCHAR(5000), icon VARCHAR(50), md5 VARCHAR(32), votes INT, date DATE)"
+                ) };
+            if ( $@ ) { return 0; } else { return 1; }
         }
     }
     return;
@@ -410,7 +361,7 @@ sub do_clean {
 
     # initiate HTML::Entities encoder to properly parse
     # and convert invalid characters to unicode compliance...
-    $clean = encode_entities($clean);
+    $clean = encode_entities( $clean );
     return $clean;
 
 }
@@ -424,8 +375,7 @@ sub do_vote {
     my ( $self, %arguments ) = @_;
 
     # add user vote to table data...
-    $self->{dbase}
-        ->do("UPDATE articles_$arguments{name} SET votes=votes+1 WHERE id=$arguments{tbl_id}");
+    $self->{dbase}->do("UPDATE articles_$arguments{name} SET votes=votes+1 WHERE id=$arguments{tbl_id}");
     return;
 
 }

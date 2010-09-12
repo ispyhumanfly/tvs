@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<!-- some links and stuff -->
+<link rel='stylesheet' type='text/css' href='/default.css' media='screen' />
+<link rel="alternate" type="application/rss+xml" title="Front-page" href="site_feed.rss" />
+<link rel="shortcut icon" type="image/ico" href="/images/favicon.ico" />
+    
+<title>t.v. [ Page Name ] suicide</title>
+
+<!-- included javascript libraries -->
+<script src='/prototype.js' type='text/javascript'></script>
+<script src='/scriptaculous.js?load=effects' type='text/javascript'></script>
+<script src='/tooltip.js' type='text/javascript'></script>
+<script src='/view.js' type='text/javascript'></script>
+
+<!-- load the View class, the style system back-end... -->
+<script type="text/javascript">//<![CDATA[
+
+        // instantiate the class...
+        view = new View();
+
+// ]]></script>
+</head>
+
+<!-- zero margin = wide layout -->
+<body style="margin: 0px 10px 10px 10px;">
+
+<div id='top'></div>
+
+<div class="container">
+
+	<div class="header" style="height: 112px;">
+                
+		<img src='/images/logo_big.gif' style='padding: 5px;' alt='TVS' />
+        </div>
+
+	<div class="stripes"><span></span></div>
+
+	<div class='nav_norm'>
+                
+                <a href='/' style="border-left: 1px solid #161616; text-decoration: none;">Home</a>
+                <a href='/featured' style="text-decoration: none;">Featured</a>
+		<a href='/watch_list' style="text-decoration: none;">Watch List</a>
+		<a href='/inbox' style="text-decoration: none;">Inbox</a>
+
+		<div class="clearer"><span></span></div>
+	</div>
+
+	<div class="stripes"><span></span></div>
+        
+        <%= content %>
+        
+        <div class="footer">
+
+            <div class="col3"> 
+
+                    <h2>Development Team</h2>
+                    <ul>
+                            <li><a href='http://spydev.ath.cx' style="text-decoration: none;">ispyhumanfly</a></li>
+                            <li><a href='http://kpavery.com' style="text-decoration: none;">kpavery</a></li>
+                    </ul>
+
+            </div>
+
+            <div class="col3center">
+                    <h2>Project Stuff</h2>
+                    <ul>
+                            <li><a href='http://code.google.com/p/tvs/' rel="external" style="text-decoration: none;">Google Code - Project Home</a></li>
+                            <li><a href='http://code.google.com/p/tvs/source/checkout' rel="external" style="text-decoration: none;">Google Code - Download Source</a></li>
+                            
+                    </ul>
+            </div>
+
+            <div class="col3">
+                    <h2>Visit</h2>
+                    <ul>
+                            <li><a href='http://perl-begin.org/' rel="external">Want to learn Perl? - perl-begin.org</a></li>
+                    </ul>
+            </div>
+
+            <div class="bottom"><br /><br />
+
+                    <span class="left">&copy; 2007 - 2008 <a href='mailto:ispyhumanfly@gmail.com'>ispyhumanfly</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="external">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer" rel="external">XHTML</a>. Site <strong>best</strong> viewed @ <strong>1280</strong> <i>by</i> <strong>1024</strong>++</span>
+
+                    <span class="right">Powered by <strong>TVS [</strong>auto-syndicated news portal<strong>] - svn</strong></span>
+
+                    <div class="clearer"><span></span></div>
+
+            </div>
+
+	</div>
+
+	<div id='bottom'></div>
+
+</div></body></html>

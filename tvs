@@ -71,7 +71,7 @@ get '/model' => sub {
     $MODEL->do_rss()
         if $self->param('do_rss');
     
-    $self->redirect_to('index');
+    $self->redirect_to('/');
 
 } => 'model';
 

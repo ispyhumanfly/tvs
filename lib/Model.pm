@@ -63,9 +63,15 @@ sub get_articles {
             # retrieve articles for the featured & home section ( ie. articles
             # that have been voted on more than 2 times...
             if ( ( $arguments{'list'} eq 'featured' ) or ( $arguments{list} eq 'home' ) ) {
-
+    
+                my $sql =
+                
+                        "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE" .
+                        "votes >= $self->{config}->{interval}->{featured}->{votes} AND DATE_SUB(CURDATE()," .
+                        "INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date";
+                        
                 # retrieve table data...
-                $sth = $self->{dbase}->prepare("SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes >= $self->{config}->{interval}->{featured}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date");
+                $sth = $self->{dbase}->prepare($sql);
                 $sth->execute();
             }
 
@@ -73,8 +79,15 @@ sub get_articles {
             # articles that have been voted on atleast once.
             if ( $arguments{'list'} eq 'watch_list' ) {
 
+                my $sql =
+                
+                    "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE " .
+                    "votes BETWEEN $self->{config}->{interval}->{watch_list}->{votes} AND " .
+                    "$self->{config}->{interval}->{featured}->{votes}-1 AND DATE_SUB(CURDATE()," .
+                    "INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date";
+                    
                 # retrieve table data...
-                $sth = $self->{dbase}->prepare("SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes BETWEEN $self->{config}->{interval}->{watch_list}->{votes} AND $self->{config}->{interval}->{featured}->{votes}-1 AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date");
+                $sth = $self->{dbase}->prepare($sql);
                 $sth->execute();
             }
 
@@ -82,8 +95,14 @@ sub get_articles {
             # have yet to be voted on...
             if ( $arguments{'list'} eq 'inbox' ) {
 
+                my $sql =
+                
+                    "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE " .
+                    "votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE_SUB(CURDATE()," .
+                    "INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date";
+                    
                 # retrieve table data...
-                $sth = $self->{dbase}->prepare("SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date");
+                $sth = $self->{dbase}->prepare($sql);
                 $sth->execute();
             }
 
@@ -197,11 +216,15 @@ sub get_feeds {
         # unless the feed recieved already matches a feed inside the
         # database, insert new article into database...
         unless ($md5_exists) {
+            
+            my $sql =
+            
+                "INSERT INTO articles_$name ( title, url, info, icon, md5, votes, date ) VALUES ( " . $self->{dbase}->quote($title) . ",
+                " . $self->{dbase}->quote($url) . ", " . $self->{dbase}->quote($info) . ", " . $self->{dbase}->quote($icon) . ",
+                " . $self->{dbase}->quote($md5) . ", 0, CURDATE()) ";
 
             # insert article values into database...
-            $self->{dbase}->do( "INSERT INTO articles_$name ( title, url, info, icon, md5, votes, date ) VALUES ( " . $self->{dbase}->quote($title) . ",
-                               " . $self->{dbase}->quote($url) . ", " . $self->{dbase}->quote($info) . ", " . $self->{dbase}->quote($icon) . ",
-                               " . $self->{dbase}->quote($md5) . ", 0, CURDATE()) " );
+            $self->{dbase}->do($sql);
         }
     }
     return;
@@ -268,13 +291,25 @@ sub do_prune {
     # if the voting option in config.xml is a number,
     # only prune articles with X ammount of votes...
     if ( $self->{config}->{prune}->{votes} =~ /[0-9]/x ) {
-        $sth = $self->{dbase}->prepare("DELETE FROM articles_$feed WHERE votes = $self->{config}->{prune}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{prune}->{days} day) >= date");
+        
+        my $sql =
+        
+            "DELETE FROM articles_$feed WHERE votes = $self->{config}->{prune}->{votes} " .
+            "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{prune}->{days} day) >= date";
+            
+        $sth = $self->{dbase}->prepare($sql);
     }
 
     # if no voting value given in config.xml, assume that all old
     # articles are to be pruned...
     if ( ( $self->{config}->{prune}->{votes} eq 'all' ) or ( $self->{config}->{prune}->{votes} eq '' ) ) {
-        $sth = $self->{dbase}->prepare("DELETE FROM articles_$feed WHERE DATE_SUB(CURDATE(),INTERVAL $self->{config}->{prune}->{days} day) >= date");
+        
+        my $sql =
+        
+            "DELETE FROM articles_$feed WHERE DATE_SUB(CURDATE(),INTERVAL " .
+            "$self->{config}->{prune}->{days} day) >= date";
+            
+        $sth = $self->{dbase}->prepare($sql);
     }
 
     # execute the SQL statement, and return...
@@ -321,9 +356,11 @@ sub do_tables {
 
         # if we are checking an article entry...
         if ( $arguments{type} eq 'articles' ) {
+            
+            my $sql = "SELECT * FROM articles_$arguments{table_exists} WHERE 1 = 0";
 
             # evaluate if the feed already exists as a table...
-            eval { $self->{dbase}->do("SELECT * FROM articles_$arguments{table_exists} WHERE 1 = 0") };
+            eval { $self->{dbase}->do($sql) };
             if ( $@ ) { return 0; } else { return 1; }
         }
    }
@@ -334,11 +371,14 @@ sub do_tables {
         # if we are creating a new article entry...
         if ( $arguments{type} eq 'articles' ) {
 
+            my $sql =
+            
+                "CREATE TABLE articles_$arguments{create_table} (id INT NOT NULL AUTO_INCREMENT, " .
+                "PRIMARY KEY(id), title VARCHAR(1000) NOT NULL, url VARCHAR(5000), info VARCHAR(5000), " .
+                "icon VARCHAR(50), md5 VARCHAR(32), votes INT, date DATE)";
+            
             # insert the new article into the database...
-            eval { $self->{dbase}->do(
-                    "CREATE TABLE articles_$arguments{create_table}
-                    (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), title VARCHAR(1000) NOT NULL, url VARCHAR(5000), info VARCHAR(5000), icon VARCHAR(50), md5 VARCHAR(32), votes INT, date DATE)"
-                ) };
+            eval { $self->{dbase}->do($sql) };
             if ( $@ ) { return 0; } else { return 1; }
         }
     }
@@ -374,8 +414,10 @@ sub do_vote {
     # preamble...
     my ( $self, %arguments ) = @_;
 
+    my $sql = "UPDATE articles_$arguments{name} SET votes=votes+1 WHERE id=$arguments{tbl_id}";
+    
     # add user vote to table data...
-    $self->{dbase}->do("UPDATE articles_$arguments{name} SET votes=votes+1 WHERE id=$arguments{tbl_id}");
+    $self->{dbase}->do($sql);
     return;
 
 }

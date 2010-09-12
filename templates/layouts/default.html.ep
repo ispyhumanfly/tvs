@@ -42,7 +42,7 @@
 
 	<div class='nav_norm'>
                 
-                <a href='/' style="border-left: 1px solid #161616; text-decoration: none;">Home</a>
+                <a href='/home' style="border-left: 1px solid #161616; text-decoration: none;">Home</a>
                 <a href='/featured' style="text-decoration: none;">Featured</a>
 		<a href='/watch_list' style="text-decoration: none;">Watch List</a>
 		<a href='/inbox' style="text-decoration: none;">Inbox</a>

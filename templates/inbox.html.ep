@@ -32,7 +32,7 @@
                                 <span class='title'>
                                     
                                     <p>
-                                        <a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>:tbl_id=<%= $_->{tbl_id} %>', 'inbox', '<%= $_->{id} %>', '0' );"><%= $_->{info} %></a>
+                                        <a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', 'inbox', '<%= $_->{id} %>', '0' );"><%= $_->{title} %></a>
                                     </p>
                                     
                                 </span>

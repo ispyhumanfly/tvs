@@ -5,16 +5,24 @@ use Mojolicious::Lite;
 use lib 'lib';
 use Model;
 
-my $model = Model->new;
+my $MODEL = Model->new;
 
-#### Pages...
 
 get '/' => sub {
 
     my $self = shift;
-    $self->render( 'index', layout => 'default' );
+    $self->render( 'home', layout => 'default' );
     
-} => 'index';
+};
+
+#### Pages...
+
+get '/home' => sub {
+
+    my $self = shift;
+    $self->render( 'home', layout => 'default' );
+    
+} => 'home';
 
 get '/featured' => sub {
 
@@ -45,21 +53,27 @@ post '/vote' => sub {
     
     if ( ( $self->param('name') ) and ( $self->param('tbl_id') ) ) {
         
-        $model->do_vote( name => $self->param('name'), tbl_id => $self->param('tbl_id') );
+        $MODEL->do_vote( name => $self->param('name'), tbl_id => $self->param('tbl_id') );
     }
     
 } => 'vote';
 
-### Functions...
-
-post '/cleanup' => sub {
+get '/model' => sub {
 
     my $self = shift;
+
+    $MODEL->get_feeds()
+        if $self->param('get_feeds');
+
+    $MODEL->do_prune()
+        if $self->param('do_prune');
+
+    $MODEL->do_rss()
+        if $self->param('do_rss');
     
-    $model->get_feeds();    # Update feeds/articles...
-    $model->do_prune();     # Remove old and un-interesting articles and comments...
-    $model->do_rss();       # Update TVS RSS subscription file...
-};
+    $self->redirect_to('index');
+
+} => 'model';
 
 app->secret('TVS Rocks!');
 app->start;

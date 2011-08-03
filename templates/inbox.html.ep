@@ -1,51 +1,49 @@
-<% my $model = Model->new; %>
-
 <div class='main'>
 
-    <div class='left'> 
+    <div class='left'>
 
         <div class='content'>
 
             <br />
-            
+
             <div class='location'>
-                
+
                 <b>/</b> viewing <b>/</b> <strong>inbox</strong> articles...
             </div>
-            
+
             <br /><br /><br /><br />
 
             <!-- some feed shit goes here -->
             <div style='padding-bottom: 15px;'>
-                   
+
                 <div class="article">
-                        
+
                     <div class='feed'>
-            
-                        <% for ( @{ $model->get_articles( list => 'inbox' ) } ) { %>
-                                
+
+                        <% for ( @{ $self->{articles} } ) { %>
+
                         <div class='inbox'>
 
-                            <div id='article-<%= $_->{id} %>'>           
-                                
+                            <div id='article-<%= $_->{id} %>'>
+
                                 <img src='<%= $_->{icon} %>' height='16' width='16' alt='Feed Icon' />
                                 <span class='title'>
-                                    
+
                                     <p>
                                         <a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', 'inbox', '<%= $_->{id} %>', '0' );"><%= $_->{title} %></a>
                                     </p>
-                                    
+
                                 </span>
                             </div>
                         </div>
-                                
+
                         <% } %>
-                        
+
                     </div>
-            
+
                 </div>
             </div>
         </div>
     </div>
-        
+
 <%= include 'blocks' %>

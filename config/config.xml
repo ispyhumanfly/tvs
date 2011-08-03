@@ -6,7 +6,7 @@
 <config root='/srv/http/tvs' domain='spydev.ath.cx' default_page='home'>
 
     <!-- Perl DBI ( database ) configuration -->
-    <dbase driver='DBI:mysql' host='localhost' database='tvs' user='root' password='8z7sd3h5' />
+    <dbase driver='DBI:mysql' host='localhost' database='tvs' user='root' password='' />
 
     <!-- Article Interval configuration -->
     <interval name='featured' days='7' votes='3' />
@@ -15,7 +15,7 @@
 
     <!-- Article Pruning configuration -->
     <prune days='7' votes='all' />
-    
+
     <!-- RSS Subscription configuration -->
     <rss title='television suicide' link='http://spydev.ath.cx/tvs/' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2007 tvsuicide.net' webmaster='ispyhumanfly' />
 

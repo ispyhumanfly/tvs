@@ -1,74 +1,38 @@
-<% my $model = Model->new; %>
+	<div class='main'>
 
-<div class='main'>
+		<div class='left'>
 
-    <div class='left'> 
+			<div class='content'>
 
-        <div class='content'>
+			    <br /><div class='location'><b>/</b> viewing <b>/</b> <strong>watch_list</strong> articles...</div><br /><br /><br /><br />
 
-            <br />
-            
-            <div class='location'>
-                
-                <b>/</b> viewing <b>/</b> <strong>watch_list</strong> articles...
-            </div>
-            
-            <br /><br /><br /><br />
+			    <% for ( @{ $self->{articles} } ) { %>
 
-            <!-- some feed shit goes here -->
-            <div style='padding-bottom: 15px;'>
-                   
-                <div class="article">
-                        
-                    <div class='feed'>
-            
-                        <% for ( @{ $model->get_articles( list => 'watch_list' ) } ) { %>
-                                
-                        <div class='inbox'>
+				<!-- some feed shit goes here -->
+				<div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='<%= $_->{url} %>' rel="external"><%= $_->{title} %></a></span><span class='toggle'></span></h1>
+				<div class='descr'><img src='<%= $_->{icon} %>' height='16' width='16' alt=''/> from <a href='<%= $_->{url} %>' rel="external"><%= $_->{name} %></a> on <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.</div><div id='toggle-<%= $_->{id} %>'><br />
 
-                            <div id='article-<%= $_->{id} %>'>           
-                                
-                                <img src='<%= $_->{icon} %>' height='16' width='16' alt='Feed Icon' />
-                                
-                                <p><%= $_->{title} %></p>
-                                
-                                <span class='title'>
-                                    
-                                    <p>
-                                        <a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', 'watch_list', '<%= $_->{id} %>', '0' );"><%= $_->{info} %></a>
-                                    </p>
-                                    
-                                    <div class='descr'>
-                    
-                                        from <a href='<%= $_->{url} %>' rel="external"><%= $_->{name} %></a> on
-                                        <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.
-                    
-                                    </div>
-                                    
-                                    <a href='<%= $_->{url} %>' rel="external">Read Article</a>
-                                    
-                                    <a href='<%= $_->{url} %>' rel="external">View Comments</a>
-                                    
-                                    <div class='jump_to'>
-                                        
-                                        Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a>
-                                    
-                                    </div>
-                                    
-                                </span>
-                                
-                                <br />
-                                
-                            </div>
-                        </div>
-                                
-                        <% } %>
-                        
-                    </div>
-            
-                </div>
-            </div>
-        </div>
-    </div>
-        
+					<!-- article body -->
+					<div class='feed'><%= $_->{info} %></div>
+					<br /><p class='options'>
+
+					<!-- voting module -->
+					<script type="text/javascript">//<![CDATA[
+
+					    // initiate voting options...
+					    view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', 'watch_list', '<%= $_->{id} %>', <%= $_->{votes} %> );
+
+					// ]]></script>
+
+					<!-- full article -->
+					<a href='<%= $_->{url} %>' rel="external">Read Article</a></p><div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+
+				<br /><br /></div></div></div>
+
+				<% } %>
+
+			</div>
+
+		</div>
+
 <%= include 'blocks' %>

@@ -22,8 +22,16 @@
 
         // instantiate the class...
         view = new View();
+	
+	// TEMPORARY: What was once the old 'clean-up' phase of Controller.pm
+	// has now been moved here. I'll work to make this even nicer,
+	// but so far this is a major performance enhancement as the
+	// previous method wasn't asynchronus.
+	
+	new Ajax.Request( '/model', { parameters: 'do_prune=1&get_feeds=1&do_rss=1' } );
 
 // ]]></script>
+
 </head>
 
 <!-- zero margin = wide layout -->

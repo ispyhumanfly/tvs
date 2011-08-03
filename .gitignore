@@ -2,6 +2,7 @@
 !.gitignore
 !.perltidyrc
 *~
+lib
 blib
 Makefile*
 !Makefile.PL
@@ -9,6 +10,4 @@ META.yml
 MANIFEST*
 !MANIFEST.SKIP
 pm_to_blib
-articles.db
 site_feed.rss
-TVS.kpf

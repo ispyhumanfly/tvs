@@ -5,9 +5,9 @@
 	<div class="subnav">
 
 		<img src='/images/whats_this.gif' alt='Whats This?' />
-		
+
 		<br />
-                
+
 		<p>A <strong>simple</strong> and <strong>elegant</strong>, yet <strong>feature rich</strong> news portal. But unlike other news portals; <strong>TVS</strong> is driven by your
                 <strong>'anonymous'</strong> votes. <strong>No accounts</strong> and <strong>no hassles</strong>. Just some great <strong>RSS</strong> feeds selected by me, <strong>ispyhumanfly</strong>.
                 And <strong>unfiltered</strong>, <strong>unbias</strong> news voted on by <strong>you</strong>.
@@ -17,37 +17,48 @@
 	    	<strong>TVS</strong> is my personal <strong>news portal</strong>. It contains a collection of my favorite <strong>RSS feeds</strong>, which are in-turn made
                 available for your <strong>anonymous</strong> viewing, <strong>voting</strong> or <strong>both</strong>!  Your votes power the movement of articles from the <strong>inbox</strong> and continue to push them through to the <strong>watch list</strong> and
                 finally the <strong>featured</strong> page where all of the <strong>top voted</strong> on articles are listed.
-	
+
 		</p>
-                
+
                 <br />
-		
+
 		<img src='/images/watch_this.gif' alt='Watch This?' />
 		<ul>
 
 			<% for ( @{ $model->get_articles( list => 'watch_list', random_articles => 5 ) } ) { %>
 
-			<li><a href='#' id='watch-this-<%= $_->{id} %>'><%= $_->{title} %>...</a>
+			<li><a href='#' id='watch-this-<%= $_->{id} %>'>
+			
+			<!-- This is to fix the bug that was happening in Model.pm... -->
+			
+			<script type="text/javascript">
+			
+				var title = "<%= $_->{title} %>";
+				document.write(title.substr(0,50));
+				
+			</script>
+		
+			</a>
 			<div class='tooltip for_watch-this-<%= $_->{id} %>' style='display: none; background-color: #111; padding: 2px 4px 1px 4px; margin: 0 12px 0 0; border: 1px groove #fff; ' > <%= $_->{info} %> </div></li>
 
 			<% } %>
 
 		</ul>
 		<br />
-                
+
 		<img src='/images/whats_inside.gif' alt='Whats Inside.' />
 		<ul>
-			<li><a href='index.pl?view=featured'>Featured</a> <i>(<!-- TMPL_VAR NAME='featured-count' -->) Articles</i></li>
-			<li><a href='index.pl?view=watch_list'>Watch List</a> <i>(<!-- TMPL_VAR NAME='watch_list-count' -->) Articles</i></li>
-			<li><a href='index.pl?view=inbox'>Inbox</a> <i>(<!-- TMPL_VAR NAME='inbox-count' -->) Articles</i></li>
-			
+			<li><a href='/featured'>Featured</a> <i>(<%= scalar @{ $model->get_articles( list => 'featured') } %>) Articles</i></li>
+			<li><a href='/watch_list'>Watch List</a> <i>(<%= scalar @{ $model->get_articles( list => 'watch_list') } %>) Articles</i></li>
+			<li><a href='/inbox'>Inbox</a> <i>(<%= scalar @{ $model->get_articles( list => 'inbox') } %>) Articles</i></li>
+
 		</ul>
 		<br />
-                
+
                 <!-- CENTER ME PLEASE -->
                 <a href='site_feed.rss' rel='external'><img src='/images/rss.gif' title='Subscribe to RSS 2.0 feed' alt='Subscribe to RSS 2.0 feed.' /></a>
 
 	</div>
 </div>
 
-<div class='clearer'><span></span></div></div> 
+<div class='clearer'><span></span></div></div>

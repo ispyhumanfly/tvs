@@ -1,18 +1,19 @@
 #!/usr/bin/env perl
 
+use local::lib 'lib';
+
 use Mojolicious::Lite;
 
-use lib 'lib';
+use lib 'library';
 use Model;
 
 my $MODEL = Model->new;
 
-
 get '/' => sub {
 
     my $self = shift;
-    $self->render( 'home', layout => 'default' );
-    
+    $self->render('home', layout => 'default');
+
 };
 
 #### Pages...
@@ -20,57 +21,72 @@ get '/' => sub {
 get '/home' => sub {
 
     my $self = shift;
-    $self->render( 'home', layout => 'default' );
-    
+
+    $self->{articles} = $MODEL->get_articles(list => 'home');
+
+    $self->render('home', layout => 'default');
+
 } => 'home';
 
 get '/featured' => sub {
 
     my $self = shift;
-    $self->render( 'featured', layout => 'default' );
-    
+
+    $self->{articles} = $MODEL->get_articles(list => 'featured');
+
+    $self->render('featured', layout => 'default');
+
 } => 'featured';
 
 get '/watch_list' => sub {
 
     my $self = shift;
-    $self->render( 'watch_list', layout => 'default' );
-    
+
+    $self->{articles} = $MODEL->get_articles(list => 'watch_list');
+
+    $self->render('watch_list', layout => 'default');
+
 } => 'watch_list';
 
 get '/inbox' => sub {
 
     my $self = shift;
-    $self->render( 'inbox', layout => 'default' );
-    
+
+    $self->{articles} = $MODEL->get_articles(list => 'inbox');
+
+    $self->render('inbox', layout => 'default');
+
 } => 'inbox';
 
 ### Functions...
 
 post '/vote' => sub {
-    
+
     my $self = shift;
-    
-    if ( ( $self->param('name') ) and ( $self->param('tbl_id') ) ) {
-        
-        $MODEL->do_vote( name => $self->param('name'), tbl_id => $self->param('tbl_id') );
+
+    if (($self->param('name')) and ($self->param('tbl_id'))) {
+
+        $MODEL->do_vote(
+            name   => $self->param('name'),
+            tbl_id => $self->param('tbl_id')
+        );
     }
-    
+
 } => 'vote';
 
-get '/model' => sub {
+post '/model' => sub {
 
     my $self = shift;
 
     $MODEL->get_feeds()
-        if $self->param('get_feeds');
+      if $self->param('get_feeds');
 
     $MODEL->do_prune()
-        if $self->param('do_prune');
+      if $self->param('do_prune');
 
     $MODEL->do_rss()
-        if $self->param('do_rss');
-    
+      if $self->param('do_rss');
+
     $self->redirect_to('/');
 
 } => 'model';

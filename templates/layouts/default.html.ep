@@ -77,8 +77,8 @@
             <div class="col3center">
                     <h2>Project Stuff</h2>
                     <ul>
-                            <li><a href='http://code.google.com/p/tvs/' rel="external" style="text-decoration: none;">Google Code - Project Home</a></li>
-                            <li><a href='http://code.google.com/p/tvs/source/checkout' rel="external" style="text-decoration: none;">Google Code - Download Source</a></li>
+                            <li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
+                            <li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
                             
                     </ul>
             </div>

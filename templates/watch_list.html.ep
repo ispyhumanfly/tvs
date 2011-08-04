@@ -1,3 +1,4 @@
+
 	<div class='main'>
 
 		<div class='left'>
@@ -14,6 +15,7 @@
 
 					<!-- article body -->
 					<div class='feed'><%= $_->{info} %></div>
+
 					<br /><p class='options'>
 
 					<!-- voting module -->

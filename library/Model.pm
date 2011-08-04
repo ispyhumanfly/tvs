@@ -1,4 +1,4 @@
-# model.pm - TVS auto-syndicated news portal...
+# Model.pm - TVS auto-syndicated news portal...
 
 package Model;
 
@@ -235,7 +235,7 @@ sub do_rss {
     # array ref, and append them to the RSS file...
     my $articles = get_articles( $self, list => 'featured' );
     for my $article ( @ { $articles } ) {
-        $rss->add_item( title       => '[Featured Article] ' . &{ $article->{title} },
+        $rss->add_item( title       => '[Featured Article] ' . $article->{title},
                         permaLink   => $article->{url},
                         enclosure   => { url => $article->{url}, type => 'text/plain' },
                         description => $article->{info},

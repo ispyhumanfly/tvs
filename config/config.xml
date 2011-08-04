@@ -9,12 +9,12 @@
     <dbase driver='DBI:mysql' host='localhost' database='tvs' user='root' password='' />
 
     <!-- Article Interval configuration -->
-    <interval name='featured' days='7' votes='3' />
-    <interval name='watch_list' days='3' votes='1' />
+    <interval name='featured' days='14' votes='2' />
+    <interval name='watch_list' days='7' votes='1' />
     <interval name='inbox' days='1' votes='0' />
 
     <!-- Article Pruning configuration -->
-    <prune days='7' votes='all' />
+    <prune days='90' votes='all' />
 
     <!-- RSS Subscription configuration -->
     <rss title='television suicide' link='http://spydev.ath.cx/tvs/' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2007 tvsuicide.net' webmaster='ispyhumanfly' />

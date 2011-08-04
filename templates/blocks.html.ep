@@ -48,9 +48,9 @@
 
 		<img src='/images/whats_inside.gif' alt='Whats Inside.' />
 		<ul>
-			<li><a href='/featured'>Featured</a> <i>(<%= scalar @{ $model->get_articles( list => 'featured') } %>) Articles</i></li>
-			<li><a href='/watch_list'>Watch List</a> <i>(<%= scalar @{ $model->get_articles( list => 'watch_list') } %>) Articles</i></li>
-			<li><a href='/inbox'>Inbox</a> <i>(<%= scalar @{ $model->get_articles( list => 'inbox') } %>) Articles</i></li>
+			<li><a href='/featured'>Featured</a> <i><%= scalar @{ $model->get_articles( list => 'featured') } %> Shows</i></li>
+			<li><a href='/watch_list'>Watch List</a> <i><%= scalar @{ $model->get_articles( list => 'watch_list') } %> Shows</i></li>
+			<li><a href='/inbox'>Inbox</a> <i><%= scalar @{ $model->get_articles( list => 'inbox') } %> Shows</i></li>
 
 		</ul>
 		<br />

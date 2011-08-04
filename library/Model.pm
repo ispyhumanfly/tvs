@@ -243,7 +243,7 @@ sub do_rss {
     }
 
     # now save the freshly generated rss feed...
-    eval { $rss->save( 'site_feed.rss' ) };
+    eval { $rss->save( 'public/site_feed.rss' ) };
     if ( $@ ) { return 0 } else { return 1 }
 
 }

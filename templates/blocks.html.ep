@@ -34,7 +34,7 @@
 			<script type="text/javascript">
 			
 				var title = "<%= $_->{title} %>";
-				document.write(title.substr(0,50));
+				document.write(title.substr(0,36) + '...');
 				
 			</script>
 		

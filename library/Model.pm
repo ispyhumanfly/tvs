@@ -9,6 +9,7 @@ use strict;
 sub new {
 
     # required CPAN modules...
+    use LWP::Simple qw/ get /;
     use Digest::MD5 qw/ md5_hex /;
     use XML::RSS::Feed;
     use HTML::Entities;

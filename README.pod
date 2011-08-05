@@ -16,7 +16,7 @@ A simple web based auto-syndicated rss portal.
 
 =head2 CPAN Setup
 
-	cpanm -l lib/ Modern::Perl Mojolicious::Lite DBI DBD::mysql XML::Simple XML::RSS::Feed HTML::Strip
+	cpanm -l lib/ Modern::Perl Mojolicious::Lite DBI DBD::mysql XML::Simple XML::RSS::Feed HTML::Strip LWP::Simple
 
 =head1 BUGS
 

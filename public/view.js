@@ -1,4 +1,4 @@
-// view.js - TVS auto-syndicated news portal... 
+// view.js - TVS auto-syndicated news portal...
 
 /* this functional library is currently in the process of being ported
    to an object-oriented class for a smoother integration to the
@@ -6,11 +6,11 @@
 
 // class constructor...
 function View () {
-    
+
     // class information and settings...
     this.author  = 'ispyhumanfly';
     this.version = '0.0.1';
-    
+
     // public method containers...
     this.articles = {};     // articles container...
     this.effects  = {};     // effects container...
@@ -18,7 +18,7 @@ function View () {
 
 /* c l a s s _ m e t h o d s */
 
-// method to determine if the client can request a vote... 
+// method to determine if the client can request a vote...
 this.articles.set_voting = function ( name, tbl_id, page, id, votes ) {
 
     // first check to see if the correct number of arguments has been passed...
@@ -31,13 +31,13 @@ this.articles.set_voting = function ( name, tbl_id, page, id, votes ) {
     // if the article has been voted on, do nothing.  otherwise provide
     // them an option to vote via the view.articles.do_vote method...
     if ( article != -1 ) {
-        
+
         /* do nothing */
     }
     else {
-        
-        // provide the option to submit a vote...    
-        document.write( '<a href="javascript:view.articles.do_vote( \'' + name + ':' + tbl_id + '\', \'' + page + '\', \'' + id + '\',  \'' + votes + '\' );\">Vote on Show</a>' );
+
+        // provide the option to submit a vote...
+        document.write( '<a style="margin-right: 2px;" href="javascript:view.articles.do_vote( \'' + name + ':' + tbl_id + '\', \'' + page + '\', \'' + id + '\',  \'' + votes + '\' );\">Vote</a>' );
     }
 
     // and return...
@@ -47,13 +47,13 @@ this.articles.set_voting = function ( name, tbl_id, page, id, votes ) {
 
 // function to send voting information...
 this.articles.do_vote = function ( params, page, id, votes ) {
-    
+
     // first check to see if the correct number of arguments has been passed...
     if ( this.do_vote.arguments.length !=4 ) { return }
-        
+
     // send http request to TVS for voting...
     new Ajax.Request( '/vote', { parameters: params } );
-    
+
     // create a cookie to store voted on article information...
     set_cookie( id );
 
@@ -65,7 +65,7 @@ this.articles.do_vote = function ( params, page, id, votes ) {
 
         // if this is a normal vote...
         if ( votes + 1 <= 2 ) { var div = 'article-' + id; Effect.SwitchOff( div ); }
-    
+
         // if this is the final vote for this section...
         if ( votes + 1 > 2 ) { var div = 'article-' + id; Effect.Puff( div ); }
     }
@@ -86,7 +86,7 @@ function set_cookie ( id ) {
     // set date/time for cookie expiration ( 24hours )...
     var date = new Date();
     date.setTime( date.getTime() + ( 60 * 60 * 60 * 24 ) );
-    
+
     // set the cookie information for the voted on article...
     document.cookie = id + '=voted;' + ';' + 'path=/; ' + 'domain=' + location.hostname + ';' + 'expires=' + date.toGMTString() + ';';
 

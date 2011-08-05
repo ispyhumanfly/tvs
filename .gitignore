@@ -2,7 +2,7 @@
 !.gitignore
 !.perltidyrc
 *~
-*.bak
+*bak
 lib
 blib
 Makefile*

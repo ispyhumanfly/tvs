@@ -6,15 +6,24 @@
 <feeds>
 
 	<!-- list of available feeds... -->
-	
+
+        <!-- general -->
+        <feed title='Yahoo' url='http://rss.news.yahoo.com/rss/topstories' icon='http://www.yahoo.com/favicon.ico' />
+
 	<!-- tvshows -->
 	<feed title="showRSS" url="http://showrss.karmorra.info/feeds/all.rss" icon="http://showrss.karmorra.info/static/showrss.png?v=3" />
 	<feed title="myTorrents" url="http://www.mytorrentz.tv/rss.php?id=all&amp;type=search" icon="http://www.mytorrentz.tv/favicon.ico" />
 	<feed title="ezRSS" url="http://www.ezrss.it/feed/" icon="http://www.ezrss.it/images/ezrss-logo.png" />
-	
-	<!-- temporary bug fix ( for some reason, model.pm -> 'get_articles' doesn't recognize the final entry ) -->         
-	<feed title="ezRSS" url="http://www.ezrss.it/feed/" icon="http://www.ezrss.it/images/ezrss-logo.png" />
-	
+
+	<!-- technology -->
+	<feed title='Gizmodo' url='http://feeds.gawker.com/gizmodo/excerpts.xml' icon='http://gizmodo.com/favicon.ico' />
+        <feed title='Slashdot' url='http://rss.slashdot.org/Slashdot/slashdot' icon='http://slashdot.org/favicon.ico' />
+        <feed title='CNET' url='http://news.com.com/2547-1_3-0-20.xml' icon='http://news.cnet.com/favicon.ico' />
+	<feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='http://www.linuxinsider.com/favicon.ico' />
+
+	<!-- temporary bug fix ( for some reason, Model.pm -> 'get_articles' doesn't recognize the final entry ) -->
+	<feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='http://www.linuxinsider.com/favicon.ico' />
+
 </feeds>
 
 <!-- end of xml document -->

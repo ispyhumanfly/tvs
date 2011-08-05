@@ -54,6 +54,22 @@ get '/inbox' => sub {
 
     $self->{articles} = $MODEL->get_articles(list => 'inbox');
 
+    ### I'm experimenting with a search/filter feature...
+
+    if ($self->param('search')) {
+
+        my @list;
+
+        for (@{ $self->{articles} }) {
+
+            my $string = $self->param('search');
+
+            push @list, $_ if $_->{title} =~ /$string/i;
+        }
+
+        $self->{articles} = \@list;
+    }
+
     $self->render('inbox', layout => 'default');
 
 } => 'inbox';

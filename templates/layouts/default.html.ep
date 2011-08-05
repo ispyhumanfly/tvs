@@ -8,7 +8,7 @@
 <link rel='stylesheet' type='text/css' href='/default.css' media='screen' />
 <link rel="alternate" type="application/rss+xml" title="Front-page" href="site_feed.rss" />
 <link rel="shortcut icon" type="image/ico" href="/images/favicon.ico" />
-    
+
 <title>t.v. [ Page Name ] suicide</title>
 
 <!-- included javascript libraries -->
@@ -22,12 +22,12 @@
 
         // instantiate the class...
         view = new View();
-	
+
 	// TEMPORARY: What was once the old 'clean-up' phase of Controller.pm
 	// has now been moved here. I'll work to make this even nicer,
 	// but so far this is a major performance enhancement as the
 	// previous method wasn't asynchronus.
-	
+
 	new Ajax.Request( '/model', { parameters: 'do_prune=1&get_feeds=1&do_rss=1' } );
 
 // ]]></script>
@@ -42,14 +42,14 @@
 <div class="container">
 
 	<div class="header" style="height: 112px;">
-                
+
 		<img src='/images/logo_big.gif' style='padding: 5px;' alt='TVS' />
         </div>
 
 	<div class="stripes"><span></span></div>
 
 	<div class='nav_norm'>
-                
+
                 <a href='/home' style="border-left: 1px solid #161616; text-decoration: none;">Home</a>
                 <a href='/featured' style="text-decoration: none;">Featured</a>
 		<a href='/watch_list' style="text-decoration: none;">Watch List</a>
@@ -59,12 +59,12 @@
 	</div>
 
 	<div class="stripes"><span></span></div>
-        
+
         <%= content %>
-        
+
         <div class="footer">
 
-            <div class="col3"> 
+            <div class="col3">
 
                     <h2>Development Team</h2>
                     <ul>
@@ -79,7 +79,7 @@
                     <ul>
                             <li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
                             <li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
-                            
+
                     </ul>
             </div>
 
@@ -92,7 +92,7 @@
 
             <div class="bottom"><br /><br />
 
-                    <span class="left">&copy; 2007 - 2008 <a href='mailto:ispyhumanfly@gmail.com'>ispyhumanfly</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="external">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer" rel="external">XHTML</a>. Site <strong>best</strong> viewed @ <strong>1280</strong> <i>by</i> <strong>1024</strong>++</span>
+                    <span class="left">&copy; 2007 - 2011 <a href='mailto:ispyhumanfly@gmail.com'>ispyhumanfly</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="external">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer" rel="external">XHTML</a>. Site <strong>best</strong> viewed @ <strong>1280</strong> <i>by</i> <strong>1024</strong>++</span>
 
                     <span class="right">Powered by <strong>TVS [</strong>auto-syndicated news portal<strong>] - svn</strong></span>
 

@@ -9,7 +9,13 @@ use Model;
 
 my $MODEL = Model->new;
 
-my $inbox = $MODEL->get_articles(list => 'inbox');
+my @Articles = qw/ inbox watch_list featured /;
 
-say $_->{title} for @{$inbox};
+for (@Articles) {
 
+    my $article = $MODEL->get_articles(list => $_ );
+
+    say $_;
+    say "\t$_->{title}" for @{$article};
+
+}

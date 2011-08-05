@@ -10,7 +10,7 @@
 			    <% for ( @{ $self->{articles} } ) { %>
 
 				<!-- some feed shit goes here -->
-				<div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='<%= $_->{url} %>' rel="external"><%= $_->{title} %></a></span><span class='toggle'></span></h1>
+				<div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='<%= $_->{url} %>' rel="external"><%= $_->{title} %></a></span></h1>
 				<div class='descr'><img src='<%= $_->{icon} %>' height='16' width='16' alt=''/> from <a href='<%= $_->{url} %>' rel="external"><%= $_->{name} %></a> on <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.</div><div id='toggle-<%= $_->{id} %>'><br />
 
 					<!-- article body -->

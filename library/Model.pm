@@ -93,21 +93,7 @@ sub get_articles {
                     name   => $self->{feeds}->{feed}->[$i]->{title},
                     id     => $self->{feeds}->{feed}->[$i]->{title} . $ref->{id},
                     tbl_id => $ref->{id},
-
-                    # modify article 'title' based on certain arguments...
                     title => $ref->{title},
-                    
-                    # This used to work with the old framework, doesn't seem to work now.
-                    # Now I'll do it in the blocks template itself using javascript...
-                    
-                    #sub {
-                    #
-                    #    # if 'random_article' argument passed, compress title down to
-                    #    # 36 characters for more compact viewing/usage...
-                    #    if ( $arguments{random_articles} ) { return substr( $ref->{title}, 0, 36 ); }
-                    #    else { return $ref->{title}; }
-                    #},
-
                     info  => $ref->{info},
                     url   => $ref->{url},
                     icon  => $ref->{icon},
@@ -115,7 +101,7 @@ sub get_articles {
                     date  => $ref->{date},
                     md5   => $ref->{md5},
                 };
-                
+
                 push @articles, $struct;
             }
         }

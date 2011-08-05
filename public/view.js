@@ -101,15 +101,6 @@ function set_cookie ( id ) {
 
 /* the remaining functional portion of this library */
 
-
-// function to handle the toggling of displayed articles...
-function toggle_view ( article ) {
-
-    // toggle the article...
-    Effect.toggle('toggle-' + article + '', 'slide' );
-
-}
-
 // function to handle the scrolling of article pages...
 function scroll_to ( position ) {
 

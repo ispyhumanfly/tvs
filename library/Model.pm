@@ -12,7 +12,6 @@ sub new {
     use LWP::Simple qw/ get /;
     use Digest::MD5 qw/ md5_hex /;
     use XML::RSS::Feed;
-    use HTML::Entities;
     use HTML::Strip;
     use XML::Simple;
     use DBI;
@@ -317,7 +316,7 @@ sub do_tables {
             eval { $self->{dbase}->do("SELECT * FROM articles_$arguments{table_exists} WHERE 1 = 0") };
             if ( $@ ) { return 0; } else { return 1; }
         }
-   }
+    }
 
     # if the 'create_table' argument is passed...
     if ( $arguments{create_table} ) {
@@ -346,13 +345,12 @@ sub do_clean {
     my ( $self, %arguments ) = @_;
 
     # initiate HTML::Strip instance, and strip all html
-    # codes from the string...
+    # codes from the string. Since HTML::Entities should
+    # also be installed; the remaining string should be
+    # properly encoded for XHTML standards.
     my $strip = new HTML::Strip;
     my $clean = $strip->parse( $arguments{string} );
 
-    # initiate HTML::Entities encoder to properly parse
-    # and convert invalid characters to unicode compliance...
-    $clean = encode_entities( $clean );
     return $clean;
 
 }

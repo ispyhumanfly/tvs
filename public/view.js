@@ -7,22 +7,26 @@
 // class constructor...
 function View () {
 
-    // class information and settings...
-    this.author  = 'ispyhumanfly';
-    this.version = '0.0.1';
-
     // public method containers...
     this.articles = {};     // articles container...
     this.effects  = {};     // effects container...
     this.external = {};     // external functions...
 
+    // What was once the old 'clean-up' phase of Controller.pm
+    // has now been moved here. I'll work to make this even nicer,
+    // but so far this is a major performance enhancement to the page load time.
+    // The previous method wasn't asynchronus.
+
+    //new Ajax.Request( '/model', { parameters: 'do_prune=1&do_rss=1&get_feeds=1' } );
+
+
 /* c l a s s _ m e t h o d s */
 
 // method to determine if the client can request a vote...
-this.articles.set_voting = function ( name, tbl_id, page, id, votes ) {
+this.articles.set_voting = function ( name, tbl_id, id ) {
 
     // first check to see if the correct number of arguments has been passed...
-    if ( this.set_voting.arguments.length !=5 ) { return; }
+    if ( this.set_voting.arguments.length !=3 ) { return; }
 
     // next we check to see if the user has already voted on this article...
     var cookies = document.cookie;
@@ -37,7 +41,7 @@ this.articles.set_voting = function ( name, tbl_id, page, id, votes ) {
     else {
 
         // provide the option to submit a vote...
-        document.write( '<a style="margin-right: 2px;" href="javascript:view.articles.do_vote( \'' + name + ':' + tbl_id + '\', \'' + page + '\', \'' + id + '\',  \'' + votes + '\' );\">Vote</a>' );
+        document.write( '<a style="margin-right: 2px;" href="javascript:view.articles.do_vote( \'' + name + ':' + tbl_id + '\', \'' + id + '\' );\">Vote on Article</a>' );
     }
 
     // and return...
@@ -46,10 +50,10 @@ this.articles.set_voting = function ( name, tbl_id, page, id, votes ) {
 }
 
 // function to send voting information...
-this.articles.do_vote = function ( params, page, id, votes ) {
+this.articles.do_vote = function ( params, id ) {
 
     // first check to see if the correct number of arguments has been passed...
-    if ( this.do_vote.arguments.length !=4 ) { return }
+    if ( this.do_vote.arguments.length !=2 ) { return }
 
     // send http request to TVS for voting...
     new Ajax.Request( '/vote', { parameters: params } );
@@ -57,23 +61,8 @@ this.articles.do_vote = function ( params, page, id, votes ) {
     // create a cookie to store voted on article information...
     set_cookie( id );
 
-    // featured articles...
-    if ( page == 'featured' ) { var div = 'article-' + id; Effect.SwitchOff( div ); }
+    new Effect.Puff( 'article-' + id );
 
-    // watchlist articles...
-    if ( page == 'watch_list' ) {
-
-        // if this is a normal vote...
-        if ( votes + 1 <= 2 ) { var div = 'article-' + id; Effect.SwitchOff( div ); }
-
-        // if this is the final vote for this section...
-        if ( votes + 1 > 2 ) { var div = 'article-' + id; Effect.Puff( div ); }
-    }
-
-    // inbox articles...
-    if ( page == 'inbox' ) { var div = 'article-' + id; Effect.Puff( div ); }
-
-    // and return...
     return;
 
 }

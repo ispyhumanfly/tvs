@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+
+use local::lib 'lib';
+
+use Modern::Perl;
+
+use lib 'library';
+use Model;
+
+my $MODEL = Model->new;
+
+$MODEL->get_feeds();

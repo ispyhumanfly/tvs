@@ -5,7 +5,11 @@
 
 			<div class='content'>
 
-			    <br /><div class='location'><b>/</b> viewing <b>/</b> <strong>watch_list</strong> articles...</div><br /><br /><br /><br />
+			    <br />
+
+			    <div class='location'>
+
+			    <b>/</b> viewing <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>watch_list</strong> articles...</div><br /><br /><br /><br />
 
 			    <% for ( @{ $self->{articles} } ) { %>
 
@@ -22,7 +26,7 @@
 					<script type="text/javascript">//<![CDATA[
 
 					    // initiate voting options...
-					    view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', 'watch_list', '<%= $_->{id} %>', <%= $_->{votes} %> );
+					    view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
 
 					// ]]></script>
 

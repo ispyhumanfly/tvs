@@ -7,13 +7,14 @@
                             <br /><div class='location'><b>/</b> viewing <b>/</b> <strong>home</strong> page...</div><br /><br /><br /><br />
 
                                 <!-- TVS: something new -->
-				<div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>New stuff</a></span></h1>
+				<div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002011a Unknown</a></span></h1>
 				<div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2011-08-04.</div><div id='toggle-home2'><br />
 
 					<!-- article body -->
 					<div class='feed'>
 
-						<br />
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id libero ac justo interdum euismod et id nulla. Suspendisse est mi, sollicitudin eget imperdiet a, lobortis vitae felis. Pellentesque ut iaculis nunc. Sed posuere tincidunt lacus non ullamcorper. Ut massa quam, pretium non pellentesque ut, faucibus ut arcu. Nullam facilisis risus a ipsum aliquet eu tincidunt sapien tincidunt. Praesent laoreet lectus et turpis vehicula posuere. Fusce quis massa nulla, ut mattis erat. Quisque suscipit gravida leo, eget sollicitudin mauris malesuada in. Integer eu adipiscing ipsum.
+
 					</div>
 
 					<br />
@@ -24,19 +25,13 @@
                                 <br /><br /></div></div></div>
 
                                 <!-- TVS: the open source project -->
-				<div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS News Portal Development</a></span></h1>
+				<div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002008a Pathfinder</a></span></h1>
 				<div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2008-09-30.</div><div id='toggle-home2'><br />
 
                                         <!-- article body -->
-					<div class='feed'><strong>TVS</strong> originally started off as an attempt to create <strong>a different kind of news portal</strong>.  Built upon ideas that derived from such sites as digg, slashdot, whitesoap and various blogs that I had come across.
+					<div class='feed'>
 
-						<strong>TVS</strong> was to be an easy to use and intuitive news portal.  However with the nudging of friends and fellow developers <strong>(</strong>and while still maintaining the original intent of the site<strong>)</strong>, <strong>TVS</strong> is now an actively developed news portal software being made freely available to anyone interested.
-						And nearing <strong>alpha</strong> release under a yet to be determined <strong>open source license</strong>.
-
-						<br /><br /><strong>TVS</strong> is written in <strong>Object-Oriented Perl</strong> and is built upon the <strong>CGI::Builder</strong> framework.  It uses <strong>XML</strong> for configuration files and the Perl <strong>DBI</strong> module for seemless integration with most ANSI compliant <strong>SQL</strong> servers.
-						The template system is built upon the Perl <strong>HTML::Template</strong> module and the <strong>script.aculo.us</strong> <i>Web 2.0</i> <strong>JavaScript</strong> framework for a fully customizable and modern style system.
-
-						<br />
+				        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id libero ac justo interdum euismod et id nulla. Suspendisse est mi, sollicitudin eget imperdiet a, lobortis vitae felis. Pellentesque ut iaculis nunc. Sed posuere tincidunt lacus non ullamcorper. Ut massa quam, pretium non pellentesque ut, faucibus ut arcu. Nullam facilisis risus a ipsum aliquet eu tincidunt sapien tincidunt. Praesent laoreet lectus et turpis vehicula posuere. Fusce quis massa nulla, ut mattis erat. Quisque suscipit gravida leo, eget sollicitudin mauris malesuada in. Integer eu adipiscing ipsum.
 
 					</div>
 

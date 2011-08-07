@@ -14,9 +14,9 @@ TVS
 
 A simple web based auto-syndicated rss portal.
 
-=head2 CPAN Setup
+=head2 CPAN Setup (Requires lib::local)
 
-	cpanm -l lib/ Modern::Perl Mojolicious::Lite DBD::mysql XML::Simple XML::RSS::Feed HTML::Strip
+	cpanm -l lib/ Modern::Perl Mojolicious::Lite DBI DBD::mysql XML::Simple XML::RSS::Feed HTML::Entities HTML::Strip
 
 =head1 BUGS
 

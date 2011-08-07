@@ -8,10 +8,12 @@
 
             <div class='location'>
 
-                <b>/</b> viewing <b>/</b> <strong>inbox</strong> articles...
+                <b>/</b> viewing <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>inbox</strong> articles...
             </div>
 
             <br /><br /><br /><br />
+
+            <% if ( scalar (@{ $self->{articles} }) > 0 ) { %>
 
             <!-- some feed shit goes here -->
             <div style='padding-bottom: 15px;'>
@@ -30,7 +32,7 @@
                                 <span class='title'>
 
                                     <p>
-                                        <a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', 'inbox', '<%= $_->{id} %>', '0' );"><%= $_->{title} %></a>
+                                        <a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );"><%= $_->{title} %></a>
                                     </p>
 
                                 </span>
@@ -43,6 +45,9 @@
 
                 </div>
             </div>
+
+            <% } %>
+
         </div>
     </div>
 

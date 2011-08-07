@@ -2,6 +2,8 @@
 
 use local::lib 'lib';
 
+use Modern::Perl;
+
 use Mojolicious::Lite;
 
 use lib 'library';

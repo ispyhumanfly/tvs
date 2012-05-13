@@ -27,6 +27,7 @@ sub new {
     $arguments{dbase} = DBI->connect( "$arguments{config}->{dbase}->{driver}:database=$arguments{config}->{dbase}->{database}:host=$arguments{config}->{dbase}->{host}",
                                        $arguments{config}->{dbase}->{user}, $arguments{config}->{dbase}->{password},
                                        { 'PrintError' => 0, 'RaiseError' => 1 } );
+	$arguments{dbase}->{'mysql_enable_utf8'} = 1;
 
     # and bless the OO goodness :)
     return bless \%arguments, $class;

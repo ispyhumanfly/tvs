@@ -27,7 +27,7 @@ sub new {
     $arguments{dbase} = DBI->connect( "$arguments{config}->{dbase}->{driver}:database=$arguments{config}->{dbase}->{database}:host=$arguments{config}->{dbase}->{host}",
                                        $arguments{config}->{dbase}->{user}, $arguments{config}->{dbase}->{password},
                                        { 'PrintError' => 0, 'RaiseError' => 1 } );
-	$arguments{dbase}->{'mysql_enable_utf8'} = 1;
+    $arguments{dbase}->{'mysql_enable_utf8'} = 1;
 
     # and bless the OO goodness :)
     return bless \%arguments, $class;
@@ -113,7 +113,7 @@ sub get_articles {
 
     # if this is a 'home' page article request, we handle
     # things differantly than for the other pages...
-    if ( $arguments{list} eq 'home' ) { @articles = $articles[int rand $#articles]; }
+    if ( $arguments{list} eq 'home' ) { @articles = $articles[ int rand ($#articles + 1) ]; }
 
     # if the 'random_articles' argument is passed, shorten the length
     # of the articles listed for better viewing/usage...
@@ -153,7 +153,7 @@ sub get_feeds {
     }
 
     # here, we select a feed at random and check for a new headline...
-    my $feed = new XML::RSS::Feed( %{ $list[ int rand($#list) ] } );
+    my $feed = new XML::RSS::Feed( %{ $list[ int rand ($#list + 1) ] } );
     $feed->parse( get( $feed->url ) );
 
     # cycle through all new headlines...
@@ -254,7 +254,7 @@ sub do_prune {
 
     # select a feed at random for article pruning and
     # then begin the pruning process...
-    my $feed = $list[ int rand($#list) ];
+    my $feed = $list[ int rand ($#list + 1) ];
 
     # if the voting option in config.xml is a number,
     # only prune articles with X ammount of votes...

@@ -16,8 +16,12 @@ A simple web based auto-syndicated rss portal.
 
 =head2 CPAN Setup
 
-	cpanm -l lib/ Modern::Perl Mojolicious::Lite DBI DBD::mysql XML::Simple XML::RSS::Feed HTML::Entities HTML::Strip
+	cpanm -S Modern::Perl Mojolicious::Lite DBI DBD::mysql XML::Simple XML::RSS::Feed HTML::Entities HTML::Strip
 
+=head2 Add Feeds to MySQL
+	
+	scripts/dbupdate
+	
 =head1 BUGS
 
 	http://github.com/ispyhumanfly/tvs/issues

@@ -1,7 +1,5 @@
 #!/usr/bin/env perl
 
-use local::lib 'lib';
-
 use Modern::Perl;
 
 use Mojolicious::Lite;

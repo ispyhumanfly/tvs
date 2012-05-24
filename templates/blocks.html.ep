@@ -1,11 +1,16 @@
-<% my $model = Model->new; %>
+% my $model = Model->new;
+% my $language = $model->{language};
 
 <div class="right">
 
     <div class="subnav">
 
-	<img src='/images/whats_this.gif' alt='Whats This?' />
+	<!--<img src='/images/whats_this.gif' alt='Whats This?' />-->
 
+	<div style="font-size: 3em; color: #ffffff;">    
+	    <%= $language->{block}->{about} %>
+	</div>
+	
 	<br />
 
 	<p>
@@ -23,7 +28,11 @@
 
 	<br />
 
-	<img src='/images/watch_this.gif' alt='Watch This?' />
+	<!--<img src='/images/watch_this.gif' alt='Watch This?' />-->
+	
+	<div style="font-size: 3em; color: #ffffff;">    
+	    <%= $language->{block}->{random_articles} %>
+	</div>
 	
 	<ul>
 
@@ -49,11 +58,16 @@
 	</ul>
 	<br />
 
-	<img src='/images/whats_inside.gif' alt='Whats Inside.' />
+	<!--<img src='/images/whats_inside.gif' alt='Whats Inside.' />-->
+	
+	<div style="font-size: 3em; color: #ffffff;">    
+	    <%= $language->{block}->{inside} %>
+	</div>
+	
 	<ul>
-		<li><a href='/featured'>Featured</a> <i><%= scalar @{ $model->get_articles( list => 'featured') } %> Articles</i></li>
-		<li><a href='/watch_list'>Watch List</a> <i><%= scalar @{ $model->get_articles( list => 'watch_list') } %> Articles</i></li>
-		<li><a href='/inbox'>Inbox</a> <i><%= scalar @{ $model->get_articles( list => 'inbox') } %> Articles</i></li>
+		<li><a href='/featured'><%= $language->{page}->{featured} %></a> <i><%= scalar @{ $model->get_articles( list => 'featured') } %> Articles</i></li>
+		<li><a href='/watch_list'><%= $language->{page}->{watch_list} %></a> <i><%= scalar @{ $model->get_articles( list => 'watch_list') } %> Articles</i></li>
+		<li><a href='/inbox'><%= $language->{page}->{inbox} %></a> <i><%= scalar @{ $model->get_articles( list => 'inbox') } %> Articles</i></li>
 
 	</ul>
 	<br />

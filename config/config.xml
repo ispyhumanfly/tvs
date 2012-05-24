@@ -6,6 +6,12 @@
     <dbase driver='DBI:mysql' host='localhost' database='tvs' user='root' password='' />
 
     <!-- Article Interval configuration -->
+    
+    <!--
+        currently set to very low values
+        for development purposes.
+    -->
+    
     <interval name='featured' days='14' votes='2' />
     <interval name='watch_list' days='7' votes='1' />
     <interval name='inbox' days='1' votes='0' />

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<language>
+
+    <!-- TVS News Portal Name -->
+    <portal title="TVS" name="tvs news" />
+    
+    <!-- Pages -->
+    <page home="Home" featured="Featured" watch_list="Watch List" inbox="Inbox" />
+    
+    <!-- Blocks -->
+    <block about="Whats this?" random_articles="Watch this!" watch_list="Watch list" inside="Whats inside?" />
+    
+</language>

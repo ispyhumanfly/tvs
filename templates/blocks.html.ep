@@ -2,61 +2,66 @@
 
 <div class="right">
 
-	<div class="subnav">
+    <div class="subnav">
 
-		<img src='/images/whats_this.gif' alt='Whats This?' />
+	<img src='/images/whats_this.gif' alt='Whats This?' />
 
-		<br />
+	<br />
 
-		<p>A <strong>simple</strong> and <strong>elegant</strong>, yet <strong>feature rich</strong> news portal. But unlike other news portals; <strong>TVS</strong> is driven by your
-                <strong>'anonymous'</strong> votes. <strong>No accounts</strong> and <strong>no hassles</strong>. Just some great <strong>RSS</strong> feeds selected by me, <strong>ispyhumanfly</strong>.
-                And <strong>unfiltered</strong>, <strong>unbias</strong> news voted on by <strong>you</strong>.
+	<p>
+	    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+	    Donec id libero ac justo interdum euismod et id nulla.
+	    Suspendisse est mi, sollicitudin eget imperdiet a, lobortis
+	    vitae felis. Pellentesque ut iaculis nunc. Sed posuere
+	    tincidunt lacus non ullamcorper. Ut massa quam, pretium non
+	    pellentesque ut, faucibus ut arcu. Nullam facilisis risus a
+	    ipsum aliquet eu tincidunt sapien tincidunt. Praesent laoreet
+	    lectus et turpis vehicula posuere. Fusce quis massa nulla, ut
+	    mattis erat. Quisque suscipit gravida leo, eget sollicitudin
+	    mauris malesuada in. Integer eu adipiscing ipsum.
+	</p>
 
-		<br /><br />
+	<br />
 
-	    	<strong>TVS</strong> is my personal <strong>news portal</strong>. It contains a collection of my favorite <strong>RSS feeds</strong>, which are in-turn made
-                available for your <strong>anonymous</strong> viewing, <strong>voting</strong> or <strong>both</strong>!  Your votes power the movement of articles from the <strong>inbox</strong> and continue to push them through to the <strong>watch list</strong> and
-                finally the <strong>featured</strong> page where all of the <strong>top voted</strong> on articles are listed.
+	<img src='/images/watch_this.gif' alt='Watch This?' />
+	
+	<ul>
 
-		</p>
+	    <% for ( @{ $model->get_articles( list => 'watch_list', random_articles => 5 ) } ) { %>
 
-                <br />
+	    <li>
+		<a href='#' id='watch-this-<%= $_->{id} %>'>
+    
+		<script type="text/javascript">
+    
+		    var title = "<%= $_->{title} %>";
+		    document.write(title.substr(0,36) + '...');
+    
+		</script>
+    
+		</a>
+	    
+		<div class='tooltip for_watch-this-<%= $_->{id} %>' style='display: none; background-color: #111; padding: 2px 4px 1px 4px; margin: 0 12px 0 0; border: 1px groove #fff; ' > <%= $_->{info} %> </div>
+	    </li>
 
-		<img src='/images/watch_this.gif' alt='Watch This?' />
-		<ul>
+	    <% } %>
 
-			<% for ( @{ $model->get_articles( list => 'watch_list', random_articles => 5 ) } ) { %>
+	</ul>
+	<br />
 
-			<li><a href='#' id='watch-this-<%= $_->{id} %>'>
+	<img src='/images/whats_inside.gif' alt='Whats Inside.' />
+	<ul>
+		<li><a href='/featured'>Featured</a> <i><%= scalar @{ $model->get_articles( list => 'featured') } %> Articles</i></li>
+		<li><a href='/watch_list'>Watch List</a> <i><%= scalar @{ $model->get_articles( list => 'watch_list') } %> Articles</i></li>
+		<li><a href='/inbox'>Inbox</a> <i><%= scalar @{ $model->get_articles( list => 'inbox') } %> Articles</i></li>
 
-			<script type="text/javascript">
+	</ul>
+	<br />
 
-				var title = "<%= $_->{title} %>";
-				document.write(title.substr(0,36) + '...');
+	<!-- CENTER ME PLEASE -->
+	<a href='site_feed.rss' rel='external'><img src='/images/rss.gif' title='Subscribe to RSS 2.0 feed' alt='Subscribe to RSS 2.0 feed.' /></a>
 
-			</script>
-
-			</a>
-			<div class='tooltip for_watch-this-<%= $_->{id} %>' style='display: none; background-color: #111; padding: 2px 4px 1px 4px; margin: 0 12px 0 0; border: 1px groove #fff; ' > <%= $_->{info} %> </div></li>
-
-			<% } %>
-
-		</ul>
-		<br />
-
-		<img src='/images/whats_inside.gif' alt='Whats Inside.' />
-		<ul>
-			<li><a href='/featured'>Featured</a> <i><%= scalar @{ $model->get_articles( list => 'featured') } %> Articles</i></li>
-			<li><a href='/watch_list'>Watch List</a> <i><%= scalar @{ $model->get_articles( list => 'watch_list') } %> Articles</i></li>
-			<li><a href='/inbox'>Inbox</a> <i><%= scalar @{ $model->get_articles( list => 'inbox') } %> Articles</i></li>
-
-		</ul>
-		<br />
-
-                <!-- CENTER ME PLEASE -->
-                <a href='site_feed.rss' rel='external'><img src='/images/rss.gif' title='Subscribe to RSS 2.0 feed' alt='Subscribe to RSS 2.0 feed.' /></a>
-
-	</div>
+    </div>
 </div>
 
 <div class='clearer'><span></span></div></div>

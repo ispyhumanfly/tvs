@@ -14,6 +14,6 @@
     <prune days='90' votes='all' />
 
     <!-- RSS Subscription configuration -->
-    <rss title='TVS' link='https://github.com/ispyhumanfly/tvs' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2011 ispyhumanfly' webmaster='ispyhumanfly' />
+    <rss title='TVS' link='https://github.com/ispyhumanfly/tvs' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2012 ispyhumanfly' webmaster='ispyhumanfly' />
 
 </config>

@@ -1,5 +1,8 @@
 /* default.css - TVS auto-syndicated news portal */
 
+@import url(http://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope);
+@import url(http://fonts.googleapis.com/css?family=Questrial);
+
 /* !! standard elements !! */
 
 /* sets default margin and padding values */
@@ -16,7 +19,7 @@ a { color: #999; text-decoration: underline; }
 body {
 	background: #111;
 	color: #BBB;
-	font: normal 62.5% "Lucida Sans Unicode",sans-serif;
+	font: normal 65.5% 'Questrial', sans-serif;
 }
 
 /* sets font size and bottom padding for paragraphs and unordered lists */
@@ -26,7 +29,7 @@ p,ul {
 }
 
 /* sets font for blockquotes */
-blockquote {font: bold 1em sans-serif;}
+blockquote {font: bold 1em 'Questrial', sans-serif;}
 
 
 /* !! content elements !! */
@@ -127,7 +130,7 @@ h1 {font: normal 2.4em sans-serif;}
 
 /* font for big (h2) heading tags */
 h2 {
-	font: bold 1.6em Verdana,sans-serif;
+	font: bold 1.6em 'Questrial', sans-serif;
 	padding-bottom: 4px;
 }
 
@@ -152,10 +155,16 @@ h2 {
 
 /* style for the header section */
 .header {
+	
 	background: #111;
 	border-bottom: 1px solid #333;
-	font: normal 2em sans-serif;
+	
+	font-size: 10em;
+	color: #ffffff;
+	font-family: 'Annie Use Your Telescope', cursive;
 	margin-left:20px;
+	
+	height: 150px;
 }
 
 /* style for the header section links */
@@ -176,6 +185,16 @@ h2 {
 	color: #BBB;
 }
 
+.header img {
+	
+	margin-right: 18px;
+	border: 1px solid #888;
+	border-top: 0px;
+	border-color: #888;
+	float: left;
+	width: 225px;
+	max-height: 125px;
+}
 
 /* !! structure !! */
 
@@ -225,17 +244,23 @@ h2 {
 /* !! navigation !! */
 
 /* background for the nav bar */
-.nav_norm, .nav_small {background: #191919 url(images/nav.gif); padding-left:225px;}
+.nav_norm, .nav_small {
+
+	background: #191919 url(images/nav.gif);
+	padding-left:125px;
+}
 
 /* styles for the normal sized nav bar (note: the float must be included to display correctly) */
 .nav_norm a {
 	background: #191919 url(images/nav.gif);
 	border-right: 1px solid #161616;
-	color: #CCC;
+	color: white;
 	float:left;
-	font: bold 1em Verdana,sans-serif;
 	line-height: 35px;
 	padding: 0 20px;
+	font-family: 'Questrial', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
 }
 
 /* styles for the smaller sized nav bar (note: the float must be included to display correctly) */
@@ -244,7 +269,7 @@ h2 {
 	border-left: 1px solid #161616;
 	color: #CCC;
 	float: left;
-	font: bold 1em Verdana,sans-serif;
+	font: bold 1em 'Questrial', sans-serif;
 	line-height: 35px;
 	padding: 0 18px;
 
@@ -274,7 +299,13 @@ h2 {
 }
 
 /* subnav biggest (h1) heading padding */
-.subnav h1 {padding-top: 8px;}
+.subnav h1 {
+
+	padding-top: 5px;
+	color: white;
+	font-size: 50px;
+	font-family: 'Annie Use Your Telescope', cursive;
+}
 
 /* subnav unordered list padding */
 .subnav ul {margin: 0;}

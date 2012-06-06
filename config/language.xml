@@ -2,8 +2,8 @@
 
 <language>
 
-    <!-- TVS News Portal Name -->
-    <portal title="TVS" name="tvs news" />
+    <!-- TVS News Portal -->
+    <tvs title="TVS" name="Television Suicide" />
     
     <!-- Pages -->
     <page home="Home" featured="Featured" watch_list="Watch List" inbox="Inbox" />

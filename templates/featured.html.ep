@@ -11,8 +11,8 @@
 			    <% for ( @{ $self->{articles} } ) { %>
 
 				<!-- some feed shit goes here -->
-				<div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='<%= $_->{url} %>' rel="external"><%= $_->{title} %></a></h1>
-				<div class='descr'><img src='<%= $_->{icon} %>' height='16' width='16' alt=''/> from <a href='<%= $_->{url} %>' rel="external"><%= $_->{name} %></a> on <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.</div><div id='toggle-<%= $_->{id} %>'><br />
+				<div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='<%= $_->{url} %>' target="_blank"><%= $_->{title} %></a></h1>
+				<div class='descr'><img src='<%= $_->{icon} %>' height='16' width='16' alt=''/> from <a href='<%= $_->{url} %>' target="_blank"><%= $_->{name} %></a> on <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.</div><div id='toggle-<%= $_->{id} %>'><br />
 
 					<!-- article body -->
 					<div class='feed'><%= $_->{info} %></div>
@@ -27,7 +27,7 @@
 					// ]]></script>
 
 					<!-- full article -->
-					<a href='<%= $_->{url} %>' rel="external">Read Article</a></p><div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+					<a href='<%= $_->{url} %>' target="_blank">Read Article</a></p><div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
 
 				<br /><br /></div></div></div>
 

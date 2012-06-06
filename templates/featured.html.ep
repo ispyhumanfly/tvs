@@ -6,7 +6,7 @@
 
 			    <br /><div class='location'>
 
-			    <b>/</b> viewing <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>featured</strong> articles...</div><br /><br /><br /><br />
+			    <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>Featured</strong> articles...</div><br /><br /><br /><br />
 
 			    <% for ( @{ $self->{articles} } ) { %>
 

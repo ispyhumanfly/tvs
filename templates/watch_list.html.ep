@@ -9,7 +9,7 @@
 
 			    <div class='location'>
 
-			    <b>/</b> viewing <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>watch_list</strong> articles...</div><br /><br /><br /><br />
+			    <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>Watch List</strong> articles...</div><br /><br /><br /><br />
 
 			    <% for ( @{ $self->{articles} } ) { %>
 

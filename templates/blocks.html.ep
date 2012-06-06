@@ -5,12 +5,8 @@
 
     <div class="subnav">
 
-	<!--<img src='/images/whats_this.gif' alt='Whats This?' />-->
-
 	<h1><%= $language->{block}->{about} %></h1>
 	
-	<br />
-
 	<p>
 	    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 	    Donec id libero ac justo interdum euismod et id nulla.
@@ -51,18 +47,18 @@
 
 	</ul>
 
-	
 	<h1><%= $language->{block}->{inside} %></h1>
 	    
 	<ul>
-		<li><a href='/featured'><%= $language->{page}->{featured} %></a> <i><%= scalar @{ $model->get_articles( list => 'featured') } %> Articles</i></li>
-		<li><a href='/watch_list'><%= $language->{page}->{watch_list} %></a> <i><%= scalar @{ $model->get_articles( list => 'watch_list') } %> Articles</i></li>
-		<li><a href='/inbox'><%= $language->{page}->{inbox} %></a> <i><%= scalar @{ $model->get_articles( list => 'inbox') } %> Articles</i></li>
+	    
+	    <li><a href='/featured'><%= $language->{page}->{featured} %></a> <i><%= scalar @{ $model->get_articles( list => 'featured') } %> Articles</i></li>
+	    <li><a href='/watch_list'><%= $language->{page}->{watch_list} %></a> <i><%= scalar @{ $model->get_articles( list => 'watch_list') } %> Articles</i></li>
+	    <li><a href='/inbox'><%= $language->{page}->{inbox} %></a> <i><%= scalar @{ $model->get_articles( list => 'inbox') } %> Articles</i></li>
 
 	</ul>
+	
 	<br />
 
-	<!-- CENTER ME PLEASE -->
 	<a href='site_feed.rss' rel='external'><img src='/images/rss.gif' title='Subscribe to RSS 2.0 feed' alt='Subscribe to RSS 2.0 feed.' /></a>
 
     </div>

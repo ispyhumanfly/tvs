@@ -20,6 +20,8 @@ body {
 	background: #111;
 	color: #BBB;
 	font: normal 65.5% 'Questrial', sans-serif;
+	min-width: 1000px;
+	margin: 0px 10px 10px 10px;
 }
 
 /* sets font size and bottom padding for paragraphs and unordered lists */
@@ -74,7 +76,7 @@ blockquote {font: bold 1em 'Questrial', sans-serif;}
 .location {
 	display: block;
         float: right;
-	border: 1px dashed;
+	border-bottom: 1px dashed;
         font-size: 1.2em;
         padding: 8px;
 	
@@ -247,7 +249,7 @@ h2 {
 .nav_norm, .nav_small {
 
 	background: #191919 url(images/nav.gif);
-	padding-left:125px;
+	padding-left:175px;
 }
 
 /* styles for the normal sized nav bar (note: the float must be included to display correctly) */

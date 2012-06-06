@@ -8,7 +8,7 @@
 
             <div class='location'>
 
-                <b>/</b> viewing <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>inbox</strong> articles...
+                <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>Inbox</strong> articles...
             </div>
 
             <br /><br /><br /><br />

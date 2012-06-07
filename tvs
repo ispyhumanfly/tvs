@@ -58,6 +58,19 @@ get '/inbox' => sub {
 
 ### Functions...
 
+get '/:feed/:id' => [feed => qr/\w+/, id => qr/\d+/] => sub {
+
+    my $self = shift;
+
+    my $feed    = $self->param('feed');
+    my $id      = $self->param('id');
+    
+    $self->{articles} = \@{$MODEL->get_articles(feed => $feed, id => $id)};
+
+    $self->render('article', layout => 'default');
+
+} => 'article';
+
 get '/:page/filter' => [page => qr/\w+/] => sub {
 
     my $self = shift;

@@ -2,8 +2,8 @@
 
 package Model;
 
-use warnings;
 use strict;
+use warnings;
 
 # class contsructor...
 sub new {
@@ -24,13 +24,16 @@ sub new {
     $arguments{feeds}    = new XML::Simple->XMLin('config/feeds.xml');
     $arguments{language} = new XML::Simple->XMLin('config/language.xml');
 
+    # prepare DBI setup...
+    my $db_driver   = $arguments{config}->{dbase}->{driver};
+    my $db_database = $arguments{config}->{dbase}->{database};
+    my $db_host     = $arguments{config}->{dbase}->{host};
+    my $db_user     = $arguments{config}->{dbase}->{user};
+    my $db_password = $arguments{config}->{dbase}->{password};
+
     # initiate DBI connection...
-    $arguments{dbase} = DBI->connect(
-        "$arguments{config}->{dbase}->{driver}:database=$arguments{config}->{dbase}->{database}:host=$arguments{config}->{dbase}->{host}",
-        $arguments{config}->{dbase}->{user},
-        $arguments{config}->{dbase}->{password},
-        {'PrintError' => 0, 'RaiseError' => 1}
-    );
+    $arguments{dbase} = DBI->connect("$db_driver:database=$db_database:host=",
+        $db_user, $db_password, {'PrintError' => 0, 'RaiseError' => 1});
     $arguments{dbase}->{'mysql_enable_utf8'} = 1;
 
     # and bless the OO goodness :)
@@ -107,6 +110,22 @@ sub get_articles {
                 $sth =
                   $self->{dbase}->prepare(
                     "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date"
+                  );
+                $sth->execute();
+            }
+
+            if (($arguments{'feed'}) and ($arguments{'id'})) {
+
+                my $feed = $arguments{feed};
+                my $id   = $arguments{id};
+
+                my $current_feed = $self->{feeds}->{feed}->[$i]->{title};
+
+                next unless $current_feed eq $feed;
+
+                $sth =
+                  $self->{dbase}->prepare(
+                    "SELECT * FROM articles_$current_feed WHERE id = $id"
                   );
                 $sth->execute();
             }
@@ -198,8 +217,9 @@ sub get_feeds {
         my $icon = do_clean($self, string => $info{$name});
         my $md5 = md5_hex($url);
 
-# first i use Digest::MD5 to check the incoming url against any pre-existing ones.
-# this was the most effecient way i could find to make sure the article wouldn't be duplicated...
+        # first i use Digest::MD5 to check the incoming url against
+        # any pre-existing ones. this was the most effecient way i
+        # could find to make sure the article wouldn't be duplicated...
         my $sth = $self->{dbase}->prepare("SELECT * FROM articles_$name");
         $sth->execute();
 

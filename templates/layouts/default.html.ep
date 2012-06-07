@@ -89,7 +89,6 @@
 	    <%= $language->{page}->{watch_list} %>
 	
 	</a>
-	
 	<a href='/inbox' style="text-decoration: none;">
 	    
 	    <%= $language->{page}->{inbox} %>

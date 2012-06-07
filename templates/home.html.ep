@@ -1,49 +1,49 @@
 <div class='main'>
 
-		<div class='left'>
+    <div class='left'>
 
-			<div class='content'>
+	<div class='content'>
 
-                            <br /><div class='location'><b>/</b> <strong>Home</strong> page...</div><br /><br /><br /><br />
+	    <br /><div class='location'><b>/</b> <strong>Home</strong> page...</div><br /><br /><br /><br />
 
-                                <!-- TVS: something new -->
-				<div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002011a</a></span></h1>
-				<div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2011-08-04.</div><div id='toggle-home2'><br />
+	    <!-- TVS: something new -->
+	    <div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002011a</a></span></h1>
+	    <div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2011-08-04.</div><div id='toggle-home2'><br />
 
-					<!-- article body -->
-					<div class='feed'>
+		    <!-- article body -->
+		    <div class='feed'>
 
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id libero ac justo interdum euismod et id nulla. Suspendisse est mi, sollicitudin eget imperdiet a, lobortis vitae felis. Pellentesque ut iaculis nunc. Sed posuere tincidunt lacus non ullamcorper. Ut massa quam, pretium non pellentesque ut, faucibus ut arcu. Nullam facilisis risus a ipsum aliquet eu tincidunt sapien tincidunt. Praesent laoreet lectus et turpis vehicula posuere. Fusce quis massa nulla, ut mattis erat. Quisque suscipit gravida leo, eget sollicitudin mauris malesuada in. Integer eu adipiscing ipsum.
+		    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id libero ac justo interdum euismod et id nulla. Suspendisse est mi, sollicitudin eget imperdiet a, lobortis vitae felis. Pellentesque ut iaculis nunc. Sed posuere tincidunt lacus non ullamcorper. Ut massa quam, pretium non pellentesque ut, faucibus ut arcu. Nullam facilisis risus a ipsum aliquet eu tincidunt sapien tincidunt. Praesent laoreet lectus et turpis vehicula posuere. Fusce quis massa nulla, ut mattis erat. Quisque suscipit gravida leo, eget sollicitudin mauris malesuada in. Integer eu adipiscing ipsum.
 
-					</div>
+		    </div>
 
-					<br />
+		    <br />
 
-                                        <!-- jump-to -->
-                                        <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+		    <!-- jump-to -->
+		    <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
 
-                                <br /><br /></div></div></div>
+	    <br /><br /></div></div></div>
 
-                                <!-- TVS: the open source project -->
-				<div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002008a</a></span></h1>
-				<div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2008-09-30.</div><div id='toggle-home2'><br />
+	    <!-- TVS: the open source project -->
+	    <div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002008a</a></span></h1>
+	    <div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2008-09-30.</div><div id='toggle-home2'><br />
 
-                                        <!-- article body -->
-					<div class='feed'>
+		    <!-- article body -->
+		    <div class='feed'>
 
-				        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id libero ac justo interdum euismod et id nulla. Suspendisse est mi, sollicitudin eget imperdiet a, lobortis vitae felis. Pellentesque ut iaculis nunc. Sed posuere tincidunt lacus non ullamcorper. Ut massa quam, pretium non pellentesque ut, faucibus ut arcu. Nullam facilisis risus a ipsum aliquet eu tincidunt sapien tincidunt. Praesent laoreet lectus et turpis vehicula posuere. Fusce quis massa nulla, ut mattis erat. Quisque suscipit gravida leo, eget sollicitudin mauris malesuada in. Integer eu adipiscing ipsum.
+		    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id libero ac justo interdum euismod et id nulla. Suspendisse est mi, sollicitudin eget imperdiet a, lobortis vitae felis. Pellentesque ut iaculis nunc. Sed posuere tincidunt lacus non ullamcorper. Ut massa quam, pretium non pellentesque ut, faucibus ut arcu. Nullam facilisis risus a ipsum aliquet eu tincidunt sapien tincidunt. Praesent laoreet lectus et turpis vehicula posuere. Fusce quis massa nulla, ut mattis erat. Quisque suscipit gravida leo, eget sollicitudin mauris malesuada in. Integer eu adipiscing ipsum.
 
-					</div>
+		    </div>
 
-					<br />
+		    <br />
 
-                                        <!-- jump-to -->
-                                        <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+		    <!-- jump-to -->
+		    <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
 
-                                <br /><br /></div></div></div>
+	    <br /><br /></div></div></div>
 
-			</div>
-
-		</div>
+	</div>
+    
+    </div>
 
 <%= include 'blocks' %>

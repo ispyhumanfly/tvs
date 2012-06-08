@@ -377,6 +377,20 @@ h2 {
 	width: 31%;
 }
 
+.col3 h2 {
+    
+    color: white;
+    font-size: 3em;
+    font-family: 'Annie Use Your Telescope', cursive;
+}
+
+.col3center h2 {
+    
+    color: white;
+    font-size: 3em;
+    font-family: 'Annie Use Your Telescope', cursive;
+}
+
 /* margin for the center col3 div */
 .col3center {margin: 0 3%;}
 
@@ -398,12 +412,15 @@ border-bottom:1px solid #333;
 .title a {
 text-decoration:none;
 color:#EEE;
+font-size: 1.1em;
+
 }
 
 /* hover for the article title link */
 .title a:hover {
 text-decoration:none;
 color:#FFD5D5;
+font-size: 1.1em;
 }
 
 

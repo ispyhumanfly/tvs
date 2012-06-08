@@ -14,9 +14,10 @@ TVS
 
 A simple web based auto-syndicated rss portal.
 
-=head2 CPAN Setup
+=head2 CPAN Modules
 
-	cpanm -S Modern::Perl Mojolicious::Lite DBI DBD::mysql XML::Simple XML::RSS::Feed HTML::Entities HTML::Strip
+	Modern::Perl Mojolicious::Lite DBI DBD::mysql XML::Simple
+	XML::RSS::Feed HTML::Entities HTML::Strip DateTime::Format::MySQL
 
 =head2 Add Feeds to MySQL
 	

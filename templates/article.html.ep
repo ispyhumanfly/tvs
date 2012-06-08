@@ -14,47 +14,89 @@
             
             <br /><br /><br /><br />
 
-		<% for ( @{ $self->{articles} } ) { %>
+            <% for ( @{ $self->{articles} } ) { %>
 
-		    <!-- some feed shit goes here -->
-		    <div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'>
-		    
-			<div class="article">
-			    
-			    <h1>
-				<span class="title">
-				    <a href='<%= $_->{url} %>' target="_blank"><%= $_->{title} %></a>
-				</span>
-			    </h1>
-			    
-			    <div class='descr'><img src='<%= $_->{icon} %>' height='16' width='16' alt=''/> from <a href='<%= $_->{url} %>' target="_blank"><%= $_->{name} %></a> on <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.</div><div id='toggle-<%= $_->{id} %>'><br />
+                <!-- some feed shit goes here -->
+                <div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'>
+                
+                    <div class="article">
+                        
+                        <h1>
+                            <span class="title">
+                                <a href='<%= $_->{url} %>' target="_blank"><%= $_->{title} %></a>
+                            </span>
+                        </h1>
+                        
+                        <div class='descr'>
+                            
+                            <img src='<%= $_->{icon} %>' height='16' width='16' alt=''/>
+                            from <a href='<%= $_->{url} %>' target="_blank"><%= $_->{name} %></a> on
+                            <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.
+                        
+                        </div>
+                        
+                        <div id='toggle-<%= $_->{id} %>'>
+                        
+                            <br />
 
-			    <!-- article body -->
-			    <div class='feed'>
+                            <!-- article body -->
+                            <div class='feed'>
                                 <iframe src="<%= $_->{url} %>" style="width: 100%; min-height: 1200px; border: 0; overflow: hidden;" scrolling="no"></iframe>
                             </div>
+    
+                            <br />
 
-			    <br /><p class='options'>
+                                <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'televisionsuicide'; // required: replace example with your forum shortname
+    
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+    </script>
+<!--    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+-->
 
-			    <!-- voting module -->
-			    <script type="text/javascript">//<![CDATA[
+                            <p class='options'>
+    
+                                <!-- voting module -->
+                                <script type="text/javascript">//<![CDATA[
+        
+                                    // initiate voting options...
+                                    view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
+        
+                                // ]]></script>
+        
+                                <!-- full article -->
+                                <a href='<%= $_->{url} %>' target="_blank">Read Full Article</a>
+                                
+                            </p>
+                            
+                            <div class='jump_to'>
+                                
+                                Jump To :: <a href="javascript:history.go(-1)">GO BACK</a>
+                            
+                            </div>
 
-				// initiate voting options...
-				view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
-
-			    // ]]></script>
-
-			    <!-- full article -->
-			    <a href='<%= $_->{url} %>' target="_blank">Read Full Article</a></p><div class='jump_to'>Jump To :: <a href="javascript:history.go(-1)">GO BACK</a></div>
-
-		    <br /><br /></div></div></div>
-
-                    <% last; %>
+                            <br /><br />
                     
-		    <% } %>
+                        </div>
+        
+                    </div>
+    
+                </div>
 
-	    </div>
+                <% last; %>
+                
+            <% } %>
+
+	</div>
 
     </div>
 
-<%= include 'blocks' %>
+    %= include 'blocks'

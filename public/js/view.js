@@ -61,8 +61,19 @@ this.articles.do_vote = function ( params, id ) {
     // create a cookie to store voted on article information...
     set_cookie( id );
 
-    new Effect.Puff( 'article-' + id );
+    new Effect.DropOut( 'article-' + id );
 
+    return;
+
+}
+
+this.effects.smooth_redirect = function (name, id) {
+    
+    new Effect.DropOut('article-' + id);
+    setTimeout(3000);
+    new Effect.Fold('main_page');
+    //window.location = '/' + name + '/' + id;
+    
     return;
 
 }

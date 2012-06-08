@@ -1,3 +1,5 @@
+% use DateTime::Format::MySQL;
+
 <div class='main'>
 
     <div class='left'>
@@ -9,46 +11,54 @@
             <div class='location'>
 
                 <b>/</b> <%= scalar @{ $self->{articles} } %> <strong>Inbox</strong> articles...
+            
             </div>
 
             <br /><br /><br /><br />
 
             <% if ( scalar (@{ $self->{articles} }) > 0 ) { %>
 
-            <!-- some feed shit goes here -->
-            <div style='padding-bottom: 15px;'>
-
-                <div class="article">
-
-                    <div class='feed'>
-
-                        <% for ( @{ $self->{articles} } ) { %>
-
-                        <div class='inbox'>
-
-                            <div id='article-<%= $_->{id} %>'>
-
-                                <img src='<%= $_->{icon} %>' height='16' width='16' alt='Feed Icon' />
-                                <span class='title'>
-
-                                    <p>
-                                        <a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );"><%= $_->{title} %></a>
-                                    </p>
-
-                                </span>
-                            </div>
+                <% my $article_dt = DateTime::Format::MySQL->parse_date('2012-06-07'); %>
+                
+                <!-- some feed shit goes here -->
+                <div style='padding-bottom: 15px;'>
+    
+                    <div class="article">
+    
+                        <div class='feed'>
+    
+                            <% for ( @{ $self->{articles} } ) { %>
+        
+                                <div class='inbox'>
+        
+                                    <div id='article-<%= $_->{id} %>'>
+        
+                                        <img src='<%= $_->{icon} %>' height='16' width='16' alt='Feed Icon' />
+                                        
+                                        <span class='title'>
+        
+                                            <p>
+                                                <a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );"><%= $_->{title} %></a>
+                                            </p>
+        
+                                        </span>
+                                    
+                                    </div>
+                                
+                                </div>
+    
+                            <% } %>
+    
                         </div>
-
-                        <% } %>
-
+    
                     </div>
-
+                    
                 </div>
-            </div>
 
             <% } %>
 
         </div>
+        
     </div>
 
-<%= include 'blocks' %>
+    %= include 'blocks'

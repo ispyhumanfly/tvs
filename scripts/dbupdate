@@ -7,4 +7,5 @@ use Model;
 
 my $MODEL = Model->new;
 
+#$MODEL->get_articles();
 $MODEL->get_feeds();

@@ -34,6 +34,7 @@ sub new {
     # initiate DBI connection...
     $arguments{dbase} = DBI->connect("$db_driver:database=$db_database:host=",
         $db_user, $db_password, {'PrintError' => 0, 'RaiseError' => 1});
+
     $arguments{dbase}->{'mysql_enable_utf8'} = 1;
 
     # and bless the OO goodness :)
@@ -92,7 +93,7 @@ sub get_articles {
 
             # retrieve articles for the watch_list section ( ie.
             # articles that have been voted on atleast once.
-            if ($arguments{'list'} eq 'watch_list') {
+            elsif ($arguments{'list'} eq 'watch_list') {
 
                 # retrieve table data...
                 $sth =
@@ -104,28 +105,12 @@ sub get_articles {
 
             # retrieve articles for the inbox section ( ie. articles that
             # have yet to be voted on...
-            if ($arguments{'list'} eq 'inbox') {
+            elsif ($arguments{'list'} eq 'inbox') {
 
                 # retrieve table data...
                 $sth =
                   $self->{dbase}->prepare(
                     "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date"
-                  );
-                $sth->execute();
-            }
-
-            if (($arguments{'feed'}) and ($arguments{'id'})) {
-
-                my $feed = $arguments{feed};
-                my $id   = $arguments{id};
-
-                my $current_feed = $self->{feeds}->{feed}->[$i]->{title};
-
-                next unless $current_feed eq $feed;
-
-                $sth =
-                  $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$current_feed WHERE id = $id"
                   );
                 $sth->execute();
             }
@@ -155,11 +140,11 @@ sub get_articles {
     # appearance of fresh looking content... fooled yuh :)
     @articles = do_random($self, @articles);
 
-    # if this is a 'home' page article request, we handle
-    # things differantly than for the other pages...
-    if ($arguments{list} eq 'home') {
-        @articles = $articles[int rand($#articles + 1)];
-    }
+    ## if this is a 'home' page article request, we handle
+    ## things differantly than for the other pages...
+    #if ($arguments{list} eq 'home') {
+    #    @articles = $articles[int rand($#articles + 1)];
+    #}
 
     # if the 'random_articles' argument is passed, shorten the length
     # of the articles listed for better viewing/usage...
@@ -168,6 +153,44 @@ sub get_articles {
     }
 
     # and return...
+    return \@articles;
+
+}
+
+sub get_article {
+
+    my ($self, %arguments) = @_;
+    my (@articles, $statement);
+
+    if (($arguments{'feed'}) and ($arguments{'id'})) {
+
+        my $feed = $arguments{feed};
+        my $id   = $arguments{id};
+
+        $statement =
+          $self->{dbase}
+          ->prepare("SELECT * FROM articles_$feed WHERE id = $id");
+        $statement->execute();
+
+        while (my $result = $statement->fetchrow_hashref()) {
+
+            my $entry = {
+                name   => $feed,
+                id     => $feed . $result->{id},
+                tbl_id => $result->{id},
+                title  => $result->{title},
+                info   => $result->{info},
+                url    => $result->{url},
+                icon   => $result->{icon},
+                votes  => $result->{votes},
+                date   => $result->{date},
+                md5    => $result->{md5},
+            };
+
+            push @articles, $entry;
+        }
+    }
+
     return \@articles;
 
 }
@@ -369,7 +392,7 @@ sub do_random {
 
 }
 
-# method to build tables for feeds / comments.  this is also
+# method to build tables for feeds.  this is also
 # used to check the existance or status of existing tables...
 sub do_tables {
 
@@ -403,7 +426,10 @@ sub do_tables {
             eval {
                 $self->{dbase}->do(
                     "CREATE TABLE articles_$arguments{create_table}
-                    (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), title VARCHAR(1000) NOT NULL, url VARCHAR(5000), info VARCHAR(5000), icon VARCHAR(50), md5 VARCHAR(32), votes INT, date DATE)"
+                    (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id),
+                    title VARCHAR(1000) NOT NULL, url VARCHAR(5000),
+                    info VARCHAR(5000), icon VARCHAR(50),
+                    md5 VARCHAR(32), votes INT, date DATE)"
                 );
             };
             if   ($@) { return 0; }
@@ -441,10 +467,12 @@ sub do_vote {
     # preamble...
     my ($self, %arguments) = @_;
 
+    my $feed = $arguments{name};
+    my $id   = $arguments{tbl_id};
+
     # add user vote to table data...
-    $self->{dbase}->do(
-        "UPDATE articles_$arguments{name} SET votes=votes+1 WHERE id=$arguments{tbl_id}"
-    );
+    $self->{dbase}
+      ->do("UPDATE articles_$feed SET votes=votes+1 WHERE id=$id");
     return;
 
 }

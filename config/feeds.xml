@@ -9,15 +9,6 @@
 
         <!-- general -->
         <feed title='Yahoo' url='http://rss.news.yahoo.com/rss/topstories' icon='http://www.yahoo.com/favicon.ico' />
-
-	<!-- tvshows -->
-	
-        <!--
-        <feed title="showRSS" url="http://showrss.karmorra.info/feeds/all.rss" icon="http://showrss.karmorra.info/static/showrss.png?v=3" />
-	<feed title="myTorrents" url="http://www.mytorrentz.tv/rss.php?id=all&amp;type=search" icon="http://www.mytorrentz.tv/favicon.ico" />
-	<feed title="ezRSS" url="http://www.ezrss.it/feed/" icon="http://www.ezrss.it/images/ezrss-logo.png" />
-        
-        -->
 	
         <!-- technology -->
 	<feed title='Gizmodo' url='http://feeds.gawker.com/gizmodo/excerpts.xml' icon='http://gizmodo.com/favicon.ico' />

@@ -32,10 +32,10 @@
     <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	
+
 </head>
 
-<body onload="Effect.toggle('main_page','appear'); return false;">
+<body onload="Effect.toggle('main_page','appear');">
 
 <div id='top'></div>
 
@@ -60,6 +60,12 @@
 
 	    // ID in TV by *fogke
 	    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d1haty6' target='_blank'><img src='http://fc01.deviantart.net/fs30/f/2008/175/1/b/ID_in_TV_by_fogke.jpg' /></a>");
+
+	    // I Am Tv by *ShawnCoss
+	    header_ads.push("<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/d17h64t' target='_blank'><img src='http://th09.deviantart.net/fs22/PRE/f/2007/360/3/3/I_Am_Tv_by_skinpupcoss.jpg' /></a>");
+
+	    // S.S. Broken TV by ~shudder-stock
+	    header_ads.push("<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/dl22u3' target='_blank'><img src='http://th03.deviantart.net/fs11/PRE/i/2006/177/3/2/S_S__Broken_TV_by_shudder_stock.jpg' /></a>");
 
 	    var random = Math.floor(Math.random() * header_ads.length);
 	    document.write(header_ads[random]);

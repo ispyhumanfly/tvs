@@ -86,7 +86,7 @@
                         
                         <script type="text/javascript">//<![CDATA[
                         
-                            var disqus_shortname = '<% $disqus->{site}->{shortname}; %>';
+                            var disqus_shortname = '<%= $disqus->{site}->{shortname}; %>';
                         
                             (function() {
                                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

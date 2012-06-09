@@ -23,7 +23,8 @@ sub new {
     $arguments{config}   = new XML::Simple->XMLin('config/config.xml');
     $arguments{feeds}    = new XML::Simple->XMLin('config/feeds.xml');
     $arguments{language} = new XML::Simple->XMLin('config/language.xml');
-
+    $arguments{disqus}   = new XML::Simple->XMLin('config/disqus.xml');
+    
     # prepare DBI setup...
     my $db_driver   = $arguments{config}->{dbase}->{driver};
     my $db_database = $arguments{config}->{dbase}->{database};

@@ -31,7 +31,7 @@ p,ul {
 }
 
 /* sets font for blockquotes */
-blockquote {font: bold 1em 'Questrial', sans-serif;}
+blockquote {font: bold 1.2em 'Questrial', sans-serif;}
 
 
 /* !! content elements !! */
@@ -52,6 +52,10 @@ blockquote {font: bold 1em 'Questrial', sans-serif;}
 .content a:hover {color: #CBB;}
 .content .descr {margin-bottom: 5px;}
 
+.descr {
+    
+    font-size: 1.1em;
+}
 
 /* !! div styles !! */
 
@@ -59,7 +63,7 @@ blockquote {font: bold 1em 'Questrial', sans-serif;}
 .feed {
 	background: #222;
 	display: block;
-	font-size: 13px;
+	font-size: 1.3em;
 	border: 1px groove #494949;
 	padding: 8px;
 }
@@ -90,6 +94,37 @@ blockquote {font: bold 1em 'Questrial', sans-serif;}
 
 
 /* !! options !! */
+
+/* style for the options_top paragraph (vote on article, read article) */
+.options_top {
+    
+    font-size: 1.2em;
+    float: right;
+    padding: 3px;
+    margin-top: -22px;
+    
+}
+
+/* links inside the options_top paragraph */
+.options_top a {
+
+    text-decoration: none;
+    display: inline;
+    border-top: 1px solid #262626;
+    border-bottom: 1px solid #262626;
+    padding: 2px;
+}
+
+/* hover style for the links in the options_top paragraph */
+.options_top a:hover {
+
+    text-decoration: none;
+    display: inline;
+    padding: 2px;
+    background: #222;
+    color: #BAA;
+
+}
 
 /* style for the options paragraph (vote on article, read article) */
 .options {

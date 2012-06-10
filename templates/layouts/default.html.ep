@@ -6,156 +6,196 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
-<head>
-
-    <!-- some links and stuff -->
-    <link rel='stylesheet' type='text/css' href='/default.css' media='screen' />
-    <link rel="alternate" type="application/rss+xml" title="Front-page" href="site_feed.rss" />
-    <link rel="shortcut icon" type="image/ico" href="/images/favicon.ico" />
-    	
-    <title><%= $language->{tvs}->{title} %></title>
+    <head>
     
-    <!-- included javascript libraries -->
-    <script src='/js/prototype.js' type='text/javascript'></script>
-    <script src='/js/scriptaculous.js?load=effects' type='text/javascript'></script>
-    <script src='/js/tooltip.js' type='text/javascript'></script>
-    <script src='/js/view.js' type='text/javascript'></script>
-    
-    <!-- load the View class, the style system back-end... -->
-    <script type="text/javascript">//<![CDATA[
-    
-	// instantiate the class...
-	var view = new View();
-    
-    // ]]></script>
-    
-    <!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-</head>
-
-<body onload="Effect.toggle('main_page','appear');">
-
-<div id='top'></div>
-
-<div id="main_page" class="container" style="display: none;">
-
-    <div class="header">
+	<!-- some links and stuff -->
+	<link rel='stylesheet' type='text/css' href='/default.css' media='screen' />
+	<link rel="alternate" type="application/rss+xml" title="Front-page" href="site_feed.rss" />
+	<link rel="shortcut icon" type="image/ico" href="/images/favicon.ico" />
+	    
+	<title><%= $language->{tvs}->{title} %></title>
 	
-	<!-- Random Deviant Pictures -->
+	<!-- included javascript libraries -->
+	<script src='/js/prototype.js' type='text/javascript'></script>
+	<script src='/js/scriptaculous.js?load=effects' type='text/javascript'></script>
+	<script src='/js/tooltip.js' type='text/javascript'></script>
+	<script src='/js/view.js' type='text/javascript'></script>
 	
+	<!-- load the View class, the style system back-end... -->
 	<script type="text/javascript">//<![CDATA[
-	    
-	    var header_ads = new Array();
-	    
-	    // TV by ~tripl3 
-	    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d71lvo' target='_blank'><img src='http://fc02.deviantart.net/fs5/i/2004/303/0/6/TV_by_tripl3.jpg' /></a>");
-
-	    // TV by ~MkDsg
-	    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d2q4mnv' target='_blank'><img src='http://th00.deviantart.net/fs71/PRE/f/2010/142/7/6/TV_by_MkDsg.png' /></a>");
-
-	    // New TV by ~bleed-the-sky
-	    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d2molnu' target='_blank'><img src='http://fc00.deviantart.net/fs70/f/2010/090/8/3/83cd022251b13de28b041a97497fe081.jpg' /></a>");
-
-	    // ID in TV by *fogke
-	    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d1haty6' target='_blank'><img src='http://fc01.deviantart.net/fs30/f/2008/175/1/b/ID_in_TV_by_fogke.jpg' /></a>");
-
-	    // I Am Tv by *ShawnCoss
-	    header_ads.push("<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/d17h64t' target='_blank'><img src='http://th09.deviantart.net/fs22/PRE/f/2007/360/3/3/I_Am_Tv_by_skinpupcoss.jpg' /></a>");
-
-	    // S.S. Broken TV by ~shudder-stock
-	    header_ads.push("<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/dl22u3' target='_blank'><img src='http://th03.deviantart.net/fs11/PRE/i/2006/177/3/2/S_S__Broken_TV_by_shudder_stock.jpg' /></a>");
-
-	    var random = Math.floor(Math.random() * header_ads.length);
-	    document.write(header_ads[random]);
-	    
-	//]]></script>
 	
-	<%= $language->{tvs}->{name} %>
+	    // instantiate the class...
+	    var view = new View();
+	
+	// ]]></script>
+	
+	<!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
     
-    </div>
-
-    <div class="stripes"><span></span></div>
-
-    <div class='nav_norm'>
-
-	<a href='/home' style="border-left: 1px solid #161616; text-decoration: none;">
-	    
-	    <%= $language->{page}->{home} %>
-	    
-	</a>
-	<a href='/featured' style="text-decoration: none;">
-	    
-	    <%= $language->{page}->{featured} %>
+    </head>
+    
+    <body onload="Effect.toggle('main_page','appear');">
+    
+	<div id='top'></div>
 	
-	</a>
-	<a href='/watch_list' style="text-decoration: none;">
-	    
-	    <%= $language->{page}->{watch_list} %>
+	<div id="main_page" class="container" style="display: none;">
 	
-	</a>
-	<a href='/inbox' style="text-decoration: none;">
-	    
-	    <%= $language->{page}->{inbox} %>
+	    <div class="header">
+		
+		<!-- Random Deviant Pictures -->
+		
+		<script type="text/javascript">//<![CDATA[
+		    
+		    var header_ads = new Array();
+		    
+		    // TV by ~tripl3 
+		    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d71lvo' target='_blank'><img src='http://fc02.deviantart.net/fs5/i/2004/303/0/6/TV_by_tripl3.jpg' /></a>");
 	
-	</a>
-
-	<div class="clearer"><span></span></div>
+		    // TV by ~MkDsg
+		    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d2q4mnv' target='_blank'><img src='http://th00.deviantart.net/fs71/PRE/f/2010/142/7/6/TV_by_MkDsg.png' /></a>");
 	
-    </div>
-
-    <div class="stripes"><span></span></div>
-
-    %= content
-
-    <div class="footer">
-
-	<div class="col3">
-
-	    <h2>Development Team</h2>
+		    // New TV by ~bleed-the-sky
+		    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d2molnu' target='_blank'><img src='http://fc00.deviantart.net/fs70/f/2010/090/8/3/83cd022251b13de28b041a97497fe081.jpg' /></a>");
+	
+		    // ID in TV by *fogke
+		    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d1haty6' target='_blank'><img src='http://fc01.deviantart.net/fs30/f/2008/175/1/b/ID_in_TV_by_fogke.jpg' /></a>");
+	
+		    // I Am Tv by *ShawnCoss
+		    header_ads.push("<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/d17h64t' target='_blank'><img src='http://th09.deviantart.net/fs22/PRE/f/2007/360/3/3/I_Am_Tv_by_skinpupcoss.jpg' /></a>");
+	
+		    // S.S. Broken TV by ~shudder-stock
+		    header_ads.push("<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/dl22u3' target='_blank'><img src='http://th03.deviantart.net/fs11/PRE/i/2006/177/3/2/S_S__Broken_TV_by_shudder_stock.jpg' /></a>");
+	
+		    var random = Math.floor(Math.random() * header_ads.length);
+		    document.write(header_ads[random]);
+		    
+		//]]></script>
+		
+		<%= $language->{tvs}->{name} %>
 	    
-	    <ul>
-		<li><a href='http://spydev.ath.cx' style="text-decoration: none;">ispyhumanfly</a></li>
-		<li><a href='http://kpavery.com' style="text-decoration: none;">kpavery</a></li>
-		<li><a href='http://kpavery.com' style="text-decoration: none;">cynogv</a></li>
-	    </ul>
+	    </div>
+	
+	    <div class="stripes"><span></span></div>
+	
+	    <div class='nav_norm'>
+	
+		<a href='/home' style="border-left: 1px solid #161616; text-decoration: none;">
+		    
+		    <%= $language->{page}->{home} %>
+		    
+		</a>
+		<a href='/featured' style="text-decoration: none;">
+		    
+		    <%= $language->{page}->{featured} %>
+		
+		</a>
+		<a href='/watch_list' style="text-decoration: none;">
+		    
+		    <%= $language->{page}->{watch_list} %>
+		
+		</a>
+		<a href='/inbox' style="text-decoration: none;">
+		    
+		    <%= $language->{page}->{inbox} %>
+		
+		</a>
+	
+		<div class="clearer"><span></span></div>
+		
+	    </div>
+	
+	    <div class="stripes"><span></span></div>
+	
+	    %= content
+	
+	    <div class="footer">
+	
+		<div class="col3">
+	
+		    <h2>Development Team</h2>
+		    
+		    <ul>
+			<li><a href='http://spydev.ath.cx' style="text-decoration: none;">ispyhumanfly</a></li>
+			<li><a href='http://kpavery.com' style="text-decoration: none;">kpavery</a></li>
+			<li><a href='http://kpavery.com' style="text-decoration: none;">cynogv</a></li>
+		    </ul>
+	
+		</div>
+	
+		<div class="col3center">
+		    
+		    <h2>Project Stuff</h2>
+		    
+		    <ul>
+			<li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
+			<li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
+		    </ul>
+		
+		</div>
+	
+		<div class="col3">
+		    
+		    <h2>Visit</h2>
+		    
+		    <ul>
+			<li><a href='http://perl-begin.org/' rel="external">Want to learn Perl? - perl-begin.org</a></li>
+		    </ul>
+		
+		</div>
 
+		<br />
+		
+		<div style="clear: both;"></div>
+		
+		<div class="col3">
+		    
+		    <h2>And more stuff.</h2>
+		    
+		    <ul>
+			<li><a href='http://perl-begin.org/' rel="external">Want to learn Perl? - perl-begin.org</a></li>
+		    </ul>
+		
+		</div>
+	
+		<div class="col3center">
+		    
+		    <h2>Some other stuff?</h2>
+		    
+		    <ul>
+			<li><a href='http://spydev.ath.cx' style="text-decoration: none;">ispyhumanfly</a></li>
+			<li><a href='http://kpavery.com' style="text-decoration: none;">kpavery</a></li>
+			<li><a href='http://kpavery.com' style="text-decoration: none;">cynogv</a></li>
+		    </ul>
+	
+		</div>
+
+		<div class="col3">
+	
+		    <h2>More TVS Links!</h2>
+		    
+		    <ul>
+			<li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
+			<li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
+		    </ul>
+		
+		</div>
+		
+		<div class="bottom"><br /><br />
+	
+		    <span class="left">&copy; 2007 - 2012 <a href='mailto:ispyhumanfly@gmail.com'>ispyhumanfly</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="external">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer" rel="external">XHTML</a>. Site <strong>best</strong> viewed @ <strong>1280</strong> <i>by</i> <strong>1024</strong>++</span>
+	
+		    <span class="right">Powered by <strong>TVS [</strong>auto-syndicated news portal<strong>] - git</strong></span>
+	
+		    <div class="clearer"><span></span></div>
+	
+		</div>
+	
+	    </div>
+	
+	    <div id='bottom'></div>
+	
 	</div>
-
-	<div class="col3center">
-	    
-	    <h2>Project Stuff</h2>
-	    
-	    <ul>
-		<li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
-		<li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
-	    </ul>
 	
-	</div>
-
-	<div class="col3">
-	    
-	    <h2>Visit</h2>
-	    
-	    <ul>
-		<li><a href='http://perl-begin.org/' rel="external">Want to learn Perl? - perl-begin.org</a></li>
-	    </ul>
-	
-	</div>
-
-	<div class="bottom"><br /><br />
-
-	    <span class="left">&copy; 2007 - 2012 <a href='mailto:ispyhumanfly@gmail.com'>ispyhumanfly</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="external">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer" rel="external">XHTML</a>. Site <strong>best</strong> viewed @ <strong>1280</strong> <i>by</i> <strong>1024</strong>++</span>
-
-	    <span class="right">Powered by <strong>TVS [</strong>auto-syndicated news portal<strong>] - git</strong></span>
-
-	    <div class="clearer"><span></span></div>
-
-	</div>
-
-    </div>
-
-    <div id='bottom'></div>
-
-</div></body></html>
+    </body>
+</html>

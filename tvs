@@ -135,5 +135,7 @@ post '/model' => sub {
 
 } => 'model';
 
+
+app->config(hypnotoad => {listen => ['http://*:80']});
 app->secret('TVS Rocks!');
 app->start;

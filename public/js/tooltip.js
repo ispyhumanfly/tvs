@@ -50,7 +50,7 @@ var Tooltip = {
 	/**
 	 * @var string Close Link Text
 	 */
-	closeText: "Close",
+	closeText: "", // ispy: This was set to "Close" but it didn't look good anymore. :)
 
 	/**
 	 * @var function Set the method which will be called for showing the tooltip

@@ -79,10 +79,10 @@
                             <br /><br />
                     
                         </div>
-
-                        <div id="disqus_thread"></div>
                         
                         <!-- Disqus Commenting Platform -->
+
+                        <div id="disqus_thread"></div>
                         
                         <script type="text/javascript">//<![CDATA[
                         

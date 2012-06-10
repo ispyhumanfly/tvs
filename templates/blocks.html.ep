@@ -30,16 +30,29 @@
 
 		<a href='#' id='watch-this-<%= $_->{id} %>'>
     
-		<script type="text/javascript">
-    
-		    var title = "<%= $_->{title} %>";
-		    document.write(title.substr(0,36) + '...');
-    
-		</script>
+		    <script type="text/javascript">
+	
+			var title = "<%= $_->{title} %>";
+			document.write(title.substr(0,36) + '...');
+	
+		    </script>
     
 		</a>
 	    
-		<div class='tooltip for_watch-this-<%= $_->{id} %>' style='display: none; background-color: #111; padding: 2px 4px 1px 4px; margin: 0 12px 0 0; border: 1px groove #fff; ' > <%= $_->{info} %> </div>
+		<div class='tooltip for_watch-this-<%= $_->{id} %>' style="display: none; font-size: 1.2em; background-color: #111; padding: 5px; margin: 0 12px 0 0; border: 1px groove #fff;">
+		
+		    <%= $_->{info} %>
+
+		    <br />
+		    
+		    <span style="float: right; margin-right: 5px; font-size: 10px;">
+		
+			<a href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );">Vote on Article</a>
+			<a href="/<%= $_->{name} %>/<%= $_->{tbl_id} %>">Read Article</a>
+		       	
+		    </span>
+		 
+		</div>
 
 	    </li>
 

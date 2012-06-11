@@ -36,7 +36,9 @@ sub new {
     $arguments{dbase} = DBI->connect("$db_driver:database=$db_database:host=",
         $db_user, $db_password, {'PrintError' => 0, 'RaiseError' => 1});
 
-    $arguments{dbase}->{'mysql_enable_utf8'} = 1;
+    $arguments{dbase}->{'mysql_auto_reconnect'} = 1;
+    $arguments{dbase}->{'mysql_enable_utf8'}    = 1;
+
 
     # and bless the OO goodness :)
     return bless \%arguments, $class;

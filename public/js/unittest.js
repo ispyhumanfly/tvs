@@ -1,5 +1,3 @@
-// script.aculo.us unittest.js v1.9.0, Thu Dec 23 16:54:48 -0500 2010
-
 // Copyright (c) 2005-2010 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)
 //           (c) 2005-2010 Jon Tirsen (http://www.tirsen.com)
 //           (c) 2005-2010 Michael Schuerig (http://www.schuerig.de/michael/)
@@ -429,14 +427,6 @@ Test.Unit.Assertions.prototype = {
   },
   assertElementMatches: function(element, expression) {
     this.assertElementsMatch([element], expression);
-  },
-  benchmark: function(operation, iterations) {
-    var startAt = new Date();
-    (iterations || 1).times(operation);
-    var timeTaken = ((new Date())-startAt);
-    this.info((arguments[2] || 'Operation') + ' finished ' + 
-       iterations + ' iterations in ' + (timeTaken/1000)+'s' );
-    return timeTaken;
   },
   _isVisible: function(element) {
     element = $(element);

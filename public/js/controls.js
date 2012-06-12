@@ -1,5 +1,3 @@
-// script.aculo.us controls.js v1.9.0, Thu Dec 23 16:54:48 -0500 2010
-
 // Copyright (c) 2005-2010 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)
 //           (c) 2005-2010 Ivan Krstic (http://blogs.law.harvard.edu/ivan)
 //           (c) 2005-2010 Jon Tirsen (http://www.tirsen.com)

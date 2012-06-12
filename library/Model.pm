@@ -11,9 +11,9 @@ sub new {
     # required CPAN modules...
     use LWP::Simple qw/ get /;
     use Digest::MD5 qw/ md5_hex /;
+    use XML::Simple;
     use XML::RSS::Feed;
     use HTML::Strip;
-    use XML::Simple;
     use DBI;
 
     # preamble...
@@ -24,7 +24,7 @@ sub new {
     $arguments{feeds}    = new XML::Simple->XMLin('config/feeds.xml');
     $arguments{language} = new XML::Simple->XMLin('config/language.xml');
     $arguments{disqus}   = new XML::Simple->XMLin('config/disqus.xml');
-    
+
     # prepare DBI setup...
     my $db_driver   = $arguments{config}->{dbase}->{driver};
     my $db_database = $arguments{config}->{dbase}->{database};
@@ -58,11 +58,13 @@ sub get_articles {
     for (my $i = 0; $i <= $max; $i++) {
         if ($self->{feeds}->{feed}->[$i]->{title}) {
 
+            my $feed_title  = $self->{feeds}->{feed}->[$i]->{title};
+
             # first step is to check and see if the feed table associated
             # with this feeds.xml entry even exists within the database...
             if (do_tables(
                     $self,
-                    table_exists => $self->{feeds}->{feed}->[$i]->{title},
+                    table_exists => $feed_title,
                     type         => 'articles'
                 )
               )
@@ -75,7 +77,7 @@ sub get_articles {
                 # create the table, and prepare for later use...
                 do_tables(
                     $self,
-                    create_table => $self->{feeds}->{feed}->[$i]->{title},
+                    create_table => $feed_title,
                     type         => 'articles'
                 );
             }
@@ -89,7 +91,7 @@ sub get_articles {
                 # retrieve table data...
                 $sth =
                   $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes >= $self->{config}->{interval}->{featured}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date"
+                    "SELECT * FROM articles_$feed_title WHERE votes >= $self->{config}->{interval}->{featured}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date"
                   );
                 $sth->execute();
             }
@@ -101,7 +103,7 @@ sub get_articles {
                 # retrieve table data...
                 $sth =
                   $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes BETWEEN $self->{config}->{interval}->{watch_list}->{votes} AND $self->{config}->{interval}->{featured}->{votes}-1 AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date"
+                    "SELECT * FROM articles_$feed_title WHERE votes BETWEEN $self->{config}->{interval}->{watch_list}->{votes} AND $self->{config}->{interval}->{featured}->{votes}-1 AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date"
                   );
                 $sth->execute();
             }
@@ -113,7 +115,7 @@ sub get_articles {
                 # retrieve table data...
                 $sth =
                   $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$self->{feeds}->{feed}->[$i]->{title} WHERE votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date"
+                    "SELECT * FROM articles_$feed_title WHERE votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date"
                   );
                 $sth->execute();
             }
@@ -122,8 +124,8 @@ sub get_articles {
             while (my $ref = $sth->fetchrow_hashref()) {
 
                 my $struct = {
-                    name => $self->{feeds}->{feed}->[$i]->{title},
-                    id => $self->{feeds}->{feed}->[$i]->{title} . $ref->{id},
+                    name   => $feed_title,
+                    id     => $feed_title . $ref->{id},
                     tbl_id => $ref->{id},
                     title  => $ref->{title},
                     info   => $ref->{info},

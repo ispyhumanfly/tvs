@@ -10,6 +10,9 @@
         <!-- general -->
         <feed title='Yahoo' url='http://rss.news.yahoo.com/rss/topstories' icon='http://www.yahoo.com/favicon.ico' />
 	
+        <!-- games -->
+        <feed title='n4g' url='http://n4g.com/rss/news?channel=&amp;sort=latest' icon='http://n4g.com/favicon.ico' />
+
         <!-- technology -->
 	<feed title='Gizmodo' url='http://feeds.gawker.com/gizmodo/excerpts.xml' icon='http://gizmodo.com/favicon.ico' />
         <feed title='Slashdot' url='http://rss.slashdot.org/Slashdot/slashdot' icon='http://slashdot.org/favicon.ico' />

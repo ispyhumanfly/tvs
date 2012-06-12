@@ -33,7 +33,7 @@
         
                                     <div id='article-<%= $_->{id} %>'>
         
-                                        <img src='<%= $_->{icon} %>' height='24' width='24' alt='Feed Icon' />
+                                        <img src='<%= $_->{icon} %>' height='16' width='16' style="border: 1px solid #111; background-color: white;" alt='Feed Icon' />
                                         
                                         <span class='title'>
         

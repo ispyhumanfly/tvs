@@ -1,31 +1,24 @@
 // view.js - TVS auto-syndicated news portal...
 
-/* this functional library is currently in the process of being ported
-   to an object-oriented class for a smoother integration to the
-   tvs news portal back-end. */
-
-// class constructor...
 function View () {
 
-    // public method containers...
     this.articles = {};     // articles container...
     this.effects  = {};     // effects container...
     this.external = {};     // external functions...
 
-    // What was once the old 'clean-up' phase of Controller.pm
-    // has now been moved here. I'll work to make this even nicer,
-    // but so far this is a major performance enhancement to the page load time.
-    // The previous method wasn't asynchronus.
-
+    // load scriptaculous back-end...
+    //var scripts = ('');
+    //
+    //var script = document.createElement('script');
+    //script.type = 'text/javascript';
+    //script.src = libraryName;
+    //document.getElementsByTagName('head')[0].appendChild(script);
+      
     //new Ajax.Request( '/model', { parameters: 'do_prune=1&do_rss=1&get_feeds=1' } );
 
 
-/* c l a s s _ m e t h o d s */
-
-// method to determine if the client can request a vote...
 this.articles.set_voting = function ( name, tbl_id, id ) {
 
-    // first check to see if the correct number of arguments has been passed...
     if ( this.set_voting.arguments.length !=3 ) { return; }
 
     // next we check to see if the user has already voted on this article...
@@ -49,10 +42,8 @@ this.articles.set_voting = function ( name, tbl_id, id ) {
 
 }
 
-// function to send voting information...
 this.articles.do_vote = function ( params, id ) {
 
-    // first check to see if the correct number of arguments has been passed...
     if ( this.do_vote.arguments.length !=2 ) { return }
 
     // send http request to TVS for voting...
@@ -72,6 +63,7 @@ this.effects.smooth_redirect = function (name, id) {
     new Effect.DropOut('article-' + id);
     setTimeout(3000);
     new Effect.Fold('main_page');
+    
     //window.location = '/' + name + '/' + id;
     
     return;
@@ -96,6 +88,7 @@ function set_cookie ( id ) {
 }
 
 // end of class...
+
 }
 
 

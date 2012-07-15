@@ -82,7 +82,7 @@ get '/:page/filter' => [page => qr/\w+/] => sub {
     my $page = $self->param('page');
 
     # Only supports a single 'string' query that matches against
-    # the the 'title' of the article. I should make this so that
+    # the 'title' of the article. I should make this so that
     # any column of the database can be filtered; i.e title,info,url...
     # I think this should really be a SQL query in Model.pm too...
 

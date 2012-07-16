@@ -1,3 +1,6 @@
+% my $model = Model->new;
+% my $disqus = $model->{disqus};
+
 <div class='main'>
 
     <div class='left'>
@@ -65,7 +68,7 @@
 			</div>
 
 			<br /><br />
-		    
+
 		    </div>
 		
 		</div>

@@ -70,11 +70,12 @@
                                 
                             </p>
                             
-                            <div class='jump_to'>
-                                
-                                Jump To :: <a href="javascript:history.go(-1)">GO BACK</a>
-                            
-                            </div>
+			    <div class='jump_to'>
+				
+				Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ?
+				<a href="javascript:scroll_to('bottom');">BOTTOM</a>
+			    
+			    </div>
 
                             <br /><br />
                     
@@ -82,12 +83,17 @@
                         
                         <!-- Disqus Commenting Platform -->
 
+			<br />
+			
                         <div id="disqus_thread"></div>
                         
                         <script type="text/javascript">//<![CDATA[
                         
                             var disqus_shortname = '<%= $disqus->{site}->{shortname}; %>';
-                        
+			    var disqus_title = '<%= $_->{title} %>';
+			    var disqus_url = 'http://<%= $disqus->{site}->{url}; %>/<%= $_->{name} %>/<%= $_->{tbl_id} %>';
+			    var disqus_identifier = '<%= $_->{id} %>';
+			    
                             (function() {
                                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                                 dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

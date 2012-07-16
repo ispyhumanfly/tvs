@@ -39,7 +39,7 @@
     
 		</a>
 	    
-		<div class='tooltip for_watch-this-<%= $_->{id} %>' style="display: none; font-size: 1.2em; background-color: #111; padding: 5px; margin: 0 12px 0 0; border: 1px groove #fff;">
+		<div class='tooltip for_watch-this-<%= $_->{id} %>' style="display: none; font-size: 1.2em; background-color: #111; padding: 10px; margin: 0 12px 0 0; border: 1px groove #fff;">
 		
 		    <%= $_->{info} %>
 
@@ -47,7 +47,8 @@
 		    
 		    <span style="float: right; margin-right: 5px; margin-top: 10px; font-size: 15px;">
 		
-			<a style="color: white;" href="/<%= $_->{name} %>/<%= $_->{tbl_id} %>">Read Article</a>
+			<a style="color: white;" href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );">Vote on Article |</a>
+			<a style="color: white; margin-left: -17px;" href="/<%= $_->{name} %>/<%= $_->{tbl_id} %>">Read Article</a>
 		       	
 		    </span>
 		 

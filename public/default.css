@@ -63,7 +63,7 @@ blockquote {font: bold 1.2em 'Questrial', sans-serif;}
 .feed {
 	background: #222;
 	display: block;
-	font-size: 1.3em;
+	font-size: 1.5em;
 	border: 1px groove #494949;
 	padding: 8px;
 }
@@ -134,7 +134,7 @@ blockquote {font: bold 1.2em 'Questrial', sans-serif;}
 /* style for the options paragraph (vote on article, read article) */
 .options {
     
-    font-size: 1.2em;
+    font-size: 1.4em;
     float: left;
     padding: 3px;
     

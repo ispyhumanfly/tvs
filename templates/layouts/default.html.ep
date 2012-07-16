@@ -43,36 +43,18 @@
 	
 	    <div class="header">
 		
-		<!-- Random Deviant Pictures -->
+		% my @pics;
 		
-		<script type="text/javascript">//<![CDATA[
-		    
-		    var header_ads = new Array();
-		    
-		    // TV by ~tripl3 
-		    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d71lvo' target='_blank'><img src='http://fc02.deviantart.net/fs5/i/2004/303/0/6/TV_by_tripl3.jpg' /></a>");
-	
-		    // TV by ~MkDsg
-		    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d2q4mnv' target='_blank'><img src='http://th00.deviantart.net/fs71/PRE/f/2010/142/7/6/TV_by_MkDsg.png' /></a>");
-	
-		    // New TV by ~bleed-the-sky
-		    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d2molnu' target='_blank'><img src='http://fc00.deviantart.net/fs70/f/2010/090/8/3/83cd022251b13de28b041a97497fe081.jpg' /></a>");
-	
-		    // ID in TV by *fogke
-		    header_ads.push("<a href='http://browse.deviantart.com/?q=tv#/d1haty6' target='_blank'><img src='http://fc01.deviantart.net/fs30/f/2008/175/1/b/ID_in_TV_by_fogke.jpg' /></a>");
-	
-		    // I Am Tv by *ShawnCoss
-		    header_ads.push("<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/d17h64t' target='_blank'><img src='http://th09.deviantart.net/fs22/PRE/f/2007/360/3/3/I_Am_Tv_by_skinpupcoss.jpg' /></a>");
-	
-		    // S.S. Broken TV by ~shudder-stock
-		    header_ads.push("<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/dl22u3' target='_blank'><img src='http://th03.deviantart.net/fs11/PRE/i/2006/177/3/2/S_S__Broken_TV_by_shudder_stock.jpg' /></a>");
-	
-		    var random = Math.floor(Math.random() * header_ads.length);
-		    document.write(header_ads[random]);
-		    
-		//]]></script>
+		% push @pics, "<a href='http://browse.deviantart.com/?q=tv#/d71lvo' target='_blank'><img src='http://fc02.deviantart.net/fs5/i/2004/303/0/6/TV_by_tripl3.jpg' /></a>";
+		% push @pics, "<a href='http://browse.deviantart.com/?q=tv#/d2q4mnv' target='_blank'><img src='http://th00.deviantart.net/fs71/PRE/f/2010/142/7/6/TV_by_MkDsg.png' /></a>";
+		% push @pics, "<a href='http://browse.deviantart.com/?q=tv#/d2molnu' target='_blank'><img src='http://fc00.deviantart.net/fs70/f/2010/090/8/3/83cd022251b13de28b041a97497fe081.jpg' /></a>";
+    		% push @pics, "<a href='http://browse.deviantart.com/?q=tv#/d1haty6' target='_blank'><img src='http://fc01.deviantart.net/fs30/f/2008/175/1/b/ID_in_TV_by_fogke.jpg' /></a>";
+		% push @pics, "<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/d17h64t' target='_blank'><img src='http://th09.deviantart.net/fs22/PRE/f/2007/360/3/3/I_Am_Tv_by_skinpupcoss.jpg' /></a>";		
+		% push @pics, "<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/dl22u3' target='_blank'><img src='http://th03.deviantart.net/fs11/PRE/i/2006/177/3/2/S_S__Broken_TV_by_shudder_stock.jpg' /></a>";
 		
-		<%= $language->{tvs}->{name} %>
+		%== $pics[rand(scalar @pics)];
+		
+		%= $language->{tvs}->{name};
 	    
 	    </div>
 	

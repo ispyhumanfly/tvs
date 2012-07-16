@@ -1,9 +1,9 @@
 # Model.pm - TVS auto-syndicated news portal...
 
-package Model;
-
 use strict;
 use warnings;
+
+package Model;
 
 # class contsructor...
 sub new {
@@ -38,7 +38,6 @@ sub new {
 
     $arguments{dbase}->{'mysql_auto_reconnect'} = 1;
     $arguments{dbase}->{'mysql_enable_utf8'}    = 1;
-
 
     # and bless the OO goodness :)
     return bless \%arguments, $class;

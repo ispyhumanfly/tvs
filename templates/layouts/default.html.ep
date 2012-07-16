@@ -183,9 +183,9 @@
 		
 		<div class="bottom"><br /><br />
 	
-		    <span class="left">&copy; 2007 - 2012 <a href='http://thoughtpivot.com' target="_blank">Thoughtpivot, LLC</a>.</span>
-	
-		    <span class="right">Powered by <strong>TVS [</strong>auto-syndicated news portal<strong>] - git</strong></span>
+<!--		    <span class="left" style="font-size: medium;">&copy; 2007 - 2012 <a href='http://thoughtpivot.com' target="_blank">Thoughtpivot, LLC</a>.</span>
+-->	
+		    <span class="right" style="font-size: 1.8em;">a <strong><a style="text-decoration: none;" href="http://thoughtpivot.com" target="_blank">Thoughtpivot</a></strong> creation</span>
 	
 		    <div class="clearer"><span></span></div>
 	

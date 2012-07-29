@@ -6,10 +6,9 @@
     <dbase driver='DBI:mysql' host='localhost' database='tvs' user='root' password='' />
 
     <!-- Article Interval configuration -->
-    
-    <interval name='featured' days='120' votes='2' />
-    <interval name='watch_list' days='90' votes='1' />
-    <interval name='inbox' days='30' votes='0' />
+    <interval name='featured' days='90' votes='2' />
+    <interval name='watch_list' days='30' votes='1' />
+    <interval name='inbox' days='15' votes='0' />
 
     <!-- Article Pruning configuration -->
     <prune days='365' votes='all' />

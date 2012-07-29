@@ -1,0 +1,8 @@
+<div class='date_filter'>
+
+    <a href="/<%= $page %>/today">Today |</a>
+    <a href="/<%= $page %>/week"> This Week |</a>
+    <a href="/<%= $page %>/month"> This Month |</a>
+    <a href="/<%= $page %>"> All</a>
+    
+</div>

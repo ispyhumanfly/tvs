@@ -86,6 +86,24 @@ blockquote {font: bold 1.2em 'Questrial', sans-serif;}
 	
 }
 
+.date_filter {
+	
+	display: block;
+        float: right;
+	border-bottom: 1px dashed;
+        font-size: 1.2em;
+        padding: 8px;
+}
+
+.date_filter a {
+	
+	text-decoration: none;	
+}
+
+.date_filter a:hover {
+	
+}
+
 /* jump to section style */
 .jump_to {
     display: inline;

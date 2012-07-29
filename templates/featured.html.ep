@@ -7,9 +7,9 @@
 
 	    <br />
 
-	    <div class='location'>
+	    %= include 'filters', page => 'featured'
 
-		<b>/</b> <%= scalar @{ $self->{articles} } %> <strong>Featured</strong> articles...</div><br /><br /><br /><br />
+	    <br /><br /><br /><br />
 
 		<% for ( @{ $self->{articles} } ) { %>
 

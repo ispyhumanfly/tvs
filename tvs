@@ -51,7 +51,6 @@ get '/inbox' => sub {
 
     my $self = shift;
 
-    $self->{datetime} = DateTime->now;
     $self->{articles} = $MODEL->get_articles(list => 'inbox');
 
     $self->render('inbox', layout => 'default');
@@ -64,13 +63,13 @@ get '/:feed/:id' => [feed => qr/\w+/, id => qr/\d+/] => sub {
 
     my $self = shift;
 
-    my $feed    = $self->param('feed');
-    my $id      = $self->param('id');
-    
+    my $feed = $self->param('feed');
+    my $id   = $self->param('id');
+
     $self->{articles} = \@{$MODEL->get_article(feed => $feed, id => $id)};
 
-    print @{ $self->{articles}};
-    
+    print @{$self->{articles}};
+
     $self->render('article', layout => 'default');
 
 } => 'article';
@@ -102,7 +101,54 @@ get '/:page/filter' => [page => qr/\w+/] => sub {
 
     $self->render($page, layout => 'default');
 
-} => 'filter';
+};
+
+get '/:page/:date' => [page => qr/\w+/, date => qr/\w+/] => sub {
+
+    my $self = shift;
+
+    my $page = $self->param('page');
+    my $date = $self->param('date');
+    my @filtered_articles;
+
+    for (@{$MODEL->get_articles(list => $page)}) {
+
+        if ($date eq 'today') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $today_date = DateTime->now;
+
+            next if $article_date->day_of_year != $today_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+        elsif ($date eq 'week') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $week_date = DateTime->now->subtract(days => 7);
+
+            next if $article_date->day_of_year <= $week_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+        elsif ($date eq 'month') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $month_date = DateTime->now->subtract(days => 30);
+
+            next if $article_date->day_of_year <= $month_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+    }
+
+    $self->{articles} = \@filtered_articles;
+    $self->render($page, layout => 'default');
+
+};
 
 post '/vote' => sub {
 
@@ -116,7 +162,7 @@ post '/vote' => sub {
         );
     }
 
-} => 'vote';
+};
 
 post '/model' => sub {
 
@@ -133,7 +179,7 @@ post '/model' => sub {
 
     $self->redirect_to('/');
 
-} => 'model';
+};
 
 
 app->config(hypnotoad => {listen => ['http://*:80']});

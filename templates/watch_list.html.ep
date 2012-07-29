@@ -9,12 +9,8 @@
 
 	    <br />
 
-	    <div class='location'>
+	    %= include 'filters', page => 'watch_list'
 
-		<b>/</b> <%= scalar @{ $self->{articles} } %> <strong>Watch List</strong> articles...
-	    
-	    </div>
-	    
 	    <br /><br /><br /><br />
 
 	    <% for ( @{ $self->{articles} } ) { %>

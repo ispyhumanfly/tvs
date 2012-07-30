@@ -9,11 +9,7 @@
 
 	    <br />
 
-	    <div class='location'>
-
-		<b>/</b> 1 <strong><%= $self->{articles}->[0]->{name} %></strong> article...
-            
-            </div>
+	    %= include 'filters', page => 'article'
             
             <br /><br /><br /><br />
 

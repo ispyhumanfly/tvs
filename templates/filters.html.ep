@@ -1,10 +1,19 @@
 % my $model = Model->new;
 % my $language = $model->{language};
+% my $date = $self->param('date');
 
 <div class='date_filter'>
 
-    <a href="/<%= $page %>/today"><%= $language->{filter}->{today} %> |</a>
-    <a href="/<%= $page %>/week"> <%= $language->{filter}->{week} %> |</a>
-    <a href="/<%= $page %>/month"> <%= $language->{filter}->{month} %></a>
+    <% unless ($page =~ m/^home|^article/i)  { %>
+    
+    <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'today' %> href="/<%= $page %>/today"><%= $language->{filter}->{today} %>,</a>
+    <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'week' %> href="/<%= $page %>/week"> <%= $language->{filter}->{week} %>,</a>
+    <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'month' %> href="/<%= $page %>/month"> <%= $language->{filter}->{month} %></a>
+    
+    <% } else { %>
+    
+    No filters available.
+    
+    <% } %>
     
 </div>

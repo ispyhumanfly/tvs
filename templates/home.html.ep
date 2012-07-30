@@ -4,7 +4,11 @@
 
 	<div class='content'>
 
-	    <br /><div class='location'><b>/</b> <strong>Home</strong> page...</div><br /><br /><br /><br />
+	    <br />
+	    
+	    %= include 'filters', page => 'home'
+	    
+	    <br /><br /><br /><br />
 
 	    <!-- TVS: something new -->
 	    <div id='article-home1' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002012a</a></span></h1>

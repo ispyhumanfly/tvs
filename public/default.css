@@ -90,9 +90,8 @@ blockquote {font: bold 1.2em 'Questrial', sans-serif;}
 	
 	display: block;
         float: right;
-	border-bottom: 1px dashed;
-        font-size: 1.2em;
-        padding: 8px;
+	font-family: 'Questrial', sans-serif;
+        font-size: 1.5em;
 }
 
 .date_filter a {
@@ -102,10 +101,12 @@ blockquote {font: bold 1.2em 'Questrial', sans-serif;}
 
 .date_filter a:hover {
 	
+	color: #FFCCCC;
 }
 
 /* jump to section style */
 .jump_to {
+	
     display: inline;
     float: right;    
 }
@@ -347,6 +348,10 @@ h2 {
 	color:#FFCCCC;
 }
 
+.nav_norm_active {
+	background: #191919 url(images/nav_hover.gif);
+	color:#FFCCCC;
+}
 
 /* !! sub-navigation !! */
 

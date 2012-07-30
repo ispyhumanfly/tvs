@@ -30,9 +30,9 @@ get '/home' => sub {
 get '/featured' => sub {
 
     my $self = shift;
-
+    $self->{'page'} = 'featured';
+    
     $self->{articles} = $MODEL->get_articles(list => 'featured');
-
     $self->render('featured', layout => 'default');
 
 } => 'featured';
@@ -40,6 +40,7 @@ get '/featured' => sub {
 get '/watch_list' => sub {
 
     my $self = shift;
+    $self->{'page'} = 'watch_list';
 
     $self->{articles} = $MODEL->get_articles(list => 'watch_list');
 
@@ -50,6 +51,7 @@ get '/watch_list' => sub {
 get '/inbox' => sub {
 
     my $self = shift;
+    $self->{'page'} = 'inbox';
 
     $self->{articles} = $MODEL->get_articles(list => 'inbox');
 
@@ -77,6 +79,7 @@ get '/:feed/:id' => [feed => qr/\w+/, id => qr/\d+/] => sub {
 get '/:page/filter' => [page => qr/\w+/] => sub {
 
     my $self = shift;
+    $self->{'page'} = $self->param('page');
 
     my $page = $self->param('page');
 
@@ -93,7 +96,7 @@ get '/:page/filter' => [page => qr/\w+/] => sub {
 
             my $string = $self->param('string');
 
-            push @results, $_ if $_->{title} =~ /$string/i;
+            push @results, $_ if $_->{title} =~ m/$string/i;
         }
 
         $self->{articles} = \@results;
@@ -106,6 +109,7 @@ get '/:page/filter' => [page => qr/\w+/] => sub {
 get '/:page/:date' => [page => qr/\w+/, date => qr/\w+/] => sub {
 
     my $self = shift;
+    $self->{'page'} = $self->param('page');
 
     my $page = $self->param('page');
     my $date = $self->param('date');

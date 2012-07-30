@@ -11,4 +11,7 @@
     <!-- Blocks -->
     <block about="Whats this?" random_articles="Watch this!" watch_list="Watch list" inside="Whats inside?" />
     
+    <!-- Filters -->
+    <filter today="Today" week="This Week" month="This Month" />
+    
 </language>

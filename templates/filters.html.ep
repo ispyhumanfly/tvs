@@ -1,8 +1,10 @@
+% my $model = Model->new;
+% my $language = $model->{language};
+
 <div class='date_filter'>
 
-    <a href="/<%= $page %>/today">Today |</a>
-    <a href="/<%= $page %>/week"> This Week |</a>
-    <a href="/<%= $page %>/month"> This Month |</a>
-    <a href="/<%= $page %>"> All</a>
+    <a href="/<%= $page %>/today"><%= $language->{filter}->{today} %> |</a>
+    <a href="/<%= $page %>/week"> <%= $language->{filter}->{week} %> |</a>
+    <a href="/<%= $page %>/month"> <%= $language->{filter}->{month} %></a>
     
 </div>

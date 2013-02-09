@@ -22,6 +22,7 @@ get '/' => sub {
 get '/home' => sub {
 
     my $self = shift;
+	$self->{'page'} = 'home';
 
     $self->render('home', layout => 'default');
 

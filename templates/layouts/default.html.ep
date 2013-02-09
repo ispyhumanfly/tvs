@@ -26,7 +26,7 @@
 	
 	    // instantiate the class...
 	    var view = new View();
-	
+
 	// ]]></script>
 	
 	<!--[if lt IE 9]>
@@ -60,32 +60,7 @@
 	
 	    <div class="stripes"><span></span></div>
 	
-	    <div class='nav_norm'>
-	
-		<a href='/home' style="border-left: 1px solid #161616; text-decoration: none;">
-		    
-		    <%= $language->{page}->{home} %>
-		    
-		</a>
-		<a href='/featured' style="text-decoration: none;">
-		    
-		    <%= $language->{page}->{featured} %>
-		
-		</a>
-		<a href='/watch_list' style="text-decoration: none;">
-		    
-		    <%= $language->{page}->{watch_list} %>
-		
-		</a>
-		<a href='/inbox' style="text-decoration: none;">
-		    
-		    <%= $language->{page}->{inbox} %>
-		
-		</a>
-	
-		<div class="clearer"><span></span></div>
-		
-	    </div>
+		%= include 'nav', language => $language, page => $self->{page}
 	
 	    <div class="stripes"><span></span></div>
 	

@@ -3,7 +3,7 @@
 <config>
 
     <!-- Database configuration -->
-    <dbase driver='DBI:mysql' host='localhost' database='tvs' user='root' password='' />
+    <dbase driver='DBI:mysql' host='localhost' database='tvs' user='root' password='s4rc0m4' />
 
     <!-- Article Interval configuration -->
     <interval name='featured' days='90' votes='2' />

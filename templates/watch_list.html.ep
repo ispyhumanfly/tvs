@@ -28,7 +28,7 @@
 		    
 		    <div class='descr'><img src='<%= $_->{icon} %>' height='16' width='16' alt=''/>
 		    
-			from <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'><%= $_->{name} %></a> on <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.
+			from <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'><%= $_->{name} %></a> on <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors liked this article.
 		    
 		    </div>
 		    

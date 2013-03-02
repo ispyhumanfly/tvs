@@ -9,8 +9,6 @@
 
 	    <br />
 
-	    %= include 'filters', page => 'article'
-            
             <br /><br /><br /><br />
 
             <% for ( @{ $self->{articles} } ) { %>
@@ -30,7 +28,7 @@
                             
                             <img src='<%= $_->{icon} %>' height='16' width='16' alt=''/>
                             from <a href='<%= $_->{url} %>' target="_blank"><%= $_->{name} %></a> on
-                            <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors voted on this article.
+                            <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> liked this article.
                         
                         </div>
                         

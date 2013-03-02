@@ -71,8 +71,6 @@ get '/:feed/:id' => [feed => qr/\w+/, id => qr/\d+/] => sub {
 
     $self->{articles} = \@{$MODEL->get_article(feed => $feed, id => $id)};
 
-    print @{$self->{articles}};
-
     $self->render('article', layout => 'default');
 
 } => 'article';

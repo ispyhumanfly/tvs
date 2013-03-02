@@ -34,7 +34,7 @@ this.articles.set_voting = function ( name, tbl_id, id ) {
     else {
 
         // provide the option to submit a vote...
-        document.write( '<a style="margin-right: 2px;" href="javascript:view.articles.do_vote( \'' + name + ':' + tbl_id + '\', \'' + id + '\' );\">Vote on Article</a>' );
+        document.write( '<a style="margin-right: 2px;" href="javascript:view.articles.do_vote( \'' + name + ':' + tbl_id + '\', \'' + id + '\' );\">Like</a>' );
     }
 
     // and return...

@@ -40,7 +40,7 @@
 			    // ]]></script>
 
 			    <!-- full article -->
-			    <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'>Read Article</a></p><div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+			    <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'>Read</a></p><div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
 
 		    <br /><br /></div></div></div>
 

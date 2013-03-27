@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
-<disqus>
+<disqus enabled="false">
 
     <site name='Television Suicide' shortname='televisionsuicide' url='televisionsuicide.com' />
 

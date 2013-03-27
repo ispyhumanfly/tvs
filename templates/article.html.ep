@@ -3,15 +3,16 @@
 
 <div class='main'>
 
-    <div class='left'>
+    <!--div class='left' -->
 
 	<div class='content'>
 
 	    <br />
 
-            <br /><br /><br /><br />
+                <% for ( @{ $self->{articles} } ) { %>
 
-            <% for ( @{ $self->{articles} } ) { %>
+		<h1 style="display:none;"><%= $_->{title} %></h1>
+		<p style="display:none;"><%= $_->{info} %></p>
 
                 <!-- some feed shit goes here -->
                 <div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'>
@@ -74,8 +75,9 @@
                             <br /><br />
                     
                         </div>
-                        
-                        <!-- Disqus Commenting Platform -->
+                               
+                    </div>
+                            <!-- Disqus Commenting Platform -->
 
 			<br />
 			
@@ -95,9 +97,7 @@
                             })();
                         
                         // ]]></script>
-        
-                    </div>
-    
+ 
                 </div>
 
                 <% last; %>
@@ -106,6 +106,4 @@
 
 	</div>
 
-    </div>
 
-    %= include 'blocks'

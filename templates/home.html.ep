@@ -7,9 +7,29 @@
 	    <br />
 	    
 	    %= include 'filters', page => 'home'
-	    
+	
 	    <br /><br /><br /><br />
 
+
+	    <!-- TVS: something new -->
+	    <div id='article-home0' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002013b</a></span></h1>
+	    <div class='descr'><img src='https://en.gravatar.com/userimage/12485968/0010eaf0fb51cf58912ccce221ded0df.jpeg' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@thoughtpivot.com">ispyhumanfly</a> on 2013-03-27.</div><div id='toggle-home0'><br />
+
+		    <!-- article body -->
+		    <div class='feed'>
+
+		    Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?
+
+		    </div>
+
+		    <br />
+
+		    <!-- jump-to -->
+		    <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+
+	    <br /><br /></div></div></div>
+
+    
 	    <!-- TVS: something new -->
 	    <div id='article-home1' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002012a</a></span></h1>
 	    <div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2012-07-15.</div><div id='toggle-home2'><br />

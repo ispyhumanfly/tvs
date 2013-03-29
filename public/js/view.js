@@ -42,6 +42,30 @@ this.articles.set_voting = function ( name, tbl_id, id ) {
 
 }
 
+this.articles.set_voting = function ( name, tbl_id, id ) {
+
+    if ( this.set_voting.arguments.length !=3 ) { return; }
+
+    // next we check to see if the user has already voted on this article...
+    var cookies = document.cookie;
+    var article = cookies.indexOf( id + '=' );
+
+    // if the article has been voted on, do nothing.  otherwise provide
+    // them an option to vote via the view.articles.do_vote method...
+    if ( article != -1 ) {
+
+        /* do nothing */
+    }
+    else {
+
+        // provide the option to submit a vote...
+        document.write( '<a style="margin-right: 2px;" href="javascript:view.articles.do_vote( \'' + name + ':' + tbl_id + '\', \'' + id + '\' );\">Like Article</a>' );
+    }
+
+    // and return...
+    return;
+
+}
 this.articles.do_vote = function ( params, id ) {
 
     if ( this.do_vote.arguments.length !=2 ) { return }
@@ -52,7 +76,7 @@ this.articles.do_vote = function ( params, id ) {
     // create a cookie to store voted on article information...
     set_cookie( id );
 
-    new Effect.DropOut( 'article-' + id );
+    new Effect.Pulsate( 'article-' + id );
 
     return;
 

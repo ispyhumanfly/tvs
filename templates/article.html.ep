@@ -33,12 +33,6 @@
                         
                         </div>
                         
-                        <p class="options_top">
-                        
-                            <a href="javascript:Effect.toggle('toggle-<%= $_->{id} %>', 'slide');">Toggle Article</a>
-                            
-                        </p>
-                        
                         <div id='toggle-<%= $_->{id} %>'>
                         
                             <br />

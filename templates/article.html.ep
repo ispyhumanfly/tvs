@@ -39,7 +39,7 @@
 
                             <!-- article body -->
                             <div class='feed'>
-                                <iframe src="<%= $_->{url} %>" style="width: 100%; min-height: 1200px; border: 0; overflow: hidden;" scrolling="no"></iframe>
+                                <iframe src="<%= $_->{url} %>" style="width: 100%; min-height: 1200px; border: 0; overflow: hidden; background-color: white;" scrolling="no"></iframe>
                             </div>
     
                             <br />

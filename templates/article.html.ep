@@ -50,7 +50,7 @@
                                 <script type="text/javascript">//<![CDATA[
         
                                     // initiate voting options...
-                                    view.articles.set_voting_article( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
+                                    view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
         
                                 // ]]></script>
         

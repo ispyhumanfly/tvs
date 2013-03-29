@@ -55,7 +55,7 @@
                                 // ]]></script>
         
                                 <!-- full article -->
-                                <a href='<%= $_->{url} %>' target="_blank">Read Full Article</a>
+                                <a href='<%= $_->{url} %>' target="_blank">Open in New Tab</a>
                                 
                             </p>
                             

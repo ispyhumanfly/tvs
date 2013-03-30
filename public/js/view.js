@@ -82,6 +82,22 @@ this.articles.do_vote = function ( params, id ) {
 
 }
 
+this.articles.do_vote_puff = function ( params, id ) {
+
+    if ( this.do_vote.arguments.length !=2 ) { return }
+
+    // send http request to TVS for voting...
+    new Ajax.Request( '/vote', { parameters: params } );
+
+    // create a cookie to store voted on article information...
+    set_cookie( id );
+
+    new Effect.Puff( 'article-' + id );
+
+    return;
+
+}
+
 this.effects.smooth_redirect = function (name, id) {
     
     new Effect.DropOut('article-' + id);

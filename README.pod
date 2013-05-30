@@ -25,11 +25,11 @@ A simple web based auto-syndicated rss portal.
 	
 =head1 BUGS
 
-	http://github.com/ispyhumanfly/tvs/issues
+	http://github.com/thoughtpivot/tvs/issues
 
 =head1 SEE ALSO
 
-	http://wiki.github.com/ispyhumanfly/tvs/wiki
+	http://wiki.github.com/thoughtpivot/tvs/wiki
 
 =head1 LICENSE
 

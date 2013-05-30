@@ -20,7 +20,10 @@
 	<feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='http://www.linuxinsider.com/favicon.ico' />
 
         <!-- Programming -->
+        <feed title='ModernPerlBooks' url='http://www.modernperlbooks.com/mt/atom.xml' icon='http://www.modernperlbooks.com/favicon.ico' />
         <feed title='AListApart' url='http://www.alistapart.com/site/rss' icon='http://www.alistapart.com/pix/alalogo.gif' />
+
+
 
 	<!-- temporary bug fix ( for some reason, Model.pm -> 'get_articles' doesn't recognize the final entry ) -->
 	<feed title='AListApart' url='http://www.alistapart.com/site/rss' icon='http://www.alistapart.com/pix/alalogo.gif' />

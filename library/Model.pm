@@ -90,7 +90,7 @@ sub get_articles {
                 # retrieve table data...
                 $sth =
                   $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$feed_title WHERE votes >= $self->{config}->{interval}->{featured}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date"
+                    "SELECT * FROM articles_$feed_title WHERE votes >= $self->{config}->{interval}->{home}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{home}->{days} day) <= date"
                   );
                 $sth->execute();
             }
@@ -146,9 +146,9 @@ sub get_articles {
 
     ## if this is a 'home' page article request, we handle
     ## things differantly than for the other pages...
-    #if ($arguments{list} eq 'home') {
-    #    @articles = $articles[int rand($#articles + 1)];
-    #}
+    if ($arguments{list} eq 'home') {
+        @articles = $articles[int rand($#articles + 1)];
+    }
 
     # if the 'random_articles' argument is passed, shorten the length
     # of the articles listed for better viewing/usage...

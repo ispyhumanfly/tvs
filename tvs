@@ -22,8 +22,9 @@ get '/' => sub {
 get '/home' => sub {
 
     my $self = shift;
-	$self->{'page'} = 'home';
+    $self->{'page'} = 'home';
 
+    $self->{articles} = $MODEL->get_articles(list => 'home');
     $self->render('home', layout => 'default');
 
 } => 'home';

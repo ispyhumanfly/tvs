@@ -3,7 +3,7 @@
 <language>
 
     <!-- TVS News Portal -->
-    <tvs title="TVS by Thoughtpivot" name="TVS News Reader" />
+    <tvs title="TVS by Thoughtpivot" name="really geeky news." />
     
     <!-- Pages -->
     <page home="Home" featured="Featured" watch_list="Watch List" inbox="Inbox" />

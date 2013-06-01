@@ -15,6 +15,6 @@
     <prune days='120' votes='all' />
 
     <!-- RSS Subscription configuration -->
-    <rss title='TVS' link='http://televisionsuicide.com' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2012 Thoughtpivot, LLC' webmaster='ispyhumanfly' />
+    <rss title='TVS' link='http://tvs.thoughtpivot.com' language='en' description='a pretty cool news portal' rating='(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))' copyright='2012 Thoughtpivot, LLC' webmaster='ispyhumanfly' />
 
 </config>

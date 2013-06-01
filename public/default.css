@@ -220,12 +220,12 @@ h2 {
 	background: #111;
 	border-bottom: 1px solid #333;
 	
-	font-size: 10em;
+	font-size: 7em;
 	color: #ffffff;
 	font-family: 'Annie Use Your Telescope', cursive;
 	margin-left:20px;
 	
-	height: 150px;
+	min-height: 150px;
 }
 
 /* style for the header section links */

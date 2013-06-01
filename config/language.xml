@@ -3,7 +3,7 @@
 <language>
 
     <!-- TVS News Portal -->
-    <tvs title="TVS" name="Television Suicide" />
+    <tvs title="TVS by Thoughtpivot" name="TVS News Reader" />
     
     <!-- Pages -->
     <page home="Home" featured="Featured" watch_list="Watch List" inbox="Inbox" />

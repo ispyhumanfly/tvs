@@ -24,25 +24,44 @@
 				</span>
 			    </h1>
 			    
-			    <div class='descr'><img src='<%= $_->{icon} %>' height='16' width='16' alt=''/> from <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'><%= $_->{name} %></a> on <%= $_->{date} %>. <strong><%= $_->{votes} %></strong> visitors liked this article.</div><div id='toggle-<%= $_->{id} %>'><br />
+			    <div class='descr'>
+				<img src='<%= $_->{icon} %>' height='16' width='16' alt=''/> from
+				<a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'><%= $_->{name} %></a> on <%= $_->{date} %>.
+				<strong><%= $_->{votes} %></strong> visitors liked this article.
+			    </div>
+			    
+			    <div id='toggle-<%= $_->{id} %>'>
+			    
+				<br />
 
-			    <!-- article body -->
-			    <div class='feed'><%= $_->{info} %></div>
+				<!-- article body -->
+				<div class='feed'><%= $_->{info} %></div>
 
-			    <br /><p class='options'>
+				<br />
+				
+				<p class='options'>
 
-			    <!-- voting module -->
-			    <script type="text/javascript">//<![CDATA[
+				    <!-- voting module -->
+				    <script type="text/javascript">//<![CDATA[
 
-				// initiate voting options...
-				view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
+				    // initiate voting options...
+				    view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
 
-			    // ]]></script>
+				    // ]]></script>
 
-			    <!-- full article -->
-			    <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'>Read Article</a></p><div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+				    <!-- full article -->
+				    <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'>Read Article</a>
+				</p>
+				<div class='jump_to'>
+				    Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ?
+				    <a href="javascript:scroll_to('bottom');">BOTTOM</a>
+				</div>
 
-		    <br /><br /></div></div></div>
+				<br />
+				<br />
+			    </div>
+			</div>
+		    </div>
 
 		    <% } %>
 

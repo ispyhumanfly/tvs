@@ -5,7 +5,7 @@ use Modern::Perl;
 use Mojolicious::Lite;
 use DateTime::Format::MySQL;
 
-use lib 'library';
+use lib 'lib';
 use Model;
 
 my $MODEL = Model->new;

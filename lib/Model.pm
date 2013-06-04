@@ -1,14 +1,10 @@
-# Model.pm - TVS auto-syndicated news portal...
+# Model.pm :: The TVS News Engine
 
-use strict;
-use warnings;
-
+use Modern::Perl;
 package Model;
 
-# class contsructor...
 sub new {
 
-    # required CPAN modules...
     use LWP::Simple qw/ get /;
     use Digest::MD5 qw/ md5_hex /;
     use XML::Simple;
@@ -16,115 +12,108 @@ sub new {
     use HTML::Strip;
     use DBI;
 
-    # preamble...
-    my ($class, %arguments) = @_;
+    my ($class, %options) = @_;
 
-    # pre-load instance wide configuration files...
-    $arguments{config}   = new XML::Simple->XMLin('config/config.xml');
-    $arguments{feeds}    = new XML::Simple->XMLin('config/feeds.xml');
-    $arguments{language} = new XML::Simple->XMLin('config/language.xml');
-    $arguments{disqus}   = new XML::Simple->XMLin('config/disqus.xml');
+    $options{config}   = new XML::Simple->XMLin('config/config.xml');
+    $options{feeds}    = new XML::Simple->XMLin('config/feeds.xml');
+    $options{language} = new XML::Simple->XMLin('config/language.xml');
+    $options{disqus}   = new XML::Simple->XMLin('config/disqus.xml');
 
-    # prepare DBI setup...
-    my $db_driver   = $arguments{config}->{dbase}->{driver};
-    my $db_database = $arguments{config}->{dbase}->{database};
-    my $db_host     = $arguments{config}->{dbase}->{host};
-    my $db_user     = $arguments{config}->{dbase}->{user};
-    my $db_password = $arguments{config}->{dbase}->{password};
+    my $db_driver   = $options{config}->{dbase}->{driver};
+    my $db_database = $options{config}->{dbase}->{database};
+    my $db_host     = $options{config}->{dbase}->{host};
+    my $db_user     = $options{config}->{dbase}->{user};
+    my $db_password = $options{config}->{dbase}->{password};
 
-    # initiate DBI connection...
-    $arguments{dbase} = DBI->connect("$db_driver:database=$db_database:host=",
+    $options{dbase} = DBI->connect("$db_driver:database=$db_database:host=",
         $db_user, $db_password, {'PrintError' => 0, 'RaiseError' => 1});
 
-    $arguments{dbase}->{'mysql_auto_reconnect'} = 1;
-    $arguments{dbase}->{'mysql_enable_utf8'}    = 1;
+    $options{dbase}->{'mysql_auto_reconnect'} = 1;
+    $options{dbase}->{'mysql_enable_utf8'}    = 1;
 
-    # and bless the OO goodness :)
-    return bless \%arguments, $class;
+    return bless \%options, $class;
 
 }
 
-# method to prepare, sort and return the current
-# articles stored within the database...
 sub get_articles {
 
-    # preamble...
-    my ($self, %arguments) = @_;
-    my (@articles, $sth);
+    my ($self, %options) = @_;
+    my (@articles, $sth, $query);
 
-    # sort and return articles...
-    my $max = @{$self->{feeds}->{feed}};
-    for (my $i = 0; $i <= $max; $i++) {
-        if ($self->{feeds}->{feed}->[$i]->{title}) {
+    my $index = 0;
 
-            my $feed_title  = $self->{feeds}->{feed}->[$i]->{title};
+    for (@{$self->{feeds}->{feed}}) {
+        if ($self->{feeds}->{feed}->[$index]->{title}) {
 
-            # first step is to check and see if the feed table associated
-            # with this feeds.xml entry even exists within the database...
-            if (do_tables(
+            my $feed = $self->{feeds}->{feed}->[$index]->{title};
+
+            unless (
+                do_tables(
                     $self,
-                    table_exists => $feed_title,
+                    table_exists => $feed,
                     type         => 'articles'
                 )
               )
             {
-
-                # do nothing, the feed already exists in the database...
-            }
-            else {
-
-                # create the table, and prepare for later use...
                 do_tables(
                     $self,
-                    create_table => $feed_title,
+                    create_table => $feed,
                     type         => 'articles'
                 );
             }
+            
+            if ($options{list} eq 'home') {
 
-            # retrieve articles for the featured & home section ( ie. articles
-            # that have been voted on more than 2 times...
-            if (   ($arguments{'list'} eq 'featured')
-                or ($arguments{list} eq 'home'))
-            {
+                $query =
+                    "SELECT * FROM articles_$feed "
+                  . "WHERE votes >= $self->{config}->{interval}->{home}->{votes} "
+                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{home}->{days} day) <= date";
 
-                # retrieve table data...
-                $sth =
-                  $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$feed_title WHERE votes >= $self->{config}->{interval}->{home}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{home}->{days} day) <= date"
-                  );
+                $sth = $self->{dbase}->prepare($query);
                 $sth->execute();
             }
 
-            # retrieve articles for the watch_list section ( ie.
-            # articles that have been voted on atleast once.
-            elsif ($arguments{'list'} eq 'watch_list') {
+            elsif ($options{list} eq 'featured') {
 
-                # retrieve table data...
-                $sth =
-                  $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$feed_title WHERE votes BETWEEN $self->{config}->{interval}->{watch_list}->{votes} AND $self->{config}->{interval}->{featured}->{votes}-1 AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date"
-                  );
+                $query =
+                    "SELECT * FROM articles_$feed WHERE votes "
+                  . "BETWEEN $self->{config}->{interval}->{featured}->{votes} "
+                  . "AND $self->{config}->{interval}->{home}->{votes} "
+                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date";
+
+                $sth = $self->{dbase}->prepare($query);
                 $sth->execute();
             }
 
-            # retrieve articles for the inbox section ( ie. articles that
-            # have yet to be voted on...
-            elsif ($arguments{'list'} eq 'inbox') {
+            elsif ($options{list} eq 'watch_list') {
 
-                # retrieve table data...
-                $sth =
-                  $self->{dbase}->prepare(
-                    "SELECT * FROM articles_$feed_title WHERE votes = $self->{config}->{interval}->{inbox}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date"
-                  );
+                $query =
+                    "SELECT * FROM articles_$feed WHERE votes "
+                  . "BETWEEN $self->{config}->{interval}->{watch_list}->{votes} "
+                  . "AND $self->{config}->{interval}->{featured}->{votes} "
+                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date";
+
+                $sth = $self->{dbase}->prepare($query);
                 $sth->execute();
             }
 
-            # extract data from each entry...
+            elsif ($options{list} eq 'inbox') {
+
+                $query =
+                    "SELECT * FROM articles_$feed WHERE votes "
+                  . "BETWEEN $self->{config}->{interval}->{inbox}->{votes} "
+                  . "AND $self->{config}->{interval}->{watch_list}->{votes} "
+                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date";
+
+                $sth = $self->{dbase}->prepare($query);
+                $sth->execute();
+            }
+
             while (my $ref = $sth->fetchrow_hashref()) {
 
                 my $struct = {
-                    name   => $feed_title,
-                    id     => $feed_title . $ref->{id},
+                    name   => $feed,
+                    id     => $feed . $ref->{id},
                     tbl_id => $ref->{id},
                     title  => $ref->{title},
                     info   => $ref->{info},
@@ -137,26 +126,12 @@ sub get_articles {
 
                 push @articles, $struct;
             }
+
+            $index++;
         }
     }
 
-    # randomize all articles... i do this so as to keep the
-    # appearance of fresh looking content... fooled yuh :)
     @articles = do_random($self, @articles);
-
-    ## if this is a 'home' page article request, we handle
-    ## things differantly than for the other pages...
-    if ($arguments{list} eq 'home') {
-        @articles = $articles[int rand($#articles + 1)];
-    }
-
-    # if the 'random_articles' argument is passed, shorten the length
-    # of the articles listed for better viewing/usage...
-    if ($arguments{random_articles}) {
-        @articles = @articles[0 .. $arguments{random_articles}];
-    }
-
-    # and return...
     return \@articles;
 
 }

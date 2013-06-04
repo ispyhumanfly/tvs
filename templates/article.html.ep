@@ -15,6 +15,13 @@
 		<h1 style="display:none;"><%= $_->{title} %></h1>
 		<p style="display:none;"><%= $_->{info} %></p>
 
+		<script type="text/javascript">//<![CDATA[
+
+		    var params = "name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>";
+		    new Ajax.Request( '/vote', { parameters: params } );
+
+		// ]]></script>
+		
                 <!-- some feed shit goes here -->
                 <div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'>
                 

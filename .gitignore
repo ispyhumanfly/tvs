@@ -3,7 +3,6 @@
 !.perltidyrc
 *~
 *bak
-lib
 blib
 Makefile*
 !Makefile.PL
@@ -16,4 +15,5 @@ nytprof*
 tvsuicide.pem
 tvs.pem
 hypnotoad.pid
+log
 

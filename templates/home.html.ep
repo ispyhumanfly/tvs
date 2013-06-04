@@ -1,3 +1,4 @@
+
 <div class='main'>
 
     <div class='left'>
@@ -5,87 +6,67 @@
 	<div class='content'>
 
 	    <br />
-	    
+
 	    %= include 'filters', page => 'home'
-	
+
 	    <br /><br /><br /><br />
 
+		<% for ( @{ $self->{articles} } ) { %>
 
-	    <!-- TVS: something new -->
-	    <div id='article-home0' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002013b</a></span></h1>
-	    <div class='descr'><img src='https://en.gravatar.com/userimage/12485968/0010eaf0fb51cf58912ccce221ded0df.jpeg' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@thoughtpivot.com">ispyhumanfly</a> on 2013-03-27.</div><div id='toggle-home0'><br />
+		    <!-- some feed shit goes here -->
+		    <div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'>
+		    
+			<div class="article">
+			    
+			    <h1>
+				<span class="title">
+				    <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'><%= $_->{title} %></a>
+				</span>
+			    </h1>
+			    
+			    <div class='descr'>
+				<img src='<%= $_->{icon} %>' height='16' width='16' alt=''/> from
+				<a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'><%= $_->{name} %></a> on <%= $_->{date} %>.
+				<strong><%= $_->{votes} %></strong> visitors liked this article.
+			    </div>
+			    
+			    <div id='toggle-<%= $_->{id} %>'>
+			    
+				<br />
 
-		    <!-- article body -->
-		    <div class='feed'>
+				<!-- article body -->
+				<div class='feed'><%= $_->{info} %></div>
 
-		    Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?
+				<br />
+				
+				<p class='options'>
 
+				    <!-- voting module -->
+				    <script type="text/javascript">//<![CDATA[
+
+				    // initiate voting options...
+				    view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
+
+				    // ]]></script>
+
+				    <!-- full article -->
+				    <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'>Read Article</a>
+				</p>
+				<div class='jump_to'>
+				    Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ?
+				    <a href="javascript:scroll_to('bottom');">BOTTOM</a>
+				</div>
+
+				<br />
+				<br />
+			    </div>
+			</div>
 		    </div>
 
-		    <br />
+		    <% } %>
 
-		    <!-- jump-to -->
-		    <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
+	    </div>
 
-	    <br /><br /></div></div></div>
-
-    
-	    <!-- TVS: something new -->
-	    <div id='article-home1' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002012a</a></span></h1>
-	    <div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2012-07-15.</div><div id='toggle-home2'><br />
-
-		    <!-- article body -->
-		    <div class='feed'>
-
-		    Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?
-
-		    </div>
-
-		    <br />
-
-		    <!-- jump-to -->
-		    <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
-
-	    <br /><br /></div></div></div>
-
-	    <!-- TVS: something new -->
-	    <div id='article-home2' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002011a</a></span></h1>
-	    <div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2011-08-04.</div><div id='toggle-home2'><br />
-
-		    <!-- article body -->
-		    <div class='feed'>
-
-		    The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.
-
-		    </div>
-
-		    <br />
-
-		    <!-- jump-to -->
-		    <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
-
-	    <br /><br /></div></div></div>
-
-	    <!-- TVS: the open source project -->
-	    <div id='article-home3' style='padding-bottom: 15px;'><div class="article"><h1><span class="title"><a href='#'>TVS 1.002008a</a></span></h1>
-	    <div class='descr'><img src='/images/ispy16x16.gif' height='16' width='16' alt=''/> from <a href="mailto:ispyhumanfly@gmail.com">ispyhumanfly</a> on 2008-09-30.</div><div id='toggle-home2'><br />
-
-		    <!-- article body -->
-		    <div class='feed'>
-
-		    Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit. 
-
-		    </div>
-
-		    <br />
-
-		    <!-- jump-to -->
-		    <div class='jump_to'>Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ? <a href="javascript:scroll_to('bottom');">BOTTOM</a></div>
-
-	    <br /><br /></div></div></div>
-
-	</div>
-    
     </div>
 
 <%= include 'blocks' %>

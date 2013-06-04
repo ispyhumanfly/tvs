@@ -9,17 +9,10 @@
 
     <!-- general -->
     <feed title='Yahoo' url='http://rss.news.yahoo.com/rss/topstories' icon='http://www.yahoo.com/favicon.ico' />
-    
-    <!-- games -->
-<!--    <feed title='n4g' url='http://n4g.com/rss/news?channel=&amp;sort=latest' icon='http://n4g.com/favicon.ico' />
--->
 
     <!-- technology -->
     <feed title='Slashdot' url='http://rss.slashdot.org/Slashdot/slashdot' icon='http://slashdot.org/favicon.ico' />
     <feed title='Wired' url='http://feeds.wired.com/wired/index' icon='http://www.wired.com/favicon.ico' />
-    
-<!--    <feed title='CNET' url='http://news.com.com/2547-1_3-0-20.xml' icon='http://news.cnet.com/favicon.ico' />
--->
     <feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='http://www.linuxinsider.com/favicon.ico' />
     <feed title='OSXHints' url='http://feeds.macosxhints.com/macosxhints/recent' icon='http://hints.macworld.com/favicon.ico' />
     

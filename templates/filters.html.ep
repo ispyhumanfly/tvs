@@ -4,16 +4,16 @@
 
 <div class='date_filter'>
 
-    <% unless ($page =~ m/^home|^article/i)  { %>
+    % unless ($page =~ m/^article/i)  {
     
     <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'today' %> href="/<%= $page %>/today"><%= $language->{filter}->{today} %>,</a>
     <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'week' %> href="/<%= $page %>/week"> <%= $language->{filter}->{week} %>,</a>
     <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'month' %> href="/<%= $page %>/month"> <%= $language->{filter}->{month} %></a>
     
-    <% } else { %>
+    % } else {
     
     No filters available.
     
-    <% } %>
+    % }
     
 </div>

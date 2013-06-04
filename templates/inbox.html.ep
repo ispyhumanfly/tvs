@@ -43,7 +43,7 @@
 						
 						<span style="float: right; margin-right: 5px; margin-top: 10px; margin-bottom: 10px; font-size: 15px;">
 	    
-						    <a style="color: white;" href="javascript:view.articles.do_vote_puff( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );">Like Article | </a>
+						    <a style="color: white;" href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );">Like Article | </a>
 						    <a style="color: white;" href="/<%= $_->{name} %>/<%= $_->{tbl_id} %>">Read Article</a>
 						    
 						</span>

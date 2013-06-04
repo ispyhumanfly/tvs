@@ -2,10 +2,10 @@
 
 use Modern::Perl;
 
-use lib 'library';
+use lib 'lib';
 use Model;
 
 my $MODEL = Model->new;
 
-#$MODEL->get_articles();
+$MODEL->get_articles(list => 'all');
 $MODEL->get_feeds();

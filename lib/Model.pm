@@ -12,35 +12,35 @@ sub new {
     use HTML::Strip;
     use DBI;
 
-    my ($class, %options) = @_;
+    my ($class, %arguments) = @_;
 
-    $options{config}   = new XML::Simple->XMLin('config/config.xml');
-    $options{feeds}    = new XML::Simple->XMLin('config/feeds.xml');
-    $options{language} = new XML::Simple->XMLin('config/language.xml');
-    $options{disqus}   = new XML::Simple->XMLin('config/disqus.xml');
+    $arguments{config}   = new XML::Simple->XMLin('config/config.xml');
+    $arguments{feeds}    = new XML::Simple->XMLin('config/feeds.xml');
+    $arguments{language} = new XML::Simple->XMLin('config/language.xml');
+    $arguments{disqus}   = new XML::Simple->XMLin('config/disqus.xml');
 
-    my $db_driver   = $options{config}->{dbase}->{driver};
-    my $db_database = $options{config}->{dbase}->{database};
-    my $db_host     = $options{config}->{dbase}->{host};
-    my $db_user     = $options{config}->{dbase}->{user};
-    my $db_password = $options{config}->{dbase}->{password};
+    my $db_driver   = $arguments{config}->{dbase}->{driver};
+    my $db_database = $arguments{config}->{dbase}->{database};
+    my $db_host     = $arguments{config}->{dbase}->{host};
+    my $db_user     = $arguments{config}->{dbase}->{user};
+    my $db_password = $arguments{config}->{dbase}->{password};
 
-    $options{dbase} = DBI->connect("$db_driver:database=$db_database:host=",
+    $arguments{dbase} = DBI->connect("$db_driver:database=$db_database:host=",
         $db_user, $db_password, {'PrintError' => 0, 'RaiseError' => 1});
 
-    $options{dbase}->{'mysql_auto_reconnect'} = 1;
-    $options{dbase}->{'mysql_enable_utf8'}    = 1;
+    $arguments{dbase}->{'mysql_auto_reconnect'} = 1;
+    $arguments{dbase}->{'mysql_enable_utf8'}    = 1;
 
-    return bless \%options, $class;
+    return bless \%arguments, $class;
 
 }
 
 sub get_articles {
 
     my ($self, %arguments) = @_;
-    my (@articles, $sth, $query);
-
-    my $index = 0;
+    return 1 unless exists $arguments{list};
+    
+    my (@articles, $index);
 
     for (@{$self->{feeds}->{feed}}) {
         if ($self->{feeds}->{feed}->[$index]->{title}) {
@@ -62,62 +62,64 @@ sub get_articles {
                 );
             }
             
+            my $statement;
+            
             if ($arguments{list} eq 'home') {
 
-                $query =
+                my $query =
                     "SELECT * FROM articles_$feed "
                   . "WHERE votes >= $self->{config}->{interval}->{home}->{votes} "
                   . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{home}->{days} day) <= date";
 
-                $sth = $self->{dbase}->prepare($query);
-                $sth->execute();
+                $statement = $self->{dbase}->prepare($query);
+                $statement->execute();
             }
 
             elsif ($arguments{list} eq 'featured') {
 
-                $query =
+                my $query =
                     "SELECT * FROM articles_$feed WHERE votes "
                   . "BETWEEN $self->{config}->{interval}->{featured}->{votes} "
                   . "AND $self->{config}->{interval}->{home}->{votes} "
                   . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date";
 
-                $sth = $self->{dbase}->prepare($query);
-                $sth->execute();
+                $statement = $self->{dbase}->prepare($query);
+                $statement->execute();
             }
 
             elsif ($arguments{list} eq 'watch_list') {
 
-                $query =
+                my $query =
                     "SELECT * FROM articles_$feed WHERE votes "
                   . "BETWEEN $self->{config}->{interval}->{watch_list}->{votes} "
                   . "AND $self->{config}->{interval}->{featured}->{votes} "
                   . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date";
 
-                $sth = $self->{dbase}->prepare($query);
-                $sth->execute();
+                $statement = $self->{dbase}->prepare($query);
+                $statement->execute();
             }
 
             elsif ($arguments{list} eq 'inbox') {
 
-                $query =
+                my $query =
                     "SELECT * FROM articles_$feed WHERE votes "
                   . "BETWEEN $self->{config}->{interval}->{inbox}->{votes} "
                   . "AND $self->{config}->{interval}->{watch_list}->{votes} "
                   . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date";
 
-                $sth = $self->{dbase}->prepare($query);
-                $sth->execute();
+                $statement = $self->{dbase}->prepare($query);
+                $statement->execute();
             }
             
             elsif ($arguments{list} eq 'all') {
 
-                $query = "SELECT * FROM articles_$feed";
+                my $query = "SELECT * FROM articles_$feed";
 
-                $sth = $self->{dbase}->prepare($query);
-                $sth->execute();
+                $statement = $self->{dbase}->prepare($query);
+                $statement->execute();
             }
 
-            while (my $ref = $sth->fetchrow_hashref()) {
+            while (my $ref = $statement->fetchrow_hashref()) {
 
                 my $struct = {
                     name   => $feed,

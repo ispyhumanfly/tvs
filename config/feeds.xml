@@ -19,10 +19,6 @@
     <!-- Programming -->
     <feed title='AListApart' url='http://www.alistapart.com/site/rss' icon='http://www.alistapart.com/pix/alalogo.gif' />
 
-
-    <!-- temporary bug fix ( for some reason, Model.pm -> 'get_articles' doesn't recognize the final entry ) -->
-<!--    <feed title='AListApart' url='http://www.alistapart.com/site/rss' icon='http://www.alistapart.com/pix/alalogo.gif' />
--->
 </feeds>
 
 <!-- end of xml document -->

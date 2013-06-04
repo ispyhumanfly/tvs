@@ -37,7 +37,7 @@ sub new {
 
 sub get_articles {
 
-    my ($self, %options) = @_;
+    my ($self, %arguments) = @_;
     my (@articles, $sth, $query);
 
     my $index = 0;
@@ -62,7 +62,7 @@ sub get_articles {
                 );
             }
             
-            if ($options{list} eq 'home') {
+            if ($arguments{list} eq 'home') {
 
                 $query =
                     "SELECT * FROM articles_$feed "
@@ -73,7 +73,7 @@ sub get_articles {
                 $sth->execute();
             }
 
-            elsif ($options{list} eq 'featured') {
+            elsif ($arguments{list} eq 'featured') {
 
                 $query =
                     "SELECT * FROM articles_$feed WHERE votes "
@@ -85,7 +85,7 @@ sub get_articles {
                 $sth->execute();
             }
 
-            elsif ($options{list} eq 'watch_list') {
+            elsif ($arguments{list} eq 'watch_list') {
 
                 $query =
                     "SELECT * FROM articles_$feed WHERE votes "
@@ -97,13 +97,21 @@ sub get_articles {
                 $sth->execute();
             }
 
-            elsif ($options{list} eq 'inbox') {
+            elsif ($arguments{list} eq 'inbox') {
 
                 $query =
                     "SELECT * FROM articles_$feed WHERE votes "
                   . "BETWEEN $self->{config}->{interval}->{inbox}->{votes} "
                   . "AND $self->{config}->{interval}->{watch_list}->{votes} "
                   . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date";
+
+                $sth = $self->{dbase}->prepare($query);
+                $sth->execute();
+            }
+            
+            elsif ($arguments{list} eq 'all') {
+
+                $query = "SELECT * FROM articles_$feed";
 
                 $sth = $self->{dbase}->prepare($query);
                 $sth->execute();

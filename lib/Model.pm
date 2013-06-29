@@ -1,12 +1,14 @@
 # Model.pm :: The TVS News Engine
 
 use Modern::Perl;
+
 package Model;
 
 sub new {
 
     use LWP::Simple qw/ get /;
     use Digest::MD5 qw/ md5_hex /;
+    use DateTime::Format::MySQL;
     use XML::Simple;
     use XML::RSS::Feed;
     use HTML::Strip;
@@ -19,17 +21,16 @@ sub new {
     $arguments{language} = new XML::Simple->XMLin('config/language.xml');
     $arguments{disqus}   = new XML::Simple->XMLin('config/disqus.xml');
 
-    my $db_driver   = $arguments{config}->{dbase}->{driver};
-    my $db_database = $arguments{config}->{dbase}->{database};
-    my $db_host     = $arguments{config}->{dbase}->{host};
-    my $db_user     = $arguments{config}->{dbase}->{user};
-    my $db_password = $arguments{config}->{dbase}->{password};
+    my $db_database = $arguments{config}->{mysql}->{database};
+    my $db_host     = $arguments{config}->{mysql}->{host};
+    my $db_user     = $arguments{config}->{mysql}->{user};
+    my $db_password = $arguments{config}->{mysql}->{password};
 
-    $arguments{dbase} = DBI->connect("$db_driver:database=$db_database:host=",
+    $arguments{mysql} = DBI->connect("DBI:mysql:database=$db_database:host=",
         $db_user, $db_password, {'PrintError' => 0, 'RaiseError' => 1});
 
-    $arguments{dbase}->{'mysql_auto_reconnect'} = 1;
-    $arguments{dbase}->{'mysql_enable_utf8'}    = 1;
+    $arguments{mysql}->{'mysql_auto_reconnect'} = 1;
+    $arguments{mysql}->{'mysql_enable_utf8'}    = 1;
 
     return bless \%arguments, $class;
 
@@ -39,7 +40,7 @@ sub get_articles {
 
     my ($self, %arguments) = @_;
     return 1 unless exists $arguments{list};
-    
+
     my (@articles, $index);
 
     for (@{$self->{feeds}->{feed}}) {
@@ -61,17 +62,17 @@ sub get_articles {
                     type         => 'articles'
                 );
             }
-            
+
             my $statement;
-            
+
             if ($arguments{list} eq 'home') {
 
                 my $query =
                     "SELECT * FROM articles_$feed "
-                  . "WHERE votes >= $self->{config}->{interval}->{home}->{votes} "
-                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{home}->{days} day) <= date";
+                  . "WHERE votes >= $self->{config}->{persona}->{home}->{votes} "
+                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{persona}->{home}->{days} day) <= date";
 
-                $statement = $self->{dbase}->prepare($query);
+                $statement = $self->{mysql}->prepare($query);
                 $statement->execute();
             }
 
@@ -79,11 +80,11 @@ sub get_articles {
 
                 my $query =
                     "SELECT * FROM articles_$feed WHERE votes "
-                  . "BETWEEN $self->{config}->{interval}->{featured}->{votes} "
-                  . "AND $self->{config}->{interval}->{home}->{votes} "
-                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{featured}->{days} day) <= date";
+                  . "BETWEEN $self->{config}->{persona}->{featured}->{votes} "
+                  . "AND $self->{config}->{persona}->{home}->{votes} "
+                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{persona}->{featured}->{days} day) <= date";
 
-                $statement = $self->{dbase}->prepare($query);
+                $statement = $self->{mysql}->prepare($query);
                 $statement->execute();
             }
 
@@ -91,11 +92,11 @@ sub get_articles {
 
                 my $query =
                     "SELECT * FROM articles_$feed WHERE votes "
-                  . "BETWEEN $self->{config}->{interval}->{watch_list}->{votes} "
-                  . "AND $self->{config}->{interval}->{featured}->{votes} "
-                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{watch_list}->{days} day) <= date";
+                  . "BETWEEN $self->{config}->{persona}->{watch_list}->{votes} "
+                  . "AND $self->{config}->{persona}->{featured}->{votes} "
+                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{persona}->{watch_list}->{days} day) <= date";
 
-                $statement = $self->{dbase}->prepare($query);
+                $statement = $self->{mysql}->prepare($query);
                 $statement->execute();
             }
 
@@ -103,19 +104,19 @@ sub get_articles {
 
                 my $query =
                     "SELECT * FROM articles_$feed WHERE votes "
-                  . "BETWEEN $self->{config}->{interval}->{inbox}->{votes} "
-                  . "AND $self->{config}->{interval}->{watch_list}->{votes} "
-                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{interval}->{inbox}->{days} day) <= date";
+                  . "BETWEEN $self->{config}->{persona}->{inbox}->{votes} "
+                  . "AND $self->{config}->{persona}->{watch_list}->{votes} "
+                  . "AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{persona}->{inbox}->{days} day) <= date";
 
-                $statement = $self->{dbase}->prepare($query);
+                $statement = $self->{mysql}->prepare($query);
                 $statement->execute();
             }
-            
+
             elsif ($arguments{list} eq 'all') {
 
                 my $query = "SELECT * FROM articles_$feed";
 
-                $statement = $self->{dbase}->prepare($query);
+                $statement = $self->{mysql}->prepare($query);
                 $statement->execute();
             }
 
@@ -142,8 +143,90 @@ sub get_articles {
     }
 
     @articles = do_random($self, @articles);
+
+    if (exists $arguments{filter_by_period}) {
+        @articles = _filter_by_period(
+            articles => \@articles,
+            period   => $arguments{filter_by_period}
+        );
+    }
+
     return \@articles;
 
+}
+
+sub _filter_by_period {
+
+    my %arguments = @_;
+    return 1 unless exists $arguments{articles} and $arguments{period};
+
+    my @filtered_articles;
+
+    for (@{$arguments{articles}}) {
+
+        if ($arguments{period} eq 'today') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $today_date = DateTime->now;
+
+            next if $article_date->day_of_year != $today_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+        elsif ($arguments{period} eq 'week') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $week_date = DateTime->now->subtract(days => 7);
+
+            next if $article_date->day_of_year <= $week_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+        elsif ($arguments{period} eq 'month') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $month_date = DateTime->now->subtract(days => 30);
+
+            next if $article_date->day_of_year <= $month_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+        elsif ($arguments{period} eq 'quarter') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $quarter_date = DateTime->now->subtract(days => 90);
+
+            next if $article_date->day_of_year <= $quarter_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+        elsif ($arguments{period} eq 'year') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $year_date = DateTime->now->subtract(days => 365);
+
+            next if $article_date->day_of_year <= $year_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+        elsif ($arguments{period} eq 'decade') {
+
+            my $article_date =
+              DateTime::Format::MySQL->parse_date($_->{date});
+            my $decade_date = DateTime->now->subtract(days => 3650);
+
+            next if $article_date->day_of_year <= $decade_date->day_of_year;
+            push @filtered_articles, $_;
+
+        }
+    }
+
+    return \@filtered_articles;
 }
 
 sub get_article {
@@ -157,7 +240,7 @@ sub get_article {
         my $id   = $arguments{id};
 
         $statement =
-          $self->{dbase}
+          $self->{mysql}
           ->prepare("SELECT * FROM articles_$feed WHERE id = $id");
         $statement->execute();
 
@@ -232,7 +315,7 @@ sub get_feeds {
         # first i use Digest::MD5 to check the incoming url against
         # any pre-existing ones. this was the most effecient way i
         # could find to make sure the article wouldn't be duplicated...
-        my $sth = $self->{dbase}->prepare("SELECT * FROM articles_$name");
+        my $sth = $self->{mysql}->prepare("SELECT * FROM articles_$name");
         $sth->execute();
 
         # extract data from each entry...
@@ -253,15 +336,15 @@ sub get_feeds {
         unless ($md5_exists) {
 
             # insert article values into database...
-            $self->{dbase}->do(
+            $self->{mysql}->do(
                 "INSERT INTO articles_$name ( title, url, info, icon, md5, votes, date ) VALUES ( "
-                  . $self->{dbase}->quote($title) . ",
+                  . $self->{mysql}->quote($title) . ",
                                "
-                  . $self->{dbase}->quote($url) . ", "
-                  . $self->{dbase}->quote($info) . ", "
-                  . $self->{dbase}->quote($icon) . ",
+                  . $self->{mysql}->quote($url) . ", "
+                  . $self->{mysql}->quote($info) . ", "
+                  . $self->{mysql}->quote($icon) . ",
                                "
-                  . $self->{dbase}->quote($md5) . ", 0, CURDATE()) "
+                  . $self->{mysql}->quote($md5) . ", 0, CURDATE()) "
             );
         }
     }
@@ -333,7 +416,7 @@ sub do_prune {
     # only prune articles with X ammount of votes...
     if ($self->{config}->{prune}->{votes} =~ /[0-9]/x) {
         $sth =
-          $self->{dbase}->prepare(
+          $self->{mysql}->prepare(
             "DELETE FROM articles_$feed WHERE votes = $self->{config}->{prune}->{votes} AND DATE_SUB(CURDATE(),INTERVAL $self->{config}->{prune}->{days} day) >= date"
           );
     }
@@ -344,7 +427,7 @@ sub do_prune {
         or ($self->{config}->{prune}->{votes} eq ''))
     {
         $sth =
-          $self->{dbase}->prepare(
+          $self->{mysql}->prepare(
             "DELETE FROM articles_$feed WHERE DATE_SUB(CURDATE(),INTERVAL $self->{config}->{prune}->{days} day) >= date"
           );
     }
@@ -396,7 +479,7 @@ sub do_tables {
 
             # evaluate if the feed already exists as a table...
             eval {
-                $self->{dbase}->do(
+                $self->{mysql}->do(
                     "SELECT * FROM articles_$arguments{table_exists} WHERE 1 = 0"
                 );
             };
@@ -413,7 +496,7 @@ sub do_tables {
 
             # insert the new article into the database...
             eval {
-                $self->{dbase}->do(
+                $self->{mysql}->do(
                     "CREATE TABLE articles_$arguments{create_table}
                     (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id),
                     title VARCHAR(1000) NOT NULL, url VARCHAR(5000),
@@ -460,7 +543,7 @@ sub do_vote {
     my $id   = $arguments{tbl_id};
 
     # add user vote to table data...
-    $self->{dbase}
+    $self->{mysql}
       ->do("UPDATE articles_$feed SET votes=votes+1 WHERE id=$id");
     return;
 
@@ -473,7 +556,7 @@ sub do_shutdown {
     my ($self, %arguments) = @_;
 
     # clost out the DBI connection...
-    $self->{dbase}->disconnect();
+    $self->{mysql}->disconnect();
 
     # remove instance from memory...
     $self = ();

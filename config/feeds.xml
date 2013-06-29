@@ -1,24 +1,8 @@
-<?xml version='1.0' encoding='utf-8' ?>
-
-<!-- feeds.xml - TVS auto-syndicated news portal -->
-
-<!-- parent configuration property -->
+<?xml version="1.0" encoding="utf-8"?>
 <feeds>
-
-    <!-- list of available feeds... -->
-
-    <!-- general -->
-    <feed title='Yahoo' url='http://rss.news.yahoo.com/rss/topstories' icon='http://www.yahoo.com/favicon.ico' />
-
-    <!-- technology -->
-    <feed title='Slashdot' url='http://rss.slashdot.org/Slashdot/slashdot' icon='http://slashdot.org/favicon.ico' />
-    <feed title='Wired' url='http://feeds.wired.com/wired/index' icon='http://www.wired.com/favicon.ico' />
-    <feed title='LinuxInsider' url='http://www.linuxinsider.com/perl/syndication/rssfull.pl' icon='http://www.linuxinsider.com/favicon.ico' />
-    <feed title='OSXHints' url='http://feeds.macosxhints.com/macosxhints/recent' icon='http://hints.macworld.com/favicon.ico' />
-    
-    <!-- Programming -->
-    <feed title='AListApart' url='http://www.alistapart.com/site/rss' icon='http://www.alistapart.com/pix/alalogo.gif' />
-
+  <feed title="Yahoo" url="http://rss.news.yahoo.com/rss/topstories" icon="http://www.yahoo.com/favicon.ico"/>
+  <feed title="Slashdot" url="http://rss.slashdot.org/Slashdot/slashdot" icon="http://slashdot.org/favicon.ico"/>
+  <feed title="LinuxInsider" url="http://www.linuxinsider.com/perl/syndication/rssfull.pl" icon="http://www.linuxinsider.com/favicon.ico"/>
+  <feed title="OSXHints" url="http://feeds.macosxhints.com/macosxhints/recent" icon="http://hints.macworld.com/favicon.ico"/>
+  <feed title="AListApart" url="http://www.alistapart.com/site/rss" icon="http://www.alistapart.com/pix/alalogo.gif"/>
 </feeds>
-
-<!-- end of xml document -->

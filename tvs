@@ -1,9 +1,7 @@
 #!/usr/bin/env perl
 
 use Modern::Perl;
-
 use Mojolicious::Lite;
-use DateTime::Format::MySQL;
 
 use lib 'lib';
 use Model;
@@ -13,7 +11,7 @@ my $MODEL = Model->new;
 get '/' => sub {
 
     my $self = shift;
-    $self->render('home', layout => 'default');
+    $self->redirect_to('/home');
 
 };
 
@@ -33,7 +31,7 @@ get '/featured' => sub {
 
     my $self = shift;
     $self->{'page'} = 'featured';
-    
+
     $self->{articles} = $MODEL->get_articles(list => 'featured');
     $self->render('featured', layout => 'default');
 
@@ -113,43 +111,9 @@ get '/:page/:date' => [page => qr/\w+/, date => qr/\w+/] => sub {
 
     my $page = $self->param('page');
     my $date = $self->param('date');
-    my @filtered_articles;
 
-    for (@{$MODEL->get_articles(list => $page)}) {
-
-        if ($date eq 'today') {
-
-            my $article_date =
-              DateTime::Format::MySQL->parse_date($_->{date});
-            my $today_date = DateTime->now;
-
-            next if $article_date->day_of_year != $today_date->day_of_year;
-            push @filtered_articles, $_;
-
-        }
-        elsif ($date eq 'week') {
-
-            my $article_date =
-              DateTime::Format::MySQL->parse_date($_->{date});
-            my $week_date = DateTime->now->subtract(days => 7);
-
-            next if $article_date->day_of_year <= $week_date->day_of_year;
-            push @filtered_articles, $_;
-
-        }
-        elsif ($date eq 'month') {
-
-            my $article_date =
-              DateTime::Format::MySQL->parse_date($_->{date});
-            my $month_date = DateTime->now->subtract(days => 30);
-
-            next if $article_date->day_of_year <= $month_date->day_of_year;
-            push @filtered_articles, $_;
-
-        }
-    }
-
-    $self->{articles} = \@filtered_articles;
+    $self->{'articles'} =
+      \@{$MODEL->get_articles(list => $page, filter_by_period => $date)};
     $self->render($page, layout => 'default');
 
 };

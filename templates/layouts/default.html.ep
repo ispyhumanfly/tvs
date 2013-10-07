@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
 % my $model = Model->new;
 % my $language = $model->{language};
@@ -27,8 +26,15 @@
 
 	// ]]></script>
 	
+	<!-- Responsive stuff -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<!--[if lt IE 9]>
-	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
     
     </head>

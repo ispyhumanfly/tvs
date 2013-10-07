@@ -2,18 +2,15 @@
 % my $language = $model->{language};
 % my $date = $self->param('date');
 
-<div class='date_filter'>
+<span class=date_filter>
 
     % unless ($page =~ m/^article/i)  {
     
-    <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'today' %> href="/<%= $page %>/today"><%= $language->{filter}->{today} %>,</a>
-    <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'week' %> href="/<%= $page %>/week"> <%= $language->{filter}->{week} %>,</a>
-    <a <%== 'style="color: white; font-weight: bold;"' if $date eq 'month' %> href="/<%= $page %>/month"> <%= $language->{filter}->{month} %></a>
-    
-    % } else {
-    
-    No filters available.
-    
+    <a <%== 'class=date_filter_active' if $date eq 'today' %> href="/<%= $page %>/today"><%= $language->{filter}->{today} %></a>
+    <a <%== 'class=date_filter_active' if $date eq 'week' %> href="/<%= $page %>/week"> <%= $language->{filter}->{week} %></a>
+    <a <%== 'class=date_filter_active' if $date eq 'month' %> href="/<%= $page %>/month"> <%= $language->{filter}->{month} %></a>
+
     % }
     
-</div>
+</span>
+    

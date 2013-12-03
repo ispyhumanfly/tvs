@@ -7,6 +7,9 @@
 
     <head>
     
+	<!-- Responsive stuff -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<!-- some links and stuff -->
 	<link rel='stylesheet' type='text/css' href='/default.css' media='screen' />
 	<link rel="alternate" type="application/rss+xml" title="Front-page" href="site_feed.rss" />
@@ -25,15 +28,9 @@
 	    var view = new View();
 
 	// ]]></script>
-	
-	<!-- Responsive stuff -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+    
 	<!--[if lt IE 9]>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	<![endif]-->
-
-	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
     
@@ -43,118 +40,103 @@
     
 	<div id='top'></div>
 	
-	<div id="main_page" class="container" style="display: none;">
+	<header>
+	    
+	    <h1><%== $language->{tvs}->{name} %></h1>
 	
-	    <div class="header">
+	</header>
+    
+	<div class="stripes"><span></span></div>
+    
+	%= include 'nav', language => $language, page => $self->{page}
+    
+	<div class="stripes"><span></span></div>
+    
+	%= content
+    
+	<div class="footer">
+    
+	    <div class="col3">
+    
+		<h2>Development Team</h2>
 		
-		% my @pics;
+		<ul>
+		    <li><a href='http://spydev.ath.cx' style="text-decoration: none;">ispyhumanfly</a></li>
+		    <li><a href='http://kpavery.com' style="text-decoration: none;">kpavery</a></li>
+		    <li><a href='http://kpavery.com' style="text-decoration: none;">cynogv</a></li>
+		</ul>
+    
+	    </div>
+    
+	    <div class="col3center">
 		
-		% push @pics, "<a href='http://browse.deviantart.com/?q=tv#/d71lvo' target='_blank'><img src='http://fc02.deviantart.net/fs5/i/2004/303/0/6/TV_by_tripl3.jpg' /></a>";
-		% push @pics, "<a href='http://browse.deviantart.com/?q=tv#/d2q4mnv' target='_blank'><img src='http://th00.deviantart.net/fs71/PRE/f/2010/142/7/6/TV_by_MkDsg.png' /></a>";
-		% push @pics, "<a href='http://browse.deviantart.com/?q=tv#/d2molnu' target='_blank'><img src='http://fc00.deviantart.net/fs70/f/2010/090/8/3/83cd022251b13de28b041a97497fe081.jpg' /></a>";
-    		% push @pics, "<a href='http://browse.deviantart.com/?q=tv#/d1haty6' target='_blank'><img src='http://fc01.deviantart.net/fs30/f/2008/175/1/b/ID_in_TV_by_fogke.jpg' /></a>";
-		% push @pics, "<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/d17h64t' target='_blank'><img src='http://th09.deviantart.net/fs22/PRE/f/2007/360/3/3/I_Am_Tv_by_skinpupcoss.jpg' /></a>";		
-		% push @pics, "<a href='http://browse.deviantart.com/?qh=&section=&q=dirty+tv#/dl22u3' target='_blank'><img src='http://th03.deviantart.net/fs11/PRE/i/2006/177/3/2/S_S__Broken_TV_by_shudder_stock.jpg' /></a>";
+		<h2>Project Stuff</h2>
 		
-		%== $pics[rand(scalar @pics)];
-		
-		%= $language->{tvs}->{name};
+		<ul>
+		    <li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
+		    <li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
+		</ul>
 	    
 	    </div>
-	
-	    <div class="stripes"><span></span></div>
-	
-	    %= include 'nav', language => $language, page => $self->{page}
-	
-	    <div class="stripes"><span></span></div>
-	
-	    %= content
-	
-	    <div class="footer">
-	
-		<div class="col3">
-	
-		    <h2>Development Team</h2>
-		    
-		    <ul>
-			<li><a href='http://spydev.ath.cx' style="text-decoration: none;">ispyhumanfly</a></li>
-			<li><a href='http://kpavery.com' style="text-decoration: none;">kpavery</a></li>
-			<li><a href='http://kpavery.com' style="text-decoration: none;">cynogv</a></li>
-		    </ul>
-	
-		</div>
-	
-		<div class="col3center">
-		    
-		    <h2>Project Stuff</h2>
-		    
-		    <ul>
-			<li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
-			<li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
-		    </ul>
+    
+	    <div class="col3">
 		
-		</div>
-	
-		<div class="col3">
-		    
-		    <h2>Visit</h2>
-		    
-		    <ul>
-			<li><a href='http://perl-begin.org/' rel="external">Want to learn Perl? - perl-begin.org</a></li>
-		    </ul>
+		<h2>Visit</h2>
 		
-		</div>
-
-		<br />
-		
-		<div style="clear: both;"></div>
-		
-		<div class="col3">
-		    
-		    <h2>And more stuff.</h2>
-		    
-		    <ul>
-			<li><a href='http://perl-begin.org/' rel="external">Want to learn Perl? - perl-begin.org</a></li>
-		    </ul>
-		
-		</div>
-	
-		<div class="col3center">
-		    
-		    <h2>Some other stuff?</h2>
-		    
-		    <ul>
-			<li><a href='http://spydev.ath.cx' style="text-decoration: none;">ispyhumanfly</a></li>
-			<li><a href='http://kpavery.com' style="text-decoration: none;">kpavery</a></li>
-			<li><a href='http://kpavery.com' style="text-decoration: none;">cynogv</a></li>
-		    </ul>
-	
-		</div>
-
-		<div class="col3">
-	
-		    <h2>More TVS Links!</h2>
-		    
-		    <ul>
-			<li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
-			<li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
-		    </ul>
-		
-		</div>
-		
-		<div class="bottom"><br /><br />
-	
-		    <span class="right" style="font-size: 1.8em;">a <strong><a style="text-decoration: none;" href="http://thoughtpivot.com" target="_blank">Thoughtpivot</a></strong> creation</span>
-	
-		    <div class="clearer"><span></span></div>
-	
-		</div>
-	
+		<ul>
+		    <li><a href='http://perl-begin.org/' rel="external">Want to learn Perl? - perl-begin.org</a></li>
+		</ul>
+	    
 	    </div>
-	
-	    <div id='bottom'></div>
-	
+
+	    <br />
+	    
+	    <div style="clear: both;"></div>
+	    
+	    <div class="col3">
+		
+		<h2>And more stuff.</h2>
+		
+		<ul>
+		    <li><a href='http://perl-begin.org/' rel="external">Want to learn Perl? - perl-begin.org</a></li>
+		</ul>
+	    
+	    </div>
+    
+	    <div class="col3center">
+		
+		<h2>Some other stuff?</h2>
+		
+		<ul>
+		    <li><a href='http://spydev.ath.cx' style="text-decoration: none;">ispyhumanfly</a></li>
+		    <li><a href='http://kpavery.com' style="text-decoration: none;">kpavery</a></li>
+		    <li><a href='http://kpavery.com' style="text-decoration: none;">cynogv</a></li>
+		</ul>
+    
+	    </div>
+
+	    <div class="col3">
+    
+		<h2>More TVS Links!</h2>
+		
+		<ul>
+		    <li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
+		    <li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
+		</ul>
+	    
+	    </div>
+	    
+	    <div class="bottom"><br /><br />
+    
+		<span class="right" style="font-size: 1.8em;">a <strong><a style="text-decoration: none;" href="http://thoughtpivot.com" target="_blank">Thoughtpivot</a></strong> creation</span>
+    
+		<div class="clearer"><span></span></div>
+    
+	    </div>
+    
 	</div>
-	
+    
+	<div id='bottom'></div>
+    
     </body>
 </html>

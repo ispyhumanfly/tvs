@@ -1,0 +1,20 @@
+@media screen and (max-width: 480px) {
+
+    header h1 {
+        font-size:
+        5em;    
+    }
+    
+   .nav_norm {
+        text-align: center;
+    }
+    .nav_norm a {
+	    font-size: 22px;
+	    font-weight: 500;
+            display: block;
+    }
+    .nav_norm a:hover {
+        font-size: 22px;
+    }
+ 
+}

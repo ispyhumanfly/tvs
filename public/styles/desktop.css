@@ -1,0 +1,481 @@
+@media screen and (max-width: 2200px) {
+            
+
+    /* sets background and default font */
+    body {
+	    background: #111;
+	    color: #BBB;
+	    font: normal 65.5% 'Questrial', sans-serif;
+	    margin: 0px 20px 20px 20px;
+            padding: 0px;
+    }
+    
+    /* sets font size and bottom padding for paragraphs and unordered lists */
+    p,ul {
+	    font-size: 1.2em;
+	    padding-bottom: 1.2em;
+    }
+    
+    /* sets font for blockquotes */
+    blockquote {font: bold 1.2em 'Questrial', sans-serif;}
+    
+    
+    /* !! content elements !! */
+    .content h1 {
+	    background: #333333;
+	    color: #EEE;
+	    margin-bottom: 10px;
+	    padding: 6px 0 4px;
+    }
+    .content a {
+	    color: #999;
+	    text-decoration: underline;
+    }
+    .content p {
+	    text-align: left;
+    }
+    
+    .content a:hover {color: #CBB;}
+    .content .descr {margin-bottom: 5px;}
+    
+    .descr {
+	
+	font-size: 1.1em;
+    }
+    
+    /* !! div styles !! */
+    
+    /* formatting for the feed box (where the article excerpt is displayed) */
+    .feed {
+	    background: #222;
+	    display: block;
+	    font-size: 1.5em;
+	    border: 1px groove #494949;
+	    padding: 8px;
+    }
+    
+    /* style for the "Toggle View" links for each article */
+    .toggle {
+	    display: block;
+	    text-align: right;
+	    font-size: 11px;
+	    padding: 2px;
+    }
+    
+    /* formatting for the location box (where it tells you the current page you are viewing) */
+    .location {
+	    display: block;
+	    float: right;
+	    border-bottom: 1px dashed;
+	    font-size: 1.2em;
+	    padding: 8px;
+	    
+    }
+    
+    .date_filter {
+	    
+	    font-family: 'Questrial', sans-serif;
+	    font-size: 1.5em;
+    }
+    
+    .date_filter a {
+	    
+	    text-decoration: none;
+	    padding: 10px 15px 10px 0px;
+    }	
+	
+    .date_filter_active {
+/*	    color: white;
+	    font-weight: bold;
+	    background: #222;
+	    padding: 10px 5px 10px 5px;
+	    max-width: 20px;
+    
+	    border-top: 5px solid #262626;
+	    border-bottom: 5px solid #262626;
+    
+*/    }
+    
+    /* jump to section style */
+    .jump_to {
+	    
+	display: inline;
+	float: right;    
+    }
+    
+    #tooltip {
+	
+	display: none; background-color: #111; padding: 5px; margin: 0 12px 0 0; border: 1px groove #fff;
+	
+    }
+    
+    /* !! options !! */
+    
+    /* style for the options_top paragraph (vote on article, read article) */
+    .options_top {
+	
+	font-size: 1.2em;
+	float: right;
+	padding: 3px;
+	margin-top: -22px;
+	
+    }
+    
+    /* links inside the options_top paragraph */
+    .options_top a {
+    
+	text-decoration: none;
+	display: inline;
+	border-top: 1px solid #262626;
+	border-bottom: 1px solid #262626;
+	padding: 2px;
+    }
+    
+    /* hover style for the links in the options_top paragraph */
+    .options_top a:hover {
+    
+	text-decoration: none;
+	display: inline;
+	padding: 2px;
+	background: #222;
+	color: #BAA;
+    
+    }
+    
+    /* style for the options paragraph (vote on article, read article) */
+    .options {
+	
+	font-size: 1.4em;
+	float: left;
+	padding: 3px;
+	
+    }
+    
+    /* links inside the options paragraph */
+    .options a {
+    
+	text-decoration: none;
+	display: inline;
+	border-top: 1px solid #262626;
+	border-bottom: 1px solid #262626;
+	padding: 2px;
+    }
+    
+    /* hover style for the links in the options paragraph */
+    .options a:hover {
+    
+	text-decoration: none;
+	display: inline;
+	padding: 2px;
+	background: #222;
+	color: #BAA;
+    
+    }
+    
+    /* no border around images */
+    img {border: none;}
+    
+    /* sets margin for unordered lists */
+    ul {margin-left: 2em;}
+    
+    
+    /* !!  misc !! */
+    
+    /* sets the clearer div to clear both left and right floats */
+    .clearer {clear: both;}
+    
+    /* the stripes above and below the navigation bar */
+    .stripes {
+	    background: #333;
+	    height: 6px;
+    }
+    
+    /* sets the floats for the left and right divs inside content */
+    .left {float: left;}
+    .right {float: right;}
+    
+    
+    /* !! header !! */
+    
+    header {
+	    
+	    background: #111;
+	    border: 1px solid #333;
+            text-align: left;
+	    height: 100px;
+    }
+    
+    header h1 {
+            font-family: 'Annie Use Your Telescope', cursive;
+            font-size: 7em;
+	    color: #ffffff;
+            text-shadow: 3px 3px 3px silver;
+	    position: relative;
+	    margin: 0 0 0 10px;
+	    padding: 0;
+	    
+
+    }
+    
+    /* !! structure !! */
+    
+    /* container style (the whole page) */
+    .container {
+	    border: 3px solid #444;
+	    border-top: none;
+    }
+    
+    /* main style (between nav bar and footer) */
+    .main {
+	    background: #111;
+	    border-bottom: 1px solid #2A2A2A;
+	    border-left: 1px solid #2A2A2A;
+    }
+    
+    /* inbox style (special page style for inbox page) */
+    .inbox {
+	    padding: 2px;
+	    /*border-top: 1px solid #444; */
+	    
+    }
+    
+    .inbox img {
+	    float: left;
+    }
+    
+    .inbox p {
+	    font-size: 1.1em;
+	    margin-left: 27px;
+    }
+    
+    
+    /* widths of the main content divs */
+    .main .left {width: 70%;}
+    .main .right {width: 30%;}
+    .main .full {width: 100%;}
+    
+    /* border and padding of the content div */
+    .content {
+	    border-left: 1px solid #444;
+	    border-top: 1px solid #444;
+	    padding: 12px;
+    }
+    
+    
+    /* !! navigation !! */
+    
+    /* background for the nav bar */
+    .nav_norm, .nav_small {
+    
+	    background: #191919;
+	    
+    }
+    
+    /* styles for the smaller sized nav bar (note: the float must be included to display correctly) */
+    .nav_small a {
+	    background: #191919;
+	    border-left: 1px solid #161616;
+	    color: #CCC;
+	    float: left;
+	    font: bold 1em 'Questrial', sans-serif;
+	    line-height: 35px;
+	    padding: 0 18px;
+    
+    }
+    
+    
+    /* styles for the normal sized nav bar (note: the float must be included to display correctly) */
+    .nav_norm a {
+	    background: #191919;
+	    border-left: 1px solid #161616;
+	    border-right: 1px solid #161616;
+	    color: white;
+	    line-height: 35px;
+	    margin-left: 10px;
+	    font-family: 'Questrial', sans-serif;
+	    font-size: 20px;
+	    font-weight: 500;
+	    text-decoration: none;
+    }
+    
+    /* link hover style for the normal sized nav bar */
+    .nav_norm a:hover {
+	    background: #333333;
+	    color:#FFCCCC;
+	    text-decoration: none;    
+	    border-left: 1px solid #161616;
+	    border-right: 1px solid #161616;
+	    height: 35px;
+    
+    }
+    
+    .nav_norm_active_home {
+    
+    
+    }
+    
+    .nav_norm_active {
+	    background: #333333;
+	    color:#FFCCCC;
+    }
+    
+    /* link hover style for the smaller sized nav bar (same as the normal sized one) */
+    .nav_small a:hover {
+	    background: #333333;
+	    color:#FFCCCC;
+    }
+    
+    .nav_norm_active {
+	    background: #333333;
+	    color:#FFCCCC;
+    }
+    
+    /* !! sub-navigation !! */
+    
+    /* main sub-navigation style */
+    .subnav {
+	    background: #2A2A2A;
+	    border: 1px solid #1E1E1E;
+	    border-top-color: #444;
+	    padding: 8px;
+    }
+    
+    /* subnav biggest (h1) heading padding */
+    .subnav h1 {
+    
+	    padding-top: 5px;
+	    color: white;
+	    font-size: 50px;
+	    font-family: 'Annie Use Your Telescope', cursive;
+    }
+    
+    /* subnav unordered list padding */
+    .subnav ul {margin: 0;}
+    
+    /* subnav list element style */
+    .subnav li {
+	    background: url(..images/li.gif) no-repeat left bottom;
+	    list-style: none;
+	    margin: 0;
+    }
+    
+    /* subnav list element link style */
+    .subnav li a {
+	    color: #777;
+	    line-height: 2.4em;
+	    padding-left: 18px;
+	    text-decoration: none;
+    }
+    
+    /* subnav list element link hover color */
+    .subnav li a:hover {color: #BAA;}
+    
+    
+    /* !! footer !! */
+    
+    /* main footer style */
+    .footer {
+	    background: #191919;
+	    border-top: 1px solid #444;
+	    color: #999;
+	    padding: 3% 3% 1%;
+    }
+    
+    /* footer unordered list style */
+    .footer ul {
+	    border-top: 1px solid #262626;
+	    margin: 0;
+    }
+    
+    /* footer ordered list style */
+    .footer li {
+	    border-bottom: 1px solid #262626;
+	    list-style: none;
+    }
+    
+    /* footer links [in ordered lists] style */
+    .footer li a {
+	    text-decoration: none;
+	    display: block;
+	    line-height: 2em;
+	    padding-left: 4%;
+	    width: 96%;
+    }
+    
+    /* footer link color */
+    .footer a {color: #666;}
+    
+    /* footer link hover colors */
+    .footer a:hover {
+	    color: #BAA;
+	    background: #222;
+    }
+    
+    /* style for the col3 divs (the three lists in the footer) */
+    .col3,.col3center {
+	    float: left;
+	    width: 31%;
+    }
+    
+    .col3 h2 {
+	
+	color: white;
+	font-size: 3em;
+	font-family: 'Annie Use Your Telescope', cursive;
+    }
+    
+    .col3center h2 {
+	
+	color: white;
+	font-size: 3em;
+	font-family: 'Annie Use Your Telescope', cursive;
+    }
+    
+    /* margin for the center col3 div */
+    .col3center {margin: 0 3%;}
+    
+    
+    /* !! article formatting !! */
+    
+    /* article cell formatting (the box from the article title to the jump to links) */
+    .article {
+    background:#191919;
+    padding:6px;
+    border-top:1px solid #999;
+    border-right:1px solid #333;
+    border-left:1px solid #333;
+    border-bottom:1px solid #333;
+    
+    }
+    
+    /* formatting for the article title link */
+    .title a {
+    text-decoration:none;
+    color:#EEE;
+    font-size: 1.1em;
+    
+    }
+    
+    /* hover for the article title link */
+    .title a:hover {
+    text-decoration:none;
+    color:#FFD5D5;
+    font-size: 1.1em;
+    }
+    
+    
+    /* !! bottom !! */
+    
+    /* formatting for the bottom div */
+    .bottom {
+	    color: #666;
+	    clear: both;
+	    font-size: 1.1em;
+    }
+    
+    /* link style for the bottom div */
+    .bottom a {color: #888;}
+    
+    
+    /* END OF STYLESHEET */
+}

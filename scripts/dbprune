@@ -2,7 +2,7 @@
 
 use Modern::Perl;
 
-use lib 'library';
+use lib 'lib';
 use Model;
 
 my $MODEL = Model->new;

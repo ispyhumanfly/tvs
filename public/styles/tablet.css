@@ -1,0 +1,50 @@
+@media screen and (max-width: 1024px) {
+    
+    html {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        text-align: center;
+        height: auto;
+    }
+    header h1 {
+        font-family: 'Annie Use Your Telescope', cursive;
+        font-size: 9em;
+        text-shadow: 2px 2px 2px silver;
+    }
+    .main .left {
+        width: 100%;
+    }
+    .main .right {
+        display: none;
+    }
+    
+    .nav_norm {
+        text-align: center;
+    }
+    .nav_norm a {
+	    font-size: 25px;
+	    font-weight: 500;
+            text-align: center;
+    }
+    
+    .nav_norm a:hover {
+        font-size: 25px;
+
+    }
+    
+    .date_filter {
+	    
+	    font-size: 2.0em;
+            text-align: center;
+            padding: 10px 15px 10px 0px;
+
+    }
+
+}

@@ -1,21 +1,21 @@
-<div class='nav_norm'>
+<div class=nav_norm>
     
-    <a href='/home' <%= 'class=nav_norm_active' if $page eq 'home'; %>">
+    <a href='/home' <%= 'class=nav_norm_active' if $page eq 'home' %>">
 
 	<%= $language->{page}->{home} %>
     </a>
     
-    <a href='/featured' <%= 'class=nav_norm_active' if $page eq 'featured'; %>">
+    <a href='/featured' <%= 'class=nav_norm_active' if $page eq 'featured' %>">
 		
 	<%= $language->{page}->{featured} %>
     </a>
     
-    <a href='/watch_list' <%= 'class=nav_norm_active' if $page eq 'watch_list'; %>">
+    <a href='/watch_list' <%= 'class=nav_norm_active' if $page eq 'watch_list' %>">
 
 	<%= $language->{page}->{watch_list} %>    
     </a>
 
-    <a href='/inbox' <%= 'class=nav_norm_active' if $page eq 'inbox'; %>">
+    <a href='/inbox' <%= 'class=nav_norm_active' if $page eq 'inbox' %>">
 
 	<%= $language->{page}->{inbox} %>
     </a>

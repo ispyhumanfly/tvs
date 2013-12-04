@@ -8,6 +8,8 @@
 	    font: normal 65.5% 'Questrial', sans-serif;
 	    margin: 0px 20px 20px 20px;
             padding: 0px;
+	    border-left: 1px solid #2A2A2A;
+	    border-right: 1px solid #2A2A2A;
     }
     
     /* sets font size and bottom padding for paragraphs and unordered lists */

@@ -33,11 +33,19 @@
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-    
+	
+	<!-- Thoughtpivot Stuff -->
+
+	<script src="http://js.thoughtpivot.com/dojo/dojo/dojo.js" data-dojo-config="async: true"></script>        
+	<script type="text/javascript" src="/js/thoughtpivot.js"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/thoughtpivot.css" />
+
     </head>
     
-    <body onload="Effect.toggle('main_page','appear');">
+    <body>
     
+	<div id="curtain"></div>
+
 	<div id='top'></div>
 	
 	<header>
@@ -73,8 +81,8 @@
 		<h2>Project Stuff</h2>
 		
 		<ul>
-		    <li><a href='https://github.com/ispyhumanfly/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
-		    <li><a href='https://github.com/ispyhumanfly/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
+		    <li><a href='https://github.com/thoughtpivot/tvs' rel="external" style="text-decoration: none;">Github - Project Home</a></li>
+		    <li><a href='https://github.com/thoughtpivot/tvs/tarball/master' rel="external" style="text-decoration: none;">Github - Download Source</a></li>
 		</ul>
 	    
 	    </div>
@@ -128,7 +136,15 @@
 	    
 	    <div class="bottom"><br /><br />
     
-		<span class="right" style="font-size: 1.8em;">a <strong><a style="text-decoration: none;" href="http://thoughtpivot.com" target="_blank">Thoughtpivot</a></strong> creation</span>
+		<div id=thoughtpivot>
+		    
+		    <span class=text>Another</span>
+		    <span class=logo>
+			<a href="http://thoughtpivot.com" target="_blank">Thoughtpivot</a>
+		    </span>
+		    <span class=text>Design.</span>
+		
+		</div>
     
 		<div class="clearer"><span></span></div>
     

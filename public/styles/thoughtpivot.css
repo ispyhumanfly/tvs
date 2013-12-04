@@ -1,0 +1,59 @@
+@font-face {
+	font-family: neuropolitical ;
+	src: url('http://crestprecisiontool.co/neuropolitical.otf');
+}
+
+@font-face {
+	font-family: scotosaurus ;
+	src: url('http://crestprecisiontool.co/scotosaurus.ttf');
+}
+
+#curtain {
+    background: #2A2A2A;
+    overflow-x: no-content;
+    overflow-y: no-display;
+    left: 0;
+    position: fixed;
+    padding: 0;
+    top: 0;
+    vertical-align: middle;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#thoughtpivot {
+
+    float: right;
+}
+
+#thoughtpivot .text {
+    
+    font-family: scotosaurus;
+    font-size: 18pt;
+    color: silver;
+}
+
+#thoughtpivot .logo {
+    
+    font-family: neuropolitical;
+    font-size: 20pt;
+    color: white;
+}
+
+#thoughtpivot a{
+
+    color: silver;
+    text-decoration: none;
+}
+#thoughtpivot a:hover{
+    text-decoration: none;
+    text-shadow: 1px 1px 5px #32ACC5;
+}
+
+#copyright {
+    font-family: "Raleway";
+    float: left;
+    font-size: 12pt;
+}

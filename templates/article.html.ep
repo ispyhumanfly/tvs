@@ -66,13 +66,6 @@
                                 <a href='<%= $_->{url} %>' target="_blank">Open in New Tab</a>
                                 
                             </p>
-                            
-			    <div class='jump_to'>
-				
-				Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ?
-				<a href="javascript:scroll_to('bottom');">BOTTOM</a>
-			    
-			    </div>
 
                             <br /><br />
                     

@@ -100,7 +100,7 @@
     .jump_to {
 	    
 	display: inline;
-	float: right;    
+	float: right;
     }
     
     #tooltip {
@@ -146,8 +146,9 @@
     .options {
 	
 	font-size: 1.4em;
-	float: left;
 	padding: 3px;
+	float: right;
+	margin: 0px;
 	
     }
     
@@ -354,8 +355,7 @@
     
     /* subnav list element style */
     .subnav li {
-	    background: url(..images/li.gif) no-repeat left bottom;
-	    list-style: none;
+	    list-style: katakana;
 	    margin: 0;
     }
     
@@ -453,6 +453,7 @@
     text-decoration:none;
     color:#EEE;
     font-size: 1.1em;
+    padding: 5px;
     
     }
     

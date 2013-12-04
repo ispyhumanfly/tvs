@@ -26,6 +26,7 @@
 #thoughtpivot {
 
     float: right;
+    padding: 15px;
 }
 
 #thoughtpivot .text {
@@ -49,11 +50,5 @@
 }
 #thoughtpivot a:hover{
     text-decoration: none;
-    text-shadow: 1px 1px 5px #32ACC5;
-}
-
-#copyright {
-    font-family: "Raleway";
-    float: left;
-    font-size: 12pt;
+    text-shadow: 1px 1px 5px #FFCCCC;
 }

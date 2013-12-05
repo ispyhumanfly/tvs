@@ -1,19 +1,20 @@
 #!/usr/bin/env perl
 
 use Modern::Perl;
+use Mojo::Util;
 
-use lib 'library';
+use lib 'lib';
 use Model;
 
 my $MODEL = Model->new;
 
-my @Articles = qw/ inbox watch_list featured /;
+my @Articles = qw/ inbox watch_list featured home /;
 
 for (@Articles) {
 
     my $article = $MODEL->get_articles(list => $_ );
 
     say $_;
-    say "\t$_->{title}" for @{$article};
+    say "\t" . Mojo::Util::encode('UTF-8', $_->{title}) . "" for @{$article};
 
 }

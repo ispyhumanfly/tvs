@@ -40,10 +40,24 @@
 	<script type="text/javascript" src="/js/thoughtpivot.js"></script>
 	<link rel="stylesheet" type="text/css" href="/styles/thoughtpivot.css" />
 
+	<!-- START COPYING HERE -->
+	<link rel="stylesheet" href="/styles/gh-fork-ribbon.css" />
+	<!--[if IE]>
+	    <link rel="stylesheet" href="/styles/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+	<!-- END COPYING HERE -->
+	
     </head>
     
     <body>
-    
+
+	<!-- TOP RIGHT RIBBON: START COPYING HERE -->
+	<div class="github-fork-ribbon-wrapper right">
+	    <div class="github-fork-ribbon">
+		<a href="https://github.com/thoughtpivot/tvs">Fork me on GitHub</a>
+	    </div>
+	</div>
+	
 	<div id="curtain"></div>
 
 	<div id='top'></div>
@@ -138,6 +152,12 @@
 	    </div>
 	    
 	    <div class="bottom">
+		<!--
+		<div style="float: left;">
+		    <a rel="license" style="text-decoration: none;" href="http://creativecommons.org/licenses/by/4.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" />
+		    </a>
+		</div>-->
 		
 		<div id=thoughtpivot>
 		    

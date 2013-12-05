@@ -147,7 +147,7 @@ sub get_articles {
 
     if (exists $arguments{filter_by_period}) {
         @articles = _filter_by_period(
-            articles => \@articles,
+            articles => @articles,
             period   => $arguments{filter_by_period}
         );
     }

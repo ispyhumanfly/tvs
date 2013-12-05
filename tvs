@@ -149,7 +149,12 @@ post '/model' => sub {
 
 };
 
+app->config(
+    hypnotoad => {
+        log_file => "tvs.log",
+        listen   => ['http://*:9999']
+    }
+);
 
-app->config(hypnotoad => {listen => ['http://*:9999']});
 app->secret('TVS Rocks!');
 app->start;

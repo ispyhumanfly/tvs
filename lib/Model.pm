@@ -11,6 +11,7 @@ sub new {
     use XML::Simple;
     use XML::RSS::Feed;
     use HTML::Strip;
+    use Mojo::Util;
     use DBI;
 
     my ($class, %arguments) = @_;
@@ -528,7 +529,7 @@ sub do_clean {
     my $strip = new HTML::Strip;
     my $clean = $strip->parse($arguments{string});
 
-    return $clean;
+    return Mojo::Util::encode('UTF-8', $clean);
 
 }
 

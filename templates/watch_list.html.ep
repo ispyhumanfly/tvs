@@ -34,36 +34,10 @@
 		    
 		    <div id='toggle-<%= $_->{id} %>'>
 		    
-			<br />
-
 			<!-- article body -->
-			<div class='feed'><%= $_->{info} %></div>
-
-			<br />
-			
-			<p class='options'>
-
-			    <!-- voting module -->
-			    <script type="text/javascript">//<![CDATA[
-    
-				// initiate voting options...
-				view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
-    
-			    // ]]></script>
-    
-			    <!-- full article -->
-			    <a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>'>Read Article</a>
-			    
-			</p>
-			
-			<!--<div class='jump_to'>
-			    
-			    Jump To :: <a href="javascript:scroll_to('top');">TOP</a> ?
-			    <a href="javascript:scroll_to('bottom');">BOTTOM</a>
-			
-			</div>-->
-
-			<br /><br />
+			<a href='/<%= $_->{name} %>/<%= $_->{tbl_id} %>' style="text-decoration: none;">
+			    <div class='feed'><%= $_->{info} %></div>
+			</a>
 
 		    </div>
 		

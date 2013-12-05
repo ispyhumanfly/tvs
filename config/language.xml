@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <language>
-  <tvs title="TVS by Thoughtpivot" name="Television Suicide"/>
-  <page home="Top" featured="Featured" watch_list="Watch List" inbox="New"/>
+  <tvs title="TVS by Thoughtpivot" name="TVS News for Coders ;)"/>
+  <page home="Home" featured="Featured" watch_list="Watch List" inbox="Inbox"/>
   <block about="So what&apos;s TVS?" random_articles="Watch this!" watch_list="Watch list" inside="Whats inside?"/>
   <filter today="Today" week="This Week" month="This Month"/>
 </language>

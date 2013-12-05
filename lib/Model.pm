@@ -1,7 +1,6 @@
 # Model.pm :: The TVS News Engine
 
 use Modern::Perl;
-
 package Model;
 
 sub new {
@@ -41,8 +40,10 @@ sub get_articles {
     my ($self, %arguments) = @_;
     return 1 unless exists $arguments{list};
 
-    my (@articles, $index);
+    my (@articles);
 
+    my $index = 0;
+    
     for (@{$self->{feeds}->{feed}}) {
         if ($self->{feeds}->{feed}->[$index]->{title}) {
 

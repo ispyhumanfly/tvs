@@ -10,21 +10,13 @@
 
 	    <br />
 
-                <% for ( @{ $self->{articles} } ) { %>
-
-		<h1 style="display:none;"><%= $_->{title} %></h1>
-		<p style="display:none;"><%= $_->{info} %></p>
-
-		<script type="text/javascript">//<![CDATA[
-
-		    var params = "name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>";
-		    new Ajax.Request( '/vote', { parameters: params } );
-
-		// ]]></script>
+                % for ( @{ $self->{articles} } ) {
 		
                 <!-- some feed shit goes here -->
-                <div id='article-<%= $_->{id} %>' style='padding-bottom: 15px;'>
+                <div id='article-<%= $_->{id} %>'>
                 
+		    %= include 'vote', name => $_->{name}, tbl_id => $_->{tbl_id}
+		    
                     <div class="article">
                         
                         <h1>
@@ -43,31 +35,10 @@
                         
                         <div id='toggle-<%= $_->{id} %>'>
                         
-                            <br />
-
                             <!-- article body -->
                             <div class='feed'>
                                 <iframe src="<%= $_->{url} %>" style="width: 100%; min-height: 1200px; border: 0; overflow: hidden; background-color: white;" scrolling="no"></iframe>
                             </div>
-    
-                            <br />
-                            
-                            <p class='options'>
-    
-                                <!-- voting module -->
-                                <script type="text/javascript">//<![CDATA[
-        
-                                    // initiate voting options...
-                                    view.articles.set_voting( '<%= $_->{name} %>', '<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );
-        
-                                // ]]></script>
-        
-                                <!-- full article -->
-                                <a href='<%= $_->{url} %>' target="_blank">Open in New Tab</a>
-                                
-                            </p>
-
-                            <br /><br />
                     
                         </div>
                                
@@ -100,9 +71,9 @@
  
                 </div>
 
-                <% last; %>
+                % last;
                 
-            <% } %>
+            % }
 
 	</div>
 

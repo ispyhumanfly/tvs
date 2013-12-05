@@ -1,0 +1,6 @@
+<script type="text/javascript">//<![CDATA[
+
+    var params = "name=<%= $name %>&tbl_id=<%= $tbl_id %>";
+    new Ajax.Request( '/vote', { parameters: params } );
+
+// ]]></script>

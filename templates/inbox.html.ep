@@ -29,31 +29,14 @@
                                         
                                         <span class='title'>
         
-					    <a href='javascript: return null;' id='inbox_article-<%= $_->{id} %>'>
+					    <a href="/<%= $_->{name} %>/<%= $_->{tbl_id} %>">
 					    
 						<%= $_->{title} %>
 				      
 					    </a>
-					    
-					    <div class='tooltip inbox_article-<%= $_->{id} %>' style="display: none; font-size: 1.2em; background-color: #111; padding: 10px; margin: 0 12px 0 0; border: 1px groove #fff; max-width: 450px;">
-					    
-						<%= $_->{info} %>
-					    
-						<br />
-						
-						<span style="float: right; margin-right: 5px; margin-top: 10px; margin-bottom: 10px; font-size: 15px;">
-	    
-						    <a style="color: white;" href="javascript:view.articles.do_vote( 'name=<%= $_->{name} %>&tbl_id=<%= $_->{tbl_id} %>', '<%= $_->{id} %>' );">Like Article | </a>
-						    <a style="color: white;" href="/<%= $_->{name} %>/<%= $_->{tbl_id} %>">Read Article</a>
-						    
-						</span>
-					    
-					    </div>
 					
                                         </span>
 					
-					<br /><br />
-                                    
                                     </div>
                                 
                                 </div>

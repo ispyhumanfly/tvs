@@ -156,5 +156,5 @@ app->config(
     }
 );
 
-app->secret('TVS Rocks!');
+#app->secret('TVS Rocks!');
 app->start;

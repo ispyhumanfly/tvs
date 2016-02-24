@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-  <mysql host="localhost" database="tvs" user="root" password="s4rc0m4"/>
+  <mysql host="localhost" database="televisionsuicide" user="root" password=""/>
   <persona name="home" days="30" votes="8"/>
   <persona name="featured" days="30" votes="5"/>
   <persona name="watch_list" days="30" votes="2"/>
   <persona name="inbox" days="30" votes="0"/>
   <prune days="60" votes="all"/>
-  <rss title="TVS" link="http://tvs.thoughtpivot.com" language="en" description="a pretty cool news portal" rating="(PICS-1.1 &quot;http://www.classify.org/safesurf/&quot; 1 r (SS~~000 1))" copyright="2013 Thoughtpivot, LLC" webmaster="ispyhumanfly"/>
+  <rss title="TVS" link="http://tvs.thoughtpivot.com" language="en" description="a pretty cool news portal" rating="(PICS-1.1 &quot;http://www.classify.org/safesurf/&quot; 1 r (SS~~000 1))" copyright="2015 Thoughtpivot, LLC" webmaster="ispyhumanfly"/>
 </config>

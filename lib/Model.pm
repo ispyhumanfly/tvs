@@ -26,7 +26,7 @@ sub new {
     my $db_user     = $arguments{config}->{mysql}->{user};
     my $db_password = $arguments{config}->{mysql}->{password};
 
-    $arguments{mysql} = DBI->connect("DBI:mysql:database=$db_database:host=",
+    $arguments{mysql} = DBI->connect("DBI:mysql:database=$db_database:host=$db_host",
         $db_user, $db_password, {'PrintError' => 0, 'RaiseError' => 1});
 
     $arguments{mysql}->{'mysql_auto_reconnect'} = 1;

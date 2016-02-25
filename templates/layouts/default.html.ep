@@ -36,7 +36,7 @@
 	
 	<!-- Thoughtpivot Stuff -->
 
-	<script src="http://js.thoughtpivot.com/dojo/dojo/dojo.js" data-dojo-config="async: true"></script>        
+	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.7/dojo/dojo.js" data-dojo-config="async: true"></script>        
 	<script type="text/javascript" src="/js/thoughtpivot.js"></script>
 	<link rel="stylesheet" type="text/css" href="/styles/thoughtpivot.css" />
 
@@ -58,7 +58,7 @@
 	    </div>
 	</div>
 	
-	<div id="curtain"></div>
+	<!-- div id="curtain"></div -->
 
 	<div id='top'></div>
 	

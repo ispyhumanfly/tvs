@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-  <mysql host="localhost" database="televisionsuicide" user="root" password=""/>
+  <mysql host="warehouse.thoughtpivot.com" database="televisionsuicide" user="thoughtpivot" password="Thoughtpivot2016"/>
   <persona name="home" days="30" votes="8"/>
   <persona name="featured" days="30" votes="5"/>
   <persona name="watch_list" days="30" votes="2"/>
